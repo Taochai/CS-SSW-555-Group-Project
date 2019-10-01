@@ -16,12 +16,18 @@ import java.util.*;
 
 public class userStories {
     private Set<String> ErrorInfo;
-    public void AllUserStory(Map _Fams, Map _indis) throws Exception {
-        this.ErrorInfo = new HashSet<>();
+    public userStories(){
+        ErrorInfo = new HashSet<>();
+    }
+    public void AllUserStory(Map _Fams, Map _indis)  {
+//        this.ErrorInfo = new HashSet<>();
         this.IterateFam(_Fams,_indis);
         this.IterateInds(_Fams,_indis);
-        this.US10(_Fams,_indis);
+//        this.US10(_Fams,_indis);
 
+    }
+    public Set<String> getError(){
+        return this.ErrorInfo;
     }
     
     public void IterateFam(Map _Fams, Map _indis) {
@@ -38,20 +44,19 @@ public class userStories {
         }
     }
 
-    public void IterateInds(Map _Fam, Map _indis) throws Exception {
+    public void IterateInds(Map _Fam, Map _indis) {
         Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
         while (entries1.hasNext()) {
             Map.Entry<String, Individual> entry = entries1.next();
             Individual curIndis = entry.getValue();
             this.US03(curIndis);
             this.US07(curIndis);
-
         }
     }
 
 
     // US07: Less then 150 years old(Zhe Sun)
-    public String US07(Individual _indi) throws Exception {
+    public String US07(Individual _indi){
         String errStr = "";
         if (_indi.getBirthday() != null && CalculateAge.getAge(_indi.getBirthday())<150) {
             errStr = "Error US07";
@@ -159,7 +164,7 @@ public class userStories {
                 }
                 if (ageMarried < 14)
                     errStr = "Err us10 Fam:" + curFam.getId() + " husband: " + husband.getId() + husband.getName() + " ageMarried < 14";
-                this.ErrorInfo.add(errStr);
+                this.ErrorInfo.add("Error US10");
                 cal.setTime(wife.getBirthday());
                 yearBirth = cal.get(Calendar.YEAR);
                 monthBirth = cal.get(Calendar.MONTH);
@@ -174,7 +179,7 @@ public class userStories {
                 }
                 if (ageMarried < 14)
                     errStr = "Err us10 Fam:" + curFam.getId() + " wife: " + wife.getId() + wife.getName() + " ageMarried < 14";
-                this.ErrorInfo.add(errStr);
+                this.ErrorInfo.add("Error US10");
             }
         }
         return errStr;
@@ -194,7 +199,7 @@ public class userStories {
             Date marr9 = rightNow.getTime();
             if (child.getBirthday().before(marr9)) {
                 wrongname += child.getName();
-                errStr = "error: US08: " ;
+                errStr = "Error US08" ;
                 this.ErrorInfo.add(errStr);
 //                errStr = "error: US08: " + wrongname + "'s birthday is earlier than parents wedding day";
             }
@@ -220,7 +225,7 @@ public class userStories {
                 Date hd9 = hrightNow.getTime();
                 if(child.getBirthday().before(hd9)){
 //                    wname += child.getName();
-                    errStr = "error: US09: ";
+                    errStr = "Error US09";
                     this.ErrorInfo.add(errStr);
                 }
             }
@@ -228,7 +233,7 @@ public class userStories {
                 Date wd = wife.getDeath();
                 if(child.getBirthday().before(wd)) {
 //                    wname += child.getName();
-                    errStr = "error: US09: ";
+                    errStr = "Error US09";
                     this.ErrorInfo.add(errStr);
                 }
             }
@@ -237,6 +242,37 @@ public class userStories {
         }
 
 //
+        return errStr;
+    }
+    public String US01(Map _Fams, Map _indis) throws ParseException {
+        String errStr = "";
+        Date today = new Date();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            if(curFam.getDivorced() != null){
+                if(curFam.getDivorced().after(today)) errStr = "Err US01 curFam.Divorced.after(today)"+curFam.getId()+Formatdate.datetostring(curFam.getDivorced());
+                this.ErrorInfo.add("Error US01");
+            }
+            if(curFam.getMarried() != null){
+                if(curFam.getMarried().after(today)) errStr = "Err US01 curFam.Married.after(today)"+curFam.getId()+Formatdate.datetostring(curFam.getMarried());
+                this.ErrorInfo.add("Error US01");
+            }
+        }
+        Iterator<Map.Entry<String, Individual>> entries2 = _indis.entrySet().iterator();
+        while (entries2.hasNext()) {
+            Map.Entry<String, Individual> entry = entries2.next();
+            Individual curInd = entry.getValue();
+            if(curInd.getBirthday() != null){
+                if(curInd.getBirthday().after(today)) errStr = "Err US01 curInd.Birthday.after(today)"+curInd.getId()+Formatdate.datetostring(curInd.getBirthday());
+                this.ErrorInfo.add("Error US01");
+            }
+            if(curInd.getDeath() != null){
+                if(curInd.getDeath().after(today)) errStr = "Err US01 curInd.Death.after(today)"+curInd.getId()+Formatdate.datetostring(curInd.getDeath());
+                this.ErrorInfo.add("Error US01");
+            }
+        }
         return errStr;
     }
 }
