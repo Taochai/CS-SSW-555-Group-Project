@@ -15,18 +15,19 @@ import java.text.ParseException;
 import java.util.*;
 
 public class userStories {
-
+    Set<String> ErrorInfo;
+    public void AllUserStory(Map _Fams, Map _indis){
+        this.ErrorInfo = new HashSet<>();
+        this.IterateFam(_Fams,_indis);
+//        this.IterateInds(_Fams,_indis);
+    }
+    
     public void IterateFam(Map _Fams, Map _indis) {
         Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
         while (entries1.hasNext()) {
             Map.Entry<String, Family> entry = entries1.next();
             Family curFam = entry.getValue();
-            //System.out.println(this.US05(curFam, _indis));
-            //System.out.println(this.US06(curFam,_indis));
-            System.out.println(this.US02(curFam, _indis));
-//            System.out.println(this.US08(curFam, _indis));
-//            System.out.println(this.US09(curFam, _indis));
-
+            this.US05(curFam, _indis);
         }
     }
 
@@ -47,9 +48,7 @@ public class userStories {
             errStr = "Error US07";
         }
         return errStr;
-
     }
-
 
 
     // US06: Divorce before death
@@ -59,10 +58,13 @@ public class userStories {
         Individual wife = _indis.get(_Fam.getWifeID());
         if (husband.getDeath() != null && wife.getDeath() != null && _Fam.getDivorced() != null && (_Fam.getDivorced().after(husband.getDeath()) || _Fam.getDivorced().after(husband.getDeath()))) {
             errStr = "Error US06";
+            this.ErrorInfo.add(errStr);
         } else if (husband.getDeath() == null && wife.getDeath() != null && _Fam.getDivorced() != null && _Fam.getDivorced().after(wife.getDeath())) {
             errStr = "Error US06";
+            this.ErrorInfo.add(errStr);
         } else if (wife.getDeath() == null && husband.getDeath() != null && _Fam.getDivorced() != null && _Fam.getDivorced().after(husband.getDeath())) {
             errStr = "Error US06";
+            this.ErrorInfo.add(errStr);
         }
         return errStr;
     }
@@ -74,10 +76,13 @@ public class userStories {
         Individual wife = _indis.get(_Fam.getWifeID());
         if (husband.getDeath() != null && wife.getDeath()!= null && _Fam.getMarried() != null && (_Fam.getMarried().after(husband.getDeath()) || _Fam.getMarried().after(husband.getDeath()))) {
             errStr = "Error US05";
+            this.ErrorInfo.add(errStr);
         } else if (husband.getDeath() == null && wife.getDeath() != null && _Fam.getMarried().after(wife.getDeath())) {
             errStr = "Error US05";
+            this.ErrorInfo.add(errStr);
         } else if (wife.getDeath() == null && husband.getDeath() != null && _Fam.getMarried().after(husband.getDeath())) {
             errStr = "Error US05";
+            this.ErrorInfo.add(errStr);
         }
         return errStr;
     }
@@ -108,64 +113,6 @@ public class userStories {
         if (!(husband.getBirthday().before(_Fam.getMarried()) && wife.getBirthday().before(_Fam.getMarried()))) {
             errStr = "Error US02";
         }
-        return errStr;
-    }
-
-    //  US08: Birth before marriage of parents(Yining Wen)
-    public String US08(Family _Fam, Map<String,Individual> _indis){
-        String errStr = "";
-        String wrongname = "";
-        Iterator itr = _Fam.getChildren().iterator(); // traversing over HashSet
-        while(itr.hasNext()) {
-            String curchild = (String) itr.next();
-            Individual child = _indis.get(curchild);
-            Calendar rightNow = Calendar.getInstance();
-            Date marr = _Fam.getMarried();
-            rightNow.setTime(marr);
-            rightNow.add(Calendar.MONTH, -9);//9 months before marry
-            Date marr9 = rightNow.getTime();
-            if (child.getBirthday().before(marr9)) {
-                wrongname += child.getName();
-                errStr = "error: US08: " ;
-//                errStr = "error: US08: " + wrongname + "'s birthday is earlier than parents wedding day";
-            }
-        }
-        return errStr;
-    }
-
-    //    US09: Birth before death of parents(Yining Wen)
-    public String US09(Family _Fam, Map<String,Individual> _indis) {
-        String errStr = "";
-        String wname = "";
-        Iterator itr = _Fam.getChildren().iterator(); // traversing over HashSet
-        while(itr.hasNext()) {
-            String curchild = (String) itr.next();
-            Individual child = _indis.get(curchild);
-            Individual husband = _indis.get(_Fam.getHusbandID());
-            Individual wife = _indis.get(_Fam.getWifeID());
-            if(husband.getDeath() != null) {
-                Date hdeath = husband.getDeath();
-                Calendar hrightNow = Calendar.getInstance();
-                hrightNow.setTime(hdeath);
-                hrightNow.add(Calendar.MONTH, -9);//结婚前9个月
-                Date hd9 = hrightNow.getTime();
-                if(child.getBirthday().before(hd9)){
-//                    wname += child.getName();
-                    errStr = "error: US09: ";
-                }
-            }
-            if(wife.getDeath() != null) {
-                Date wd = wife.getDeath();
-                if(child.getBirthday().before(wd)) {
-//                    wname += child.getName();
-                    errStr = "error: US09: ";
-                }
-            }
-//            errStr = "error: US09: ";
-//            errStr = "error: US09: " +wname + "'s birthday is earlier than death of parents";
-        }
-
-//
         return errStr;
     }
 
