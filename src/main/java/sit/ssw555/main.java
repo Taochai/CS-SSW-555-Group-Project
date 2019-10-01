@@ -21,6 +21,7 @@ public class main {
         // C:\Users\jason\Documents\Git\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
         // G:\Courses Info\SSW 555 Agile Dev\Sprint1\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
         read.readFile("src\\main\\resources\\My-Family-17-Sep-2019-579.ged");
+//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues" );
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         userStories test = new userStories();

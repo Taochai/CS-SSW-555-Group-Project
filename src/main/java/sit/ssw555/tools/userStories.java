@@ -24,6 +24,9 @@ public class userStories {
             //System.out.println(this.US05(curFam, _indis));
             //System.out.println(this.US06(curFam,_indis));
             System.out.println(this.US02(curFam, _indis));
+//            System.out.println(this.US08(curFam, _indis));
+//            System.out.println(this.US09(curFam, _indis));
+
         }
     }
 
