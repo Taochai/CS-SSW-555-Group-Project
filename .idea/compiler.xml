@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="familytree" />
+        <module name="GroupProject" />
         <module name="family-tree" />
+        <module name="familytree" />
       </profile>
     </annotationProcessing>
   </component>

@@ -17,7 +17,7 @@ import sit.ssw555.tools.*;
  */
 public class main {
     public static void main(String[] args) throws Exception {
-     readGedcomFile read = new readGedcomFile();
+        readGedcomFile read = new readGedcomFile();
         // C:\Users\jason\Documents\Git\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
         // G:\Courses Info\SSW 555 Agile Dev\Sprint1\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
         read.readFile("src\\main\\resources\\My-Family-17-Sep-2019-579.ged");
