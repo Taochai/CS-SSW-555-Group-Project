@@ -108,6 +108,64 @@ public class userStories {
         return errStr;
     }
 
+    //  US08: Birth before marriage of parents(Yining Wen)
+    public String US08(Family _Fam, Map<String,Individual> _indis){
+        String errStr = "";
+        String wrongname = "";
+        Iterator itr = _Fam.getChildren().iterator(); // traversing over HashSet
+        while(itr.hasNext()) {
+            String curchild = (String) itr.next();
+            Individual child = _indis.get(curchild);
+            Calendar rightNow = Calendar.getInstance();
+            Date marr = _Fam.getMarried();
+            rightNow.setTime(marr);
+            rightNow.add(Calendar.MONTH, -9);//9 months before marry
+            Date marr9 = rightNow.getTime();
+            if (child.getBirthday().before(marr9)) {
+                wrongname += child.getName();
+                errStr = "error: US08: " ;
+//                errStr = "error: US08: " + wrongname + "'s birthday is earlier than parents wedding day";
+            }
+        }
+        return errStr;
+    }
+
+    //    US09: Birth before death of parents(Yining Wen)
+    public String US09(Family _Fam, Map<String,Individual> _indis) {
+        String errStr = "";
+        String wname = "";
+        Iterator itr = _Fam.getChildren().iterator(); // traversing over HashSet
+        while(itr.hasNext()) {
+            String curchild = (String) itr.next();
+            Individual child = _indis.get(curchild);
+            Individual husband = _indis.get(_Fam.getHusbandID());
+            Individual wife = _indis.get(_Fam.getWifeID());
+            if(husband.getDeath() != null) {
+                Date hdeath = husband.getDeath();
+                Calendar hrightNow = Calendar.getInstance();
+                hrightNow.setTime(hdeath);
+                hrightNow.add(Calendar.MONTH, -9);//结婚前9个月
+                Date hd9 = hrightNow.getTime();
+                if(child.getBirthday().before(hd9)){
+//                    wname += child.getName();
+                    errStr = "error: US09: ";
+                }
+            }
+            if(wife.getDeath() != null) {
+                Date wd = wife.getDeath();
+                if(child.getBirthday().before(wd)) {
+//                    wname += child.getName();
+                    errStr = "error: US09: ";
+                }
+            }
+//            errStr = "error: US09: ";
+//            errStr = "error: US09: " +wname + "'s birthday is earlier than death of parents";
+        }
+
+//
+        return errStr;
+    }
+
     // US10: Marriage after 14(Jiaxian Xing)
     public String US10(Map<String, Family> _Fams, Map<String, Individual> _indis) {
         String errStr = "";
