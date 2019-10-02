@@ -26,7 +26,7 @@ public class Family {
     public Family() {
         this.Married = null;
         this.Divorced = null;
-        this.Children = new HashSet<String>();
+        this.Children = new HashSet<>();
     }
 
     public String getId() {

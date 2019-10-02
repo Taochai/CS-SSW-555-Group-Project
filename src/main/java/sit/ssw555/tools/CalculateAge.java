@@ -27,14 +27,14 @@ public class CalculateAge {
     }
 
     //change date(String) to date(Date)
-    public static Date parse(String strDate) throws ParseException {
+    private static Date parse(String strDate) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.parse(strDate);
     }
     //以上是把日期改成Date
 
 
-    public static  int getAge(Date birthDay)  {
+    static int getAge(Date birthDay)  {
         Calendar cal = Calendar.getInstance();
         if (cal.before(birthDay)) { //出生日期晚于当前时间，无法计算
             throw new IllegalArgumentException(

@@ -26,8 +26,8 @@ public class Individual {
     public Individual() {
         this.Birthday = null;
         this.Death = null;
-        this.Child = new HashSet<String>();
-        this.Spouse = new HashSet<String>();
+        this.Child = new HashSet<>();
+        this.Spouse = new HashSet<>();
     }
 
     public String getId() {
@@ -67,12 +67,7 @@ public class Individual {
     }
 
     public void setAlive() {
-        if (this.Death == null) {
-            this.Alive = true;
-        } else {
-            this.Alive = false;
-        }
-
+        this.Alive = this.Death == null;
     }
 
     public Date getDeath() {
@@ -106,8 +101,8 @@ public class Individual {
     @Override
     public String toString() {
         SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-        String deadDate = (Death == null) ? "NA" : fm.format(Death).toString();
-        String birDate = (Birthday == null) ? "NA" : fm.format(Birthday).toString();
+        String deadDate = (Death == null) ? "NA" : fm.format(Death);
+        String birDate = (Birthday == null) ? "NA" : fm.format(Birthday);
         setAlive();
         return "Individual id=" + id + "\t| Name=" + Name + "\t| Gender=" + Gender + "\t| Birthday=" + birDate
                 + "\t| Alive=" + Alive + "\t| Death=" + deadDate + "\t| Child=" + Child + "\t| Spouse=" + Spouse;
