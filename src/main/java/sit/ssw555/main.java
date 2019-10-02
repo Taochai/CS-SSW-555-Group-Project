@@ -25,7 +25,8 @@ public class main {
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         userStories test = new userStories();
-        test.AllUserStory(indis,Fams);
+        test.IterateFam(Fams,indis);
+//        test.AllUserStory(indis,Fams);
 //        System.out.println(test.US01(Fams,indis));
         //TODO sth wrong over here: ^
     }
