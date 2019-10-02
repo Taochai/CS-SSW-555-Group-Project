@@ -22,7 +22,7 @@ public class userStoriesTest
     @Test
     public void TestUS08() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -32,7 +32,7 @@ public class userStoriesTest
     @Test
     public void TestUS03() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         test.IterateInds(read.printFam(),read.printIndi());
         assertTrue(test.getError().contains("Error US03") );
@@ -40,7 +40,7 @@ public class userStoriesTest
     @Test
     public void TestUS02() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -50,7 +50,7 @@ public class userStoriesTest
     @Test
     public void TestUS01() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -60,7 +60,7 @@ public class userStoriesTest
     @Test
     public void TestUS04() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -70,7 +70,7 @@ public class userStoriesTest
     @Test
     public void TestUS05() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -80,7 +80,7 @@ public class userStoriesTest
     @Test
     public void TestUS06() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -90,7 +90,7 @@ public class userStoriesTest
     @Test
     public void TestUS07() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -100,7 +100,7 @@ public class userStoriesTest
     @Test
     public void TestUS09() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -110,7 +110,7 @@ public class userStoriesTest
     @Test
     public void TestUS10() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("D:\\github\\CS-SSW-555-Group-Project-master\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
