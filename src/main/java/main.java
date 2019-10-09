@@ -6,10 +6,11 @@
  * @LastEditors: Zhe Sun
  * @LastEditTime: 2019-09-30 13:18:32
  */
-package sit.ssw555;
 
 import java.util.Map;
-import sit.ssw555.tools.*;
+import tools.*;
+import tools.readGedcomFile;
+import tools.userStories;
 
 
 /**

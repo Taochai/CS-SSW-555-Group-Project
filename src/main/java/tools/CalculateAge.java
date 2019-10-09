@@ -6,7 +6,7 @@
  * @LastEditors: Zhe Sun
  * @LastEditTime: 2019-09-30 13:18:32
  */
-package sit.ssw555.tools;
+package tools;
 
 import java.util.Date;
 import java.text.ParseException;

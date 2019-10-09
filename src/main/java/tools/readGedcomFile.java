@@ -6,10 +6,10 @@
  * @LastEditors: Zhe Sun
  * @LastEditTime: 2019-09-30 13:18:32
  */
-package sit.ssw555.tools;
+package tools;
 
-import sit.ssw555.objects.Family;
-import sit.ssw555.objects.Individual;
+import objects.Family;
+import objects.Individual;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

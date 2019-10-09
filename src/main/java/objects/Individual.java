@@ -6,7 +6,7 @@
  * @LastEditors: Zhe Sun
  * @LastEditTime: 2019-09-30 20:44:29
  */
-package sit.ssw555.objects;
+package objects;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

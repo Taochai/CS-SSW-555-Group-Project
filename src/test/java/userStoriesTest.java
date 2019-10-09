@@ -1,13 +1,8 @@
-package sit.ssw555;
-
 import org.junit.Test;
-import sit.ssw555.tools.readGedcomFile;
-import sit.ssw555.tools.userStories;
+import tools.readGedcomFile;
+import tools.userStories;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Map;
-import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -19,11 +14,14 @@ public class userStoriesTest
     /**
      * Rigorous Test :-)
      */
+//    static final String testFilePath = "src\\main\\resources\\testOne.ged";
+//    G:\Courses Info\SSW 555 Agile Dev\Sprint\src\main\resources\TestGEDCOM.ged
+    private static final String testFilePath = "src\\main\\resources\\testOne.ged";
+
     @Test
     public void TestUS08T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -34,8 +32,7 @@ public class userStoriesTest
     @Test
     public void TestUS08F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -46,8 +43,7 @@ public class userStoriesTest
     @Test
     public void TestUS03T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         test.IterateInds(read.printFam(),read.printIndi());
         assertTrue(test.getError().contains("Error US03") );
@@ -56,8 +52,7 @@ public class userStoriesTest
     @Test
     public void TestUS03F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         test.IterateInds(read.printFam(),read.printIndi());
         assertFalse(test.getError().contains("Error US03") );
@@ -66,8 +61,7 @@ public class userStoriesTest
     @Test
     public void TestUS02T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -78,8 +72,7 @@ public class userStoriesTest
     @Test
     public void TestUS02F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -90,8 +83,7 @@ public class userStoriesTest
     @Test
     public void TestUS01T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -102,8 +94,7 @@ public class userStoriesTest
     @Test
     public void TestUS01F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -114,8 +105,7 @@ public class userStoriesTest
     @Test
     public void TestUS04F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -126,8 +116,7 @@ public class userStoriesTest
     @Test
     public void TestUS04T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -138,8 +127,7 @@ public class userStoriesTest
     @Test
     public void TestUS05T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -150,8 +138,7 @@ public class userStoriesTest
     @Test
     public void TestUS05F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -162,8 +149,7 @@ public class userStoriesTest
     @Test
     public void TestUS06F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -174,8 +160,7 @@ public class userStoriesTest
     @Test
     public void TestUS06T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -186,8 +171,7 @@ public class userStoriesTest
     @Test
     public void TestUS07T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -198,8 +182,7 @@ public class userStoriesTest
     @Test
     public void TestUS07F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -210,8 +193,7 @@ public class userStoriesTest
     @Test
     public void TestUS09T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -222,8 +204,7 @@ public class userStoriesTest
     @Test
     public void TestUS09F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -234,8 +215,7 @@ public class userStoriesTest
     @Test
     public void TestUS10T() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -246,8 +226,7 @@ public class userStoriesTest
     @Test
     public void TestUS10F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged" );
-//        read.readFile("D:\\github\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestFamilyTreeWithmanyissues");
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
