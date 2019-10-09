@@ -17,8 +17,15 @@ import java.util.Calendar;
 public class CalculateAge {
     public static void main(String[] args) {
         try {
+//            int  age = getAge(parse("1960-09-27"), parse("2060-09-27"));
             int  age = getAge(parse("1960-09-27"));           //由出生日期获得年龄***
             System.out.println("age:"+age);
+
+            Date d1 = parse("1960-09-27");
+            Date d2 = parse("2061-08-27");
+
+            int yearr = getAge(d1, d2);
+            System.out.println(yearr);
         }
         catch (Exception e)
         {
@@ -56,5 +63,11 @@ public class CalculateAge {
             }
         }
         return age;
+    }
+
+    static int getAge(Date DOB, Date DOD)  {
+        long bod = DOB.getTime();
+        long dod = DOD.getTime();
+        return (int) ((dod - bod) /1000/60/60/24/365);
     }
 }

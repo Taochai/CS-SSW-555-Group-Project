@@ -20,14 +20,21 @@ public class main {
         readGedcomFile read = new readGedcomFile();
         // C:\Users\jason\Documents\Git\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
         // G:\Courses Info\SSW 555 Agile Dev\Sprint1\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
-        read.readFile("src\\main\\resources\\My-Family-17-Sep-2019-579.ged");
-//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues" );
+        // read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues" );
+//        read.readFile("src\\main\\resources\\My-Family-17-Sep-2019-579.ged");
+//        read.readFile("src\\main\\resources\\TestFamilyTreeWithmanyissues.ged");
+//        read.readFile("src\\main\\resources\\TestGEDCOM.ged");
+        read.readFile("src\\main\\resources\\testOne.ged");
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         userStories test = new userStories();
         test.IterateFam(Fams,indis);
-//        test.AllUserStory(indis,Fams);
-//        System.out.println(test.US01(Fams,indis));
-        //TODO sth wrong over here: ^
+        test.IterateInds(Fams,indis);
+        for (String a : test.getError()) {
+            System.out.println(a);
+        }
+        System.out.println(test.US01(Fams, indis));
+        System.out.println(test.US10(Fams, indis));
+
     }
 }

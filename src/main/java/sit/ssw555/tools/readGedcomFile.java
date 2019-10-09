@@ -16,7 +16,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
-import java.text.*;
 import java.util.*;
 
 public class readGedcomFile {
@@ -210,7 +209,7 @@ public class readGedcomFile {
                 spouse +=famS+",";
             }
             tI.appendRow();
-            tI.appendColum(curindi.getId()).appendColum(curindi.getName()).appendColum(curindi.getGender()).appendColum(Formatdate.datetostring(curindi.getBirthday())).appendColum(CalculateAge.getAge(curindi.getBirthday())).appendColum(curindi.getAlive()).appendColum(Formatdate.datetostring(curindi.getDeath())).appendColum(child).appendColum(spouse);
+            tI.appendColum(curindi.getId()).appendColum(curindi.getName()).appendColum(curindi.getGender()).appendColum(Formatdate.dateToString(curindi.getBirthday())).appendColum(CalculateAge.getAge(curindi.getBirthday())).appendColum(curindi.getAlive()).appendColum(Formatdate.dateToString(curindi.getDeath())).appendColum(child).appendColum(spouse);
         }
         System.out.println("Individuals:");
         System.out.println(tI.toString());
@@ -233,7 +232,7 @@ public class readGedcomFile {
             }
 
             tF.appendRow();
-            tF.appendColum(curFam.getId()).appendColum(Formatdate.datetostring(curFam.getMarried())).appendColum(Formatdate.datetostring(curFam.getDivorced())).appendColum(curFam.getHusbandID()).appendColum(this.Indis.get(curFam.getHusbandID()).getName()).appendColum(curFam.getWifeID()).appendColum(this.Indis.get(curFam.getWifeID()).getName()).appendColum(child);
+            tF.appendColum(curFam.getId()).appendColum(Formatdate.dateToString(curFam.getMarried())).appendColum(Formatdate.dateToString(curFam.getDivorced())).appendColum(curFam.getHusbandID()).appendColum(this.Indis.get(curFam.getHusbandID()).getName()).appendColum(curFam.getWifeID()).appendColum(this.Indis.get(curFam.getWifeID()).getName()).appendColum(child);
         }
         System.out.println("Family:");
         System.out.println(tF.toString());

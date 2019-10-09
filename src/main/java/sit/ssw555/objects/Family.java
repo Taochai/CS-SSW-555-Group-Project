@@ -100,8 +100,8 @@ public class Family {
     @Override
     public String toString() {
         SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-        String married_date = (Married == null) ? "NA" : fm.format(Married).toString();
-        String divorced_date = (Divorced == null) ? "NA" : fm.format(Divorced).toString();
+        String married_date = (Married == null) ? "NA" : fm.format(Married);
+        String divorced_date = (Divorced == null) ? "NA" : fm.format(Divorced);
         return "Family id=" + id + "\t| Married=" + married_date + "\t| Divorced=" + divorced_date + "\t| HusbandID="
                 + HusbandID + "\t| HusbandName=" + HusbandName + "\t| WifeID=" + WifeID + "\t| WifeName=" + WifeName
                 + "\t| Children=" + Children;

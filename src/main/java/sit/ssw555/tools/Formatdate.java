@@ -13,13 +13,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Formatdate {
-    public static Date stringtodate(String date) throws ParseException {
+    static Date stringtodate(String date) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
         Date date1 = dateFormat.parse(date);
         return date1;
     }
 
-    public static String datetostring(Date date) throws ParseException {
+    static String dateToString(Date date) throws ParseException {
         if(date==null){
             return "NA";
         }
