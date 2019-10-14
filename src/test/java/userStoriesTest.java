@@ -2,6 +2,7 @@ import org.junit.Test;
 import tools.readGedcomFile;
 import tools.userStories;
 
+import java.net.URL;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -11,17 +12,18 @@ import static org.junit.Assert.*;
  */
 public class userStoriesTest
 {
-    /**
-     * Rigorous Test :-)
-     */
 //    static final String testFilePath = "src\\main\\resources\\testOne.ged";
-//    G:\Courses Info\SSW 555 Agile Dev\Sprint\src\main\resources\TestGEDCOM.ged
-    private static final String testFilePath = "src\\main\\resources\\testOne.ged";
+//    G:\Courses Info\SSW 555 Agile Dev\Sprint\src\main\resources\TestGEDCOM.ged G:\Courses Info\SSW 555 Agile Dev\Sprint\src\test\testResources\US01\testOne.ged
+            static String testfile = "US01/testOne.ged";
+    private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
+
+    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
 
     @Test
     public void TestUS08T() throws Exception {
+        System.out.println(url.getPath());
         readGedcomFile read = new readGedcomFile();
-        read.readFile(testFilePath);
+        read.readFile(url.getPath());
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();

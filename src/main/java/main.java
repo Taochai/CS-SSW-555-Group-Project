@@ -8,7 +8,6 @@
  */
 
 import java.util.Map;
-import tools.*;
 import tools.readGedcomFile;
 import tools.userStories;
 

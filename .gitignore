@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
 # Compiled class file
 *.class
 
@@ -6,6 +8,10 @@
 
 # BlueJ files
 *.ctxt
+
+# Compiler configuration file
+*.idea
+*.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -18,3 +24,19 @@
 *.zip
 *.tar.gz
 *.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.gitignore
+out/production/
+out/test/test/US01/
+out/test/test/userStoriesTest.class
+src/test/testResources/
+target/classes/META-INF/
+target/classes/main.class
+target/classes/objects/
+target/classes/tools/
+target/generated-sources/
+target/generated-test-sources/
+target/test-classes/
