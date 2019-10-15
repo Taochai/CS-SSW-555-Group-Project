@@ -24,7 +24,8 @@ public class main {
 //        read.readFile("src\\main\\resources\\My-Family-17-Sep-2019-579.ged");
 //        read.readFile("src\\main\\resources\\TestFamilyTreeWithmanyissues.ged");
 //        read.readFile("src\\main\\resources\\TestGEDCOM.ged");
-        read.readFile("src\\main\\resources\\testOne.ged");
+//        read.readFile("src\\main\\resources\\testOne.ged");
+        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/US18.ged");
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         userStories test = new userStories();
