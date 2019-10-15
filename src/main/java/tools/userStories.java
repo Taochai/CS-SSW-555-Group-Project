@@ -264,9 +264,6 @@ public class userStories {
         return errStr;
     }
 
-
-
-
     // US01: Dates before current date(Jiaxian Xing)
     public String US01(Map _Fams, Map _indis) throws ParseException {
         String errStr = "";
@@ -317,10 +314,6 @@ public class userStories {
                     errStr = "ERROR: FAMILY: US17: " +_Fam.getId() + "'s member married his children" + childid;
                     this.ErrorInfo.add(errStr);
                 }
-//               if (childid.getSpouse().equals( _Fam.getId())) {
-//                   errStr = "ERROR: FAMILY: US17: " + husband + "married his children" + childid;
-//                   this.ErrorInfo.add(errStr);
-//               }
             }
         }
         return errStr;
