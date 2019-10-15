@@ -416,6 +416,7 @@ public class userStories {
         return errStr;
     }
 
+//    Jiaxian Xing
     //US13 Birth dates of siblings should be more than 8 months apart or less than 2 days apart (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
     public String US13(Family _Fam, Map<String, Individual> _indis){
         String errStr = "";
@@ -459,7 +460,7 @@ public class userStories {
         return errStr;
     }
 
-    //US14 No more than five siblings should be born at the same time
+    //US14 No more than five siblings should be born at the same time (Jiaxian Xing)
     public String US14(Family _Fam, Map<String, Individual> _indis) throws ParseException {
         String errStr = "";
         //put every child <birthday> in HashSet;

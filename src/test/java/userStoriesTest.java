@@ -21,6 +21,52 @@ public class userStoriesTest
     String testUS17 = "/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/UserStory17.ged";
 
     @Test
+    public void TestUS16T() throws Exception {
+//        System.out.println(url.getPath());
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertTrue(test.getError().contains("Error US16") );
+    }
+
+    @Test
+    public void TestUS16F() throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertFalse(test.getError().contains("Error US16") );
+    }
+
+    @Test
+    public void TestUS15T() throws Exception {
+//        System.out.println(url.getPath());
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertTrue(test.getError().contains("Error US15") );
+    }
+
+    @Test
+    public void TestUS15F() throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertFalse(test.getError().contains("Error US15") );
+    }
+
+    @Test
     public void TestUS12T() throws Exception {
 //        System.out.println(url.getPath());
         readGedcomFile read = new readGedcomFile();
