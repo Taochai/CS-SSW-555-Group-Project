@@ -47,6 +47,8 @@ public class userStories {
             this.US18(curFam, _indis);
             this.US13(curFam,_indis);
             this.US14(curFam, _indis);
+            this.US15(curFam);
+            this.US16(curFam,_indis);
         }
     }
 
@@ -90,7 +92,28 @@ public class userStories {
         }
         return errStr;
     }
-
+    //US15:  fewer than 15 siblings in a family
+    public String US15(Family _Fam){
+        String errStr = "";
+        if(_Fam.getChildren().size()>=15){
+            errStr = "ERROR: FAMILY: US15: " +  _Fam.getId() + " has more or equal than 15 siblings.";
+            this.ErrorInfo.add(errStr);
+        }
+        return errStr;
+    }
+    //US16: Family male should have same last name.
+    public String US16(Family _Fam,Map<String, Individual> _indis){
+        String errStr = "";
+        String fatherLastName = _Fam.getFatherLastName();
+        for(String indiID: _Fam.getChildren()){
+            Individual child =  _indis.get(indiID);
+            if(child.getGender()=='M'&& !child.getLastName().equals(fatherLastName)){
+                errStr ="ERROR: FAMILY: US16: " + _Fam.getId() +" male members don`t have same last name.";
+                this.ErrorInfo.add(errStr);
+            }
+        }
+        return errStr;
+    }
     // US11: No bigamy(Ge Chang)
     public String US11(Map<String, Family> _Fams, Map<String, Individual> _indis) {
         String errStr = "";
