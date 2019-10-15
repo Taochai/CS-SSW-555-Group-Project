@@ -301,43 +301,6 @@ public class userStories {
         return errStr;
     }
 
-//    public String US17/2(Family _Fam, Map<String,Individual> _indis) throws ParseException {
-//        String errStr = "";
-//        Individual husband = _indis.get(_Fam.getHusbandID());
-//        Individual wife = _indis.get(_Fam.getWifeID());
-//        Set<String> children = _Fam.getChildren();
-//        if(children != null){
-////           for(Family f : _Fam.getId())
-//            if (children.contains(husband.getSpouse())) {
-//                errStr = "ERROR: FAMILY: US17: "+ husband.getName()  + "married his children" + husband.getSpouse();
-//                System.out.println("ERROR: FAMILY: US17: "+ husband.getName()  + "married his children.");
-//                this.ErrorInfo.add(errStr);
-//            }
-//            else if (children.contains(wife.getSpouse())){
-//                errStr = "ERROR: FAMILY: US17: " + wife.getName() + "married her children.";
-//                System.out.println("ERROR: FAMILY: US17: " + wife.getName() + "married her children.");
-//                this.ErrorInfo.add(errStr);
-//            }
-//        }
-//        return errStr;
-//    }
-
-
-//    public String US18/2(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-//        String errStr = "";
-//        String husband = _Fam.getHusbandID();
-//        String wife = _Fam.getWifeID();
-//        if(_Fam.getChildren().size() >= 2) {
-//            Individual husbandid = _indis.get(husband);
-//            Individual wifeid= _indis.get(wife);
-//            if (_Fam.getChildren().contains(husband) && _Fam.getChildren().contains(wife)) {
-//                errStr = "ERROR: FAMILY: US18:" + husbandid.getName() + wifeid.getName() + "are the children from a same family.";
-//                this.ErrorInfo.add(errStr);
-//            }
-//        }
-//        return errStr;
-//    }
-
     //    No marriages to children(Yining Wen)
     public String US17(Family _Fam, Map<String,Individual> _indis) throws ParseException {
         String errStr = "";
@@ -382,24 +345,7 @@ public class userStories {
 //        return errStr;
 //    }
 
-
-//    public String US18/1(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-//        String errStr = "";
-//        Set<String> husbandFamID = _indis.get(_Fam.getHusbandID()).getChild();
-//        Set<String> wifeFamID = _indis.get(_Fam.getWifeID()).getChild();
-//        String husband = _Fam.getHusbandID();
-//        String wife = _Fam.getWifeID();
-//        if(_Fam.getChildren().size() >= 2) {
-//            Individual husbandid = _indis.get(husband);
-//            Individual wifeid= _indis.get(wife);
-//            if (_Fam.getChildren().contains(husband) && _Fam.getChildren().contains(wife)) {
-//                errStr = "ERROR: FAMILY: US18:" + husbandid.getName() + wifeid.getName() + "are the children from a same family.";
-//                this.ErrorInfo.add(errStr);
-//            }
-//        }
-//        return errStr;
-//    }
-
+// Siblings should not marry(Yining Wen)
     public String US18(Family _Fam, Map<String, Individual> _indis) throws ParseException{
         String errStr = "";
         Set<String> husbandFamID = _indis.get(_Fam.getHusbandID()).getChild();
@@ -407,7 +353,6 @@ public class userStories {
         String husbandFatherFamID= "",husbandMotherFamID = "";
         String wifeFatherFamID= "",wifeMotherFamID = "";
 //        Set<String> husbandFatherFamID, husbandMotherFamID;
-
         if(husbandFamID != null && wifeFamID != null) {
             for (String hfi : husbandFamID) {
                 for (String wfi : wifeFamID) {
@@ -420,7 +365,7 @@ public class userStories {
                     }
                 }
             }
-            if(!husbandFatherFamID.equals("NA") && husbandFatherFamID.equals(wifeFatherFamID) && husbandMotherFamID.equals(wifeMotherFamID)){
+            if(husbandFatherFamID.equals(wifeFatherFamID) && husbandMotherFamID.equals(wifeMotherFamID)){
                 errStr = "ERROR: FAMILY: US18: The husband is from family" + husbandFatherFamID + "the wife is from family" + wifeMotherFamID + "are the children from a same family.";
                 this.ErrorInfo.add(errStr);
             }
@@ -453,47 +398,6 @@ public class userStories {
                 int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
                 int diffMonth = (int) (diffDays / 30);
                 int diffYear = (int) (diffMonth / 12);
-//                //first birthday
-//                Calendar cal = Calendar.getInstance();
-//                cal.setTime(SiblingBd1);
-//                int year1 = cal.get(Calendar.YEAR);
-//                int month1 = cal.get(Calendar.MONTH);
-//                int dayOfMonth1 = cal.get(Calendar.DAY_OF_MONTH);
-//                //second birthday
-//                cal.setTime(SiblingBd2);
-//                int year2 = cal.get(Calendar.YEAR);
-//                int month2 = cal.get(Calendar.MONTH);
-//                int dayOfMonth2 = cal.get(Calendar.DAY_OF_MONTH);
-//                //calculate birthday different
-//                int birthdayDiffYear = year1 - year2;
-//                int birthdayDiffMonth = 0;
-//                int birthdayDiffDay = 0;
-//                if (month1 <= month2) {
-//                    if (month1 == month2) {
-//                        if (dayOfMonth1 < dayOfMonth2) {//dayOfMonth2-dayOfMonth1  days to a year!
-//                            birthdayDiffYear--;
-//                            birthdayDiffMonth = 11;
-//                            birthdayDiffDay = 31 - dayOfMonth2 + dayOfMonth1;
-//                        }
-//                    }
-//                    else {
-//                        birthdayDiffYear--;//month2 - month1 month to a year!
-//                        birthdayDiffMonth = 12 - month2 + month1;
-//                    }
-//                }
-//                else {
-//                    if (month1 == month2) {
-//                        if (dayOfMonth1 < dayOfMonth2) {//dayOfMonth2-dayOfMonth1  days to a year!
-//                            birthdayDiffYear--;
-//                            birthdayDiffMonth = 11;
-//                            birthdayDiffDay = 31 - dayOfMonth2 + dayOfMonth1;
-//                        }
-//                    }
-//                    else {
-//                        birthdayDiffYear--;//month2 - month1 month to a year!
-//                        birthdayDiffMonth = 12 - month2 + month1;
-//                    }
-//                }
                 if(diffYear == 0){
                     if (diffMonth < 8) {
                         if (diffMonth == 0) {
