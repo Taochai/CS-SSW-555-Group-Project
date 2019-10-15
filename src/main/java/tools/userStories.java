@@ -302,22 +302,15 @@ public class userStories {
     //    No marriages to children(Yining Wen)
     public String US17(Family _Fam, Map<String,Individual> _indis) throws ParseException {
         String errStr = "";
-        Set<String> husbandFamID = _indis.get(_Fam.getHusbandID()).getChild();
-        Set<String> wifeFamID = _indis.get(_Fam.getWifeID()).getChild();
-        String husband = _Fam.getHusbandID();
-        String wife = _Fam.getWifeID();
         Set<String> children = _Fam.getChildren();
         if(children != null){
             for(String child : children) {
                 Individual childid = _indis.get(child);
-//                Iterator<Integer> iterator = set.iterator();
-//                while(iterator.hasNext()) {
-//                    Integer setElement = iterator.next();
-                Iterator<String> itr = childid.getSpouse().iterator(); // traversing over HashSet
-                while(itr.hasNext()) {
-                    String spouseFamId = itr.next();
+                Iterator<String> childspouse = childid.getSpouse().iterator(); // traversing over HashSet
+                while(childspouse.hasNext()) {
+                    String spouseFamId = childspouse.next();
                     if (spouseFamId.equals(_Fam.getId())) {
-                        errStr = "ERROR: FAMILY: US17: " + _Fam.getId() + "'s member married his children" + childid;
+                        errStr = "ERROR: FAMILY: US17: Family: " + _Fam.getId() + "'s member " + childid.getName() + " married parent";
                         this.ErrorInfo.add(errStr);
                     }
                 }
@@ -325,54 +318,70 @@ public class userStories {
         }
         return errStr;
     }
-//    public String US17/1(Family _Fam, Map<String,Individual> _indis) throws ParseException {
-//        String errStr = "";
-//        Individual husband = _indis.get(_Fam.getHusbandID());
-//        Individual wife = _indis.get(_Fam.getWifeID());
-//        Set<String> children = _Fam.getChildren();
+
+// Siblings should not marry(Yining Wen)
+    public String US18(Family _Fam, Map<String,Individual> _indis) throws ParseException {
+        String errStr = "";
+        Set<String> children = _Fam.getChildren();
+        Set<String> husbandchildfamID = _indis.get(_Fam.getHusbandID()).getChild();
+        Set<String> wifechildfamID = _indis.get(_Fam.getWifeID()).getChild();
+        Set<String> allspouse = new HashSet<>();
+
+        for(String childID: children){
+            for(String eachSpouseFamID: _indis.get(childID).getSpouse()){
+                if(allspouse.contains(eachSpouseFamID)){
+                    errStr = "ERROR: FAMILY: US18: "+" FamilyID: "+_Fam.getId()+" has two children that married each other" ;
+                    this.ErrorInfo.add(errStr);
+                }else{
+                    allspouse.add(eachSpouseFamID);
+                }
+            }
+        }
+
 //        if(children != null){
-////           for(Family f : _Fam.getId())
-//            if (children.contains(husband.getSpouse())) {
-//                errStr = "ERROR: FAMILY: US17: "+ husband.getName()  + "married his children" + husband.getSpouse();
-//                System.out.println("ERROR: FAMILY: US17: "+ husband.getName()  + "married his children.");
-//                this.ErrorInfo.add(errStr);
+//            for(String child : children) {
+//                Individual childid = _indis.get(child);
+//                Iterator<String> childspouse = childid.getSpouse().iterator(); // traversing over HashSet
+//                while(childspouse.hasNext()) {
+//                    allspouse.add(childspouse)
+//                        if (allspouse.contains(husbandchildfamID) && allspouse.contains(wifechildfamID)) {
+//                            errStr = "ERROR: FAMILY: US18: Family: " + _Fam.getId() + "'s member " + childid.getName() + " married parent";
+//                            this.ErrorInfo.add(errStr);
+//                        }
+//
+//
+//                }
 //            }
-//            else if (children.contains(wife.getSpouse())){
-//                errStr = "ERROR: FAMILY: US17: " + wife.getName() + "married her children.";
-//                System.out.println("ERROR: FAMILY: US17: " + wife.getName() + "married her children.");
-//                this.ErrorInfo.add(errStr);
+//        }
+        return errStr;
+    }
+//    public String US18(Family _Fam, Map<String, Individual> _indis) throws ParseException{
+//        String errStr = "";
+//        Set<String> husbandFamID = _indis.get(_Fam.getHusbandID()).getChild();
+//        Set<String> wifeFamID = _indis.get(_Fam.getWifeID()).getChild();
+//        String husbandFatherFamID= "",husbandMotherFamID = "";
+//        String wifeFatherFamID= "",wifeMotherFamID = "";
+////        Set<String> husbandFatherFamID, husbandMotherFamID;
+//        if(husbandFamID != null && wifeFamID != null) {
+//            for (String hfi : husbandFamID) {
+//                for (String wfi : wifeFamID) {
+//                    if (_Fam.getId().equals(hfi)) {
+//                        husbandFatherFamID = hfi;
+//                        husbandMotherFamID = wfi;
+//                    } else if (_Fam.getId().equals(wfi)) {
+//                        wifeFatherFamID = hfi;
+//                        wifeMotherFamID = wfi;
+//                    }
+//                }
+//                if(husbandFatherFamID.equals(wifeFatherFamID) && husbandMotherFamID.equals(wifeMotherFamID)){
+//                    errStr = "ERROR: FAMILY: US18: The husband is from family" + husbandFatherFamID + "the wife is from family" + wifeMotherFamID + "are the children from a same family.";
+//                    this.ErrorInfo.add(errStr);
+//                }
 //            }
+//
 //        }
 //        return errStr;
 //    }
-
-// Siblings should not marry(Yining Wen)
-    public String US18(Family _Fam, Map<String, Individual> _indis) throws ParseException{
-        String errStr = "";
-        Set<String> husbandFamID = _indis.get(_Fam.getHusbandID()).getChild();
-        Set<String> wifeFamID = _indis.get(_Fam.getWifeID()).getChild();
-        String husbandFatherFamID= "",husbandMotherFamID = "";
-        String wifeFatherFamID= "",wifeMotherFamID = "";
-//        Set<String> husbandFatherFamID, husbandMotherFamID;
-        if(husbandFamID != null && wifeFamID != null) {
-            for (String hfi : husbandFamID) {
-                for (String wfi : wifeFamID) {
-                    if (_Fam.getId().equals(hfi)) {
-                        husbandFatherFamID = hfi;
-                        husbandMotherFamID = wfi;
-                    } else if (_Fam.getId().equals(wfi)) {
-                        wifeFatherFamID = hfi;
-                        wifeMotherFamID = wfi;
-                    }
-                }
-            }
-            if(husbandFatherFamID.equals(wifeFatherFamID) && husbandMotherFamID.equals(wifeMotherFamID)){
-                errStr = "ERROR: FAMILY: US18: The husband is from family" + husbandFatherFamID + "the wife is from family" + wifeMotherFamID + "are the children from a same family.";
-                this.ErrorInfo.add(errStr);
-            }
-        }
-        return errStr;
-    }
 
     //US13 Birth dates of siblings should be more than 8 months apart or less than 2 days apart (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
     public String US13(Family _Fam, Map<String, Individual> _indis){

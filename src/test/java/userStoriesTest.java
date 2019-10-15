@@ -14,10 +14,34 @@ public class userStoriesTest
 {
 //    static final String testFilePath = "src\\main\\resources\\testOne.ged";
 //    G:\Courses Info\SSW 555 Agile Dev\Sprint\src\main\resources\TestGEDCOM.ged G:\Courses Info\SSW 555 Agile Dev\Sprint\src\test\testResources\US01\testOne.ged
-            static String testfile = "US01/testOne.ged";
+    static String testfile = "/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/US18.ged";
     private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
 
-    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
+    URL url = Thread.currentThread().getContextClassLoader().getResource("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/US18.ged");
+
+    @Test
+    public void TestUS17T() throws Exception {
+        System.out.println(url.getPath());
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(url.getPath());
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertTrue(test.getError().contains("Error US17") );
+    }
+
+    @Test
+    public void TestUS17F() throws Exception {
+        System.out.println(url.getPath());
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(url.getPath());
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertFalse(test.getError().contains("Error US17") );
+    }
 
     @Test
     public void TestUS08T() throws Exception {

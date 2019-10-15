@@ -78,9 +78,7 @@ public class Individual {
         this.Death = death;
     }
 
-    public Set<String> getChild() {
-        return Child;
-    }
+    public Set<String> getChild() { return Child; }
 
     public void setChild(HashSet<String> child) {
         this.Child = child;
