@@ -310,9 +310,16 @@ public class userStories {
         if(children != null){
             for(String child : children) {
                 Individual childid = _indis.get(child);
-                if (childid.getSpouse().equals( _Fam.getId())) {
-                    errStr = "ERROR: FAMILY: US17: " +_Fam.getId() + "'s member married his children" + childid;
-                    this.ErrorInfo.add(errStr);
+//                Iterator<Integer> iterator = set.iterator();
+//                while(iterator.hasNext()) {
+//                    Integer setElement = iterator.next();
+                Iterator<String> itr = childid.getSpouse().iterator(); // traversing over HashSet
+                while(itr.hasNext()) {
+                    String spouseFamId = itr.next();
+                    if (spouseFamId.equals(_Fam.getId())) {
+                        errStr = "ERROR: FAMILY: US17: " + _Fam.getId() + "'s member married his children" + childid;
+                        this.ErrorInfo.add(errStr);
+                    }
                 }
             }
         }
