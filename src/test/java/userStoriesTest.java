@@ -14,16 +14,17 @@ public class userStoriesTest
 {
 //    static final String testFilePath = "src\\main\\resources\\testOne.ged";
 //    G:\Courses Info\SSW 555 Agile Dev\Sprint\src\main\resources\TestGEDCOM.ged G:\Courses Info\SSW 555 Agile Dev\Sprint\src\test\testResources\US01\testOne.ged
-            static String testfile = "US01/testOne.ged";
-    private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
-
-    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
+//            static String testfile = "US01/testOne.ged";
+//    private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
+//
+//    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
+    String testFilePath = "C:\\Users\\jason\\Documents\\Git\\CS-SSW-555-Group-Project\\src\\main\\resources\\testOne.ged";//relative path is not morking! using your path can run!
 
     @Test
     public void TestUS08T() throws Exception {
-        System.out.println(url.getPath());
+//        System.out.println(url.getPath());
         readGedcomFile read = new readGedcomFile();
-        read.readFile(url.getPath());
+        read.readFile(testFilePath);
         userStories test = new userStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
@@ -236,6 +237,48 @@ public class userStoriesTest
         assertFalse(test.getError().contains("Error US10") );
     }
 
+    @Test
+    public void TestUS13T() throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US10(Fams,indis);
+        assertTrue(test.getError().contains("Error: US13") );
+    }
 
+    @Test
+    public void TestUS13F() throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US10(Fams,indis);
+        assertFalse(test.getError().contains("Error: US13") );
+    }
+
+    @Test
+    public void TestUS14T() throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US10(Fams,indis);
+        assertTrue(test.getError().contains("Error: US14") );
+    }
+
+    @Test
+    public void TestUS14F() throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US10(Fams,indis);
+        assertFalse(test.getError().contains("Error: US14") );
+    }
 
 }
