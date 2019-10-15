@@ -338,50 +338,9 @@ public class userStories {
             }
         }
 
-//        if(children != null){
-//            for(String child : children) {
-//                Individual childid = _indis.get(child);
-//                Iterator<String> childspouse = childid.getSpouse().iterator(); // traversing over HashSet
-//                while(childspouse.hasNext()) {
-//                    allspouse.add(childspouse)
-//                        if (allspouse.contains(husbandchildfamID) && allspouse.contains(wifechildfamID)) {
-//                            errStr = "ERROR: FAMILY: US18: Family: " + _Fam.getId() + "'s member " + childid.getName() + " married parent";
-//                            this.ErrorInfo.add(errStr);
-//                        }
 //
-//
-//                }
-//            }
-//        }
         return errStr;
     }
-//    public String US18(Family _Fam, Map<String, Individual> _indis) throws ParseException{
-//        String errStr = "";
-//        Set<String> husbandFamID = _indis.get(_Fam.getHusbandID()).getChild();
-//        Set<String> wifeFamID = _indis.get(_Fam.getWifeID()).getChild();
-//        String husbandFatherFamID= "",husbandMotherFamID = "";
-//        String wifeFatherFamID= "",wifeMotherFamID = "";
-////        Set<String> husbandFatherFamID, husbandMotherFamID;
-//        if(husbandFamID != null && wifeFamID != null) {
-//            for (String hfi : husbandFamID) {
-//                for (String wfi : wifeFamID) {
-//                    if (_Fam.getId().equals(hfi)) {
-//                        husbandFatherFamID = hfi;
-//                        husbandMotherFamID = wfi;
-//                    } else if (_Fam.getId().equals(wfi)) {
-//                        wifeFatherFamID = hfi;
-//                        wifeMotherFamID = wfi;
-//                    }
-//                }
-//                if(husbandFatherFamID.equals(wifeFatherFamID) && husbandMotherFamID.equals(wifeMotherFamID)){
-//                    errStr = "ERROR: FAMILY: US18: The husband is from family" + husbandFatherFamID + "the wife is from family" + wifeMotherFamID + "are the children from a same family.";
-//                    this.ErrorInfo.add(errStr);
-//                }
-//            }
-//
-//        }
-//        return errStr;
-//    }
 
     //US13 Birth dates of siblings should be more than 8 months apart or less than 2 days apart (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
     public String US13(Family _Fam, Map<String, Individual> _indis){
