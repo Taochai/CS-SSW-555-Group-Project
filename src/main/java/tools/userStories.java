@@ -43,6 +43,7 @@ public class userStories {
             this.US09(curFam,_indis);
             this.US17(curFam,_indis);
             this.US18(curFam,_indis);
+            this.US13(curFam,_indis);
         }
     }
 
@@ -427,6 +428,88 @@ public class userStories {
         return errStr;
     }
 
+    //US13 Birth dates of siblings should be more than 8 months apart or less than 2 days apart (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
+    public String US13(Family _Fam, Map<String, Individual> _indis){
+        String errStr = "";
+        Map<String, Date> siblings = new HashMap<>();
+        //put every child <id,birthday> in HashMap;
+        for(String siblingId: _Fam.getChildren()){
+            Individual curInd = _indis.get(siblingId);
+            Date curIndBd = curInd.getBirthday();
+            siblings.put(siblingId, curIndBd);
+        }
+        //iterate through every pair of child.
+        for(String siblingId1: _Fam.getChildren()){
+            Date SiblingBd1 = siblings.get(siblingId1);
+            for(String siblingId2: _Fam.getChildren()) {
+                Date SiblingBd2 = siblings.get(siblingId2);
 
+                if(SiblingBd1.before(SiblingBd2)){
+                    Date temp = SiblingBd1;
+                    SiblingBd1 = SiblingBd2;
+                    SiblingBd2= temp;
+                }
+                long diff = SiblingBd1.getTime() - SiblingBd2.getTime();
+                int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
+                int diffMonth = (int) (diffDays / 30);
+                int diffYear = (int) (diffMonth / 12);
+//                //first birthday
+//                Calendar cal = Calendar.getInstance();
+//                cal.setTime(SiblingBd1);
+//                int year1 = cal.get(Calendar.YEAR);
+//                int month1 = cal.get(Calendar.MONTH);
+//                int dayOfMonth1 = cal.get(Calendar.DAY_OF_MONTH);
+//                //second birthday
+//                cal.setTime(SiblingBd2);
+//                int year2 = cal.get(Calendar.YEAR);
+//                int month2 = cal.get(Calendar.MONTH);
+//                int dayOfMonth2 = cal.get(Calendar.DAY_OF_MONTH);
+//                //calculate birthday different
+//                int birthdayDiffYear = year1 - year2;
+//                int birthdayDiffMonth = 0;
+//                int birthdayDiffDay = 0;
+//                if (month1 <= month2) {
+//                    if (month1 == month2) {
+//                        if (dayOfMonth1 < dayOfMonth2) {//dayOfMonth2-dayOfMonth1  days to a year!
+//                            birthdayDiffYear--;
+//                            birthdayDiffMonth = 11;
+//                            birthdayDiffDay = 31 - dayOfMonth2 + dayOfMonth1;
+//                        }
+//                    }
+//                    else {
+//                        birthdayDiffYear--;//month2 - month1 month to a year!
+//                        birthdayDiffMonth = 12 - month2 + month1;
+//                    }
+//                }
+//                else {
+//                    if (month1 == month2) {
+//                        if (dayOfMonth1 < dayOfMonth2) {//dayOfMonth2-dayOfMonth1  days to a year!
+//                            birthdayDiffYear--;
+//                            birthdayDiffMonth = 11;
+//                            birthdayDiffDay = 31 - dayOfMonth2 + dayOfMonth1;
+//                        }
+//                    }
+//                    else {
+//                        birthdayDiffYear--;//month2 - month1 month to a year!
+//                        birthdayDiffMonth = 12 - month2 + month1;
+//                    }
+//                }
+                if(diffYear == 0){
+                    if (diffMonth < 8) {
+                        if (diffMonth == 0) {
+                            if (diffDays > 2)
+                                errStr = "ERROR: US13: FamilyID:"+_Fam .getId()+" children:"+siblingId1+" and children:"+siblingId2+"birthday difference greater than 2 days AND less than 8 months ";
+                                this.ErrorInfo.add(errStr);
+                        }
+                        else {
+                            errStr = "ERROR: US13: FamilyID:"+_Fam .getId()+" children:"+siblingId1+" and children:"+siblingId2+"birthday difference less than 8 months AND greater than 2 days";
+                            this.ErrorInfo.add(errStr);
+                        }
+                    }
+                }
+            }
+        }
+        return errStr;
+    }
 
 }
