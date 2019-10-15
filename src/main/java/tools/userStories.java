@@ -10,6 +10,7 @@ package tools;
 
 import objects.Family;
 import objects.Individual;
+import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.util.*;
@@ -29,7 +30,7 @@ public class userStories {
     public Set<String> getError(){
         return this.ErrorInfo;
     }
-    
+
     public void IterateFam(Map _Fams, Map _indis) throws ParseException {
         Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
         while (entries1.hasNext()) {
@@ -38,13 +39,14 @@ public class userStories {
             this.US05(curFam, _indis);
             this.US06(curFam,_indis);
             this.US04(curFam);
-//            this.US02(curFam,_indis);
+            this.US02(curFam,_indis);
             this.US08(curFam,_indis);
             this.US09(curFam,_indis);
+            this.US12(curFam,_indis);
             this.US17(curFam,_indis);
-            this.US18(curFam,_indis);
+            this.US18(curFam, _indis);
             this.US13(curFam,_indis);
-            this.US14(curFam,_indis);
+            this.US14(curFam, _indis);
         }
     }
 
@@ -56,6 +58,52 @@ public class userStories {
             this.US03(curIndis);
             this.US07(curIndis);
         }
+    }
+
+    // US12: Parents not too old(Ge Chang)
+    public String US12(Family _Fam, Map<String,Individual> _indis) {
+        String errStr = "";
+        Calendar calendar = Calendar.getInstance();
+        Individual husband = _indis.get(_Fam.getHusbandID());
+        calendar.setTime(husband.getBirthday());
+        calendar.add(Calendar.YEAR, 80);
+        Date fatherLast = calendar.getTime();
+
+        Individual wife = _indis.get(_Fam.getWifeID());
+        calendar.setTime(wife.getBirthday());
+        calendar.add(Calendar.YEAR, 60);
+        Date motherLast = calendar.getTime();
+
+        Iterator<String> itr = _Fam.getChildren().iterator();
+        while (itr.hasNext()) {
+            String curchild = itr.next();
+            Individual child = _indis.get(curchild);
+            if (child.getBirthday().after(fatherLast)) {
+                errStr = "ERROR: INDIVIDUAL: US12: "  + child.getId() + " is more than 80 years younger than Father: " + husband.getId();
+                this.ErrorInfo.add(errStr);
+            }
+
+            if (child.getBirthday().after(motherLast)) {
+                errStr = "ERROR: INDIVIDUAL: US12: "  + child.getId() + " is more than 60 years younger than Mother: " + wife.getId();
+                this.ErrorInfo.add(errStr);
+            }
+        }
+        return errStr;
+    }
+
+    // US11: No bigamy(Ge Chang)
+    public String US11(Map<String, Family> _Fams, Map<String, Individual> _indis) {
+        String errStr = "";
+        Iterator<Map.Entry<String, Individual>> entries = _indis.entrySet().iterator();
+        while (entries.hasNext()) {
+            Map.Entry<String, Individual> entry = entries.next();
+            Individual curIndi = entry.getValue();
+            if (curIndi.getSpouse().size() > 1) {
+                errStr = "ERROR: INDIVIDUAL: US11: "  + curIndi.getId() + " married in Family: " + curIndi.getSpouse();
+                this.ErrorInfo.add(errStr);
+            }
+        }
+        return errStr;
     }
 
     // US10: Marriage after 14(Jiaxian Xing)
@@ -191,6 +239,8 @@ public class userStories {
     }
 
 
+
+
     // US06: Divorce before death(Tao Chai)
     public String US06(Family _Fam, Map<String, Individual> _indis) throws ParseException {
         String errStr = "";
@@ -255,14 +305,15 @@ public class userStories {
         Individual husband = _indis.get(_Fam.getHusbandID());
         Individual wife = _indis.get(_Fam.getWifeID());
         if (husband.getBirthday().after(_Fam.getMarried())) {
-            errStr = "ERROR: FAMILY: US02: " +  _Fam.getId() + ": husband's birthday " + Formatdate.dateToString(husband.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
+            errStr = "ERROR: FAMILY: US02: " + _Fam.getId() + ": husband's birthday " + Formatdate.dateToString(husband.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
         }
-        if (wife.getBirthday().after(_Fam.getMarried())){
-            errStr = "ERROR: FAMILY: US02: " +  _Fam.getId() + ": wife's birthday " + Formatdate.dateToString(wife.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
+        if (wife.getBirthday().after(_Fam.getMarried())) {
+            errStr = "ERROR: FAMILY: US02: " + _Fam.getId() + ": wife's birthday " + Formatdate.dateToString(wife.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
         }
         this.ErrorInfo.add(errStr);
         return errStr;
     }
+
 
     // US01: Dates before current date(Jiaxian Xing)
     public String US01(Map _Fams, Map _indis) throws ParseException {
