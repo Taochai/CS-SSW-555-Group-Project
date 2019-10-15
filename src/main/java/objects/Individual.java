@@ -95,7 +95,10 @@ public class Individual {
     public void addSpouse(String spouse) {
         this.Spouse.add(spouse);
     }
-
+    public String getLastName(){
+        String[] nameArr = this.Name.split(" ");
+        return nameArr[nameArr.length-1];
+    }
     @Override
     public String toString() {
         SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
