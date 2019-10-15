@@ -10,7 +10,7 @@ package tools;
 
 import objects.Family;
 import objects.Individual;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.util.*;
@@ -39,7 +39,7 @@ public class userStories {
             this.US05(curFam, _indis);
             this.US06(curFam,_indis);
             this.US04(curFam);
-            this.US02(curFam,_indis);
+//            this.US02(curFam,_indis);
             this.US08(curFam,_indis);
             this.US09(curFam,_indis);
             this.US12(curFam,_indis);
