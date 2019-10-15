@@ -44,6 +44,7 @@ public class userStories {
             this.US17(curFam,_indis);
             this.US18(curFam,_indis);
             this.US13(curFam,_indis);
+            this.US14(curFam,_indis);
         }
     }
 
@@ -416,4 +417,29 @@ public class userStories {
         return errStr;
     }
 
+    //US14 No more than five siblings should be born at the same time
+    public String US14(Family _Fam, Map<String, Individual> _indis) throws ParseException {
+        String errStr = "";
+        //put every child <birthday> in HashSet;
+        Map<Date,Integer> siblings = new HashMap<>();
+        for(String siblingId: _Fam.getChildren()){
+            Individual curInd = _indis.get(siblingId);
+            Date curIndBd = curInd.getBirthday();
+            if(siblings.containsKey(curIndBd)){
+                int count = siblings.get(curIndBd);
+                siblings.replace(curIndBd,++count);
+            }
+            siblings.put(curIndBd,0);
+        }
+        //iterate through every child.
+        for (Map.Entry<Date, Integer> entry : siblings.entrySet()) {
+            Date birthday = entry.getKey();
+            Integer count = entry.getValue();
+            if(count > 5){
+                errStr = "ERROR: US14: FamilyID:"+_Fam .getId()+"has more than five child is born"+" in date:"+Formatdate.dateToString(birthday);
+                this.ErrorInfo.add(errStr);
+            }
+        }
+        return errStr;
+    }
 }
