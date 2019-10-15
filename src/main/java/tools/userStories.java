@@ -396,7 +396,7 @@ public class userStories {
         //iterate through every pair of child.
         for(String siblingId1: _Fam.getChildren()){
             Date SiblingBd1 = siblings.get(siblingId1);
-            for(String siblingId2: _Fam.getChildren()) {
+            for(String siblingId2: _Fam.getChildren()) {//TODO:should start from siblingId1 to end!
                 Date SiblingBd2 = siblings.get(siblingId2);
 
                 if(SiblingBd1.before(SiblingBd2)){
@@ -436,9 +436,11 @@ public class userStories {
             Date curIndBd = curInd.getBirthday();
             if(siblings.containsKey(curIndBd)){
                 int count = siblings.get(curIndBd);
-                siblings.replace(curIndBd,++count);
+                siblings.replace(curIndBd,count+1);
             }
-            siblings.put(curIndBd,0);
+            else {
+                siblings.put(curIndBd,1);
+            }
         }
         //iterate through every child.
         for (Map.Entry<Date, Integer> entry : siblings.entrySet()) {
