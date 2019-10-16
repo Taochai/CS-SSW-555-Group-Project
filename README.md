@@ -1,8 +1,7 @@
 # ⚡ SSW-CS-555-Group-project
 
-// replace the link below with yours
-[![Build Status](https://travis-ci.org/michaelliao/openweixin.svg?branch=master)](https://travis-ci.org/michaelliao/openweixin) 
 
+[![Build Status](https://travis-ci.org/Taochai/CS-SSW-555-Group-Project.svg?branch=master)](https://travis-ci.org/Taochai/CS-SSW-555-Group-Project)
 ----
 Team Member:
 -
