@@ -17,7 +17,7 @@ public class userStoriesTest
 //    private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
 //
 //    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
-    String testFilePath = "/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/US18.ged";//relative path is not morking! using your path can run!
+    String testFilePath = "src\\main\\resources\\testOne.ged";//relative path is not morking! using your path can run!
     String testUS17 = "/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/UserStory17.ged";
 
     @Test
@@ -29,7 +29,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US16") );
+        assertTrue(test.getError().contains("ERROR: FAMILY: US16: F2 male members don`t have same last name.") );
     }
 
     @Test
@@ -40,7 +40,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US16") );
+        assertFalse(test.getError().contains("ERROR: FAMILY: US16: F2 male members don`t have same last name.") );
     }
 
     @Test

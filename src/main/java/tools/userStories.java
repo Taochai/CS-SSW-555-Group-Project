@@ -51,7 +51,7 @@ public class userStories {
             this.US16(curFam,_indis);
         }
     }
-
+    //**********************//
     public void IterateInds(Map _Fam, Map _indis) throws ParseException {
         Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
         while (entries1.hasNext()) {
