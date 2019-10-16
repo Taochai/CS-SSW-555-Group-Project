@@ -42,5 +42,6 @@ public class main {
         System.out.println(test.US01(Fams, indis));
         System.out.println(test.US10(Fams, indis));
         System.out.println(test.US11(Fams, indis));
+
     }
 }
