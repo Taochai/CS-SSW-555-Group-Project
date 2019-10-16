@@ -59,6 +59,7 @@ public class userStories {
             this.US03(curIndis);
             this.US07(curIndis);
             this.US19(curIndis, _Fam, _indis);
+            this.US20(curIndis,_Fam,_indis);
         }
     }
 
@@ -90,17 +91,13 @@ public class userStories {
             for (String fID: myFamilies) {
                 mymothers.add(_Fams.get(fID).getWifeID());
             }
-
             // iterate all my spouse, to get my spouse's parents
             for (String spouse:indis.getSpouse()) {
-
                 // get children of my spouse's parents to see if any of my parents is a child of my spouse's parent
                 // in another word, just to see whether my parents are brother/sister to my spouse
                 Set<String> childrenOfSpousesParents = _Fams.get(spouse).getChildren();
                 myfathers.containsAll(childrenOfSpousesParents);
                 mymothers.containsAll(childrenOfSpousesParents);
-
-
                 // get my spouse's ID and assign my spouse a appellation
                 String theother = (selfID == _Fams.get(spouse).getHusbandID())? _Fams.get(spouse).getWifeID():_Fams.get(spouse).getHusbandID();
                 String spouseappellation = "";
@@ -110,14 +107,11 @@ public class userStories {
                     } else {
                         spouseappellation = "aunt";
                     }
-
                 // if the intersection is not null, my father is my spouse's brother
                 if (myfathers.size() != 0) {
-
                     errStr = "ERROR: FAMILY: US20: " + spouse + " : " + appellation + ": " + selfID + " married " + spouseappellation + ": " + theother;
                     this.ErrorInfo.add(errStr);
                 }
-
                 // if the intersection is not null, my mother is my spouse's sister
                 if (mymothers.size() != 0) {
                     errStr = "ERROR: FAMILY: US20: " + spouse + " : " + appellation + ": " + selfID + " married " + spouseappellation + ": " + theother;
