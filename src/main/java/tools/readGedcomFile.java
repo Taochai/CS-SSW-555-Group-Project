@@ -171,6 +171,7 @@ public class readGedcomFile {
     public void setFamAttributes(String tag, String arguments, Family fam) throws ParseException {
         if(tag.equals("HUSB")){
             fam.setHusbandID(arguments);
+            fam.setHusbandName(this.Indis.get(arguments).getName());
         }
         else if(tag.equals("WIFE")){
             fam.setWifeID(arguments);
