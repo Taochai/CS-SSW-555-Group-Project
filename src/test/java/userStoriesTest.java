@@ -31,7 +31,28 @@ public class userStoriesTest
         test.IterateFam(Fams,indis);
         assertTrue(test.getError().contains("ERROR: FAMILY: US16: F2 male members don`t have same last name.") );
     }
-
+    @Test
+    public void TestUS19T() throws Exception {
+//        System.out.println(url.getPath());
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertTrue(test.getError().contains("ERROR: FAMILY: US19") );
+    }
+    @Test
+    public void TestUS20T() throws Exception {
+//        System.out.println(url.getPath());
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(testFilePath);
+        userStories test = new userStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.IterateFam(Fams,indis);
+        assertTrue(test.getError().contains("ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1") );
+    }
     @Test
     public void TestUS16F() throws Exception {
         readGedcomFile read = new readGedcomFile();
