@@ -20,8 +20,13 @@ import tools.outputTxt;
 public class main {
     public static void main(String[] args) throws Exception {
        String outputStr = "";
-       outputStr = readTestFile("src\\main\\resources\\testOne.ged",outputStr);
+        outputStr = readTestFile("src\\main\\resources\\TestFamilyTreeWithmanyissues.ged",outputStr);
+        outputStr = readTestFile("src\\main\\resources\\testGEDCOM.ged",outputStr);
+        outputStr = readTestFile("src\\main\\resources\\testOne.ged",outputStr);
        outputStr = readTestFile("src\\main\\resources\\testUS15.ged",outputStr);
+        outputStr = readTestFile("src\\main\\resources\\testTwo.ged",outputStr);
+        outputStr = readTestFile("src\\main\\resources\\US18.ged",outputStr);
+        outputStr = readTestFile("src\\main\\resources\\UserStory17.ged",outputStr);
         outputTxt text = new outputTxt();
         text.log(outputStr);
     }
