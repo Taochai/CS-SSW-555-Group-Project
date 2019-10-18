@@ -239,4 +239,10 @@ public class readGedcomFile {
         System.out.println(tF.toString());
         return this.Fams;
     }
+    public Map getFam(){
+        return this.Fams;
+    }
+    public Map getIndi(){
+        return this.Indis;
+    }
 }
