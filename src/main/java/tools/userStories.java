@@ -279,9 +279,9 @@ public class userStories {
                         ageMarried--;//
                     }
                 }
-                if (ageMarried < 14)
+                if (ageMarried < 14){
                     errStr = "ERROR: FAMILY: US10: "  + curFam.getId() + " Married " + Formatdate.dateToString(curFam.getMarried()) +" but husband: " + husband.getId() + " " + husband.getName() + "born on " + Formatdate.dateToString(husband.getBirthday()) + " age < 14 when married";
-                this.ErrorInfo.add(errStr);
+                    this.ErrorInfo.add(errStr);}
                 cal.setTime(wife.getBirthday());
                 yearBirth = cal.get(Calendar.YEAR);
                 monthBirth = cal.get(Calendar.MONTH);
@@ -294,9 +294,9 @@ public class userStories {
                         ageMarried--;//
                     }
                 }
-                if (ageMarried < 14)
+                if (ageMarried < 14){
                     errStr = "ERROR: FAMILY: US10: "  + curFam.getId() + " Married " + Formatdate.dateToString(curFam.getMarried()) +" but wife: " + wife.getId() + " " + wife.getName() + "born on " + Formatdate.dateToString(wife.getBirthday()) + " age < 14 when married";
-                this.ErrorInfo.add(errStr);
+                    this.ErrorInfo.add(errStr);}
             }
         }
         return errStr;

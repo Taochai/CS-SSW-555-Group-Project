@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Author: Tao Chai, Zhe Sun, Yining Wen, Jiaxian Xing, Ge Chang
- * @Github: https://github.com/Taochai/SSW-CS-555-Group-project
+ * @Github: https://github.com/Taochai/CS-SSW-555-Group-Project
  * @Date: 2019-09-30 13:18:32
  * @LastEditors: Zhe Sun
  * @LastEditTime: 2019-09-30 13:18:32
@@ -27,11 +27,12 @@ public class main {
 //        read.readFile("src\\main\\resources\\testTwo.ged");
 //        read.readFile("src\\main\\resources\\testOne.ged");
 //        read.readFile("src\\main\\resources\\testUs1314.ged");
+//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged");
+//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestGEDCOM.ged");
 //        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/UserStory17.ged");
-//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/My-Family-17-Sep-2019-579.ged");
 //        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/testOne.ged");
 //        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/US18.ged");
-        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/testOne.ged");
+        read.readFile(("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/testTwo.ged"));
 //        read.readFile("src\\main\\resources\\testOne.ged");
         Map indis = read.printIndi();
         Map Fams = read.printFam();
