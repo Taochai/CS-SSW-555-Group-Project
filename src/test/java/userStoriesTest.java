@@ -3,6 +3,7 @@ import tools.readGedcomFile;
 import tools.userStories;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -17,8 +18,16 @@ public class userStoriesTest
 //    private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
 //
 //    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
-    String testFilePath = "src\\main\\resources\\testOne.ged";//relative path is not morking! using your path can run!
+    String testFilePath = "C:\\Users\\jason\\Documents\\Git\\CS-SSW-555-Group-Project\\src\\main\\resources\\testOne.ged";//relative path is not morking! using your path can run!
     String testUS17 = "/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/UserStory17.ged";
+
+    public boolean errorContain(java.util.Set<java.lang.String> errorSet, String errorInfo){
+        for (String s : errorSet) {
+            if(s.contains(errorInfo))
+                return true;
+        }
+        return false;
+    }
 
     @Test
     public void TestUS01T() throws Exception {
@@ -28,7 +37,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US01(Fams,indis);
-        assertTrue(test.getError().contains("Error US01") );
+        assertTrue(errorContain(test.getError(),  "US01"));
     }
 
     @Test
@@ -39,7 +48,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US01(Fams,indis);
-        assertFalse(test.getError().contains("Error US01") );
+        assertFalse(errorContain(test.getError(),  "US01"));
     }
 
     @Test
@@ -50,7 +59,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US02") );
+        assertTrue(errorContain(test.getError(),  "US02"));
     }
 
     @Test
@@ -61,7 +70,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US02") );
+        assertFalse(errorContain(test.getError(),"Error US02") );
     }
 
     @Test
@@ -70,7 +79,7 @@ public class userStoriesTest
         read.readFile(testFilePath);
         userStories test = new userStories();
         test.IterateInds(read.printFam(),read.printIndi());
-        assertTrue(test.getError().contains("Error US03") );
+        assertTrue(errorContain(test.getError(),"Error US03") );
     }
 
     @Test
@@ -79,7 +88,7 @@ public class userStoriesTest
         read.readFile(testFilePath);
         userStories test = new userStories();
         test.IterateInds(read.printFam(),read.printIndi());
-        assertFalse(test.getError().contains("Error US03") );
+        assertFalse(errorContain(test.getError(),"Error US03") );
     }
 
     @Test
@@ -90,7 +99,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US04") );
+        assertFalse(errorContain(test.getError(),"Error US04") );
     }
 
     @Test
@@ -101,7 +110,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US04") );
+        assertTrue(errorContain(test.getError(),"Error US04") );
     }
 
     @Test
@@ -112,7 +121,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US05") );
+        assertTrue(errorContain(test.getError(),"Error US05") );
     }
 
     @Test
@@ -123,7 +132,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US05") );
+        assertFalse(errorContain(test.getError(),"Error US05") );
     }
 
     @Test
@@ -134,7 +143,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US06") );
+        assertFalse(errorContain(test.getError(),"Error US06") );
     }
 
     @Test
@@ -145,7 +154,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US06") );
+        assertTrue(errorContain(test.getError(),"Error US06") );
     }
 
     @Test
@@ -156,7 +165,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateInds(Fams,indis);
-        assertTrue(test.getError().contains("Error US07") );
+        assertTrue(errorContain(test.getError(),"Error US07") );
     }
 
     @Test
@@ -167,7 +176,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateInds(Fams,indis);
-        assertFalse(test.getError().contains("Error US07") );
+        assertFalse(errorContain(test.getError(),"Error US07") );
     }
 
     @Test
@@ -179,7 +188,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US08") );
+        assertTrue(errorContain(test.getError(),"Error US08") );
     }
 
     @Test
@@ -190,7 +199,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US08") );
+        assertFalse(errorContain(test.getError(),"Error US08") );
     }
 
     @Test
@@ -201,7 +210,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US09") );
+        assertTrue(errorContain(test.getError(),"Error US09") );
     }
 
     @Test
@@ -212,7 +221,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US09") );
+        assertFalse(errorContain(test.getError(),"Error US09") );
     }
 
     @Test
@@ -223,7 +232,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US10(Fams,indis);
-        assertTrue(test.getError().contains("Error US10") );
+        assertTrue(errorContain(test.getError(),"Error US10") );
     }
 
     @Test
@@ -234,7 +243,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US10(Fams,indis);
-        assertFalse(test.getError().contains("Error US10") );
+        assertFalse(errorContain(test.getError(),"Error US10") );
     }
 
     @Test
@@ -246,7 +255,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US11") );
+        assertTrue(errorContain(test.getError(),"Error US11") );
     }
 
     @Test
@@ -257,7 +266,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US11") );
+        assertFalse(errorContain(test.getError(),"Error US11") );
     }
 
     @Test
@@ -269,7 +278,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US12") );
+        assertTrue(errorContain(test.getError(),"Error US12") );
     }
 
     @Test
@@ -280,7 +289,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US12") );
+        assertFalse(errorContain(test.getError(),"Error US12") );
     }
 
     @Test
@@ -291,7 +300,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US10(Fams,indis);
-        assertTrue(test.getError().contains("Error: US13") );
+        assertTrue(errorContain(test.getError(),"Error: US13") );
     }
 
     @Test
@@ -302,7 +311,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US10(Fams,indis);
-        assertFalse(test.getError().contains("Error: US13") );
+        assertFalse(errorContain(test.getError(),"Error: US13") );
     }
 
     @Test
@@ -313,7 +322,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US10(Fams,indis);
-        assertTrue(test.getError().contains("Error: US14") );
+        assertTrue(errorContain(test.getError(),"Error: US14") );
     }
 
     @Test
@@ -324,7 +333,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US10(Fams,indis);
-        assertFalse(test.getError().contains("Error: US14") );
+        assertFalse(errorContain(test.getError(),"Error: US14") );
     }
 
     @Test
@@ -336,7 +345,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US15") );
+        assertTrue(errorContain(test.getError(),"Error US15") );
     }
 
     @Test
@@ -347,7 +356,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US15") );
+        assertFalse(errorContain(test.getError(),"Error US15") );
     }
 
     @Test
@@ -359,7 +368,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("ERROR: FAMILY: US16: F2 male members don`t have same last name.") );
+        assertTrue(errorContain(test.getError(),"ERROR: FAMILY: US16: F2 male members don`t have same last name.") );
     }
 
     @Test
@@ -370,7 +379,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("ERROR: FAMILY: US16: F2 male members don`t have same last name.") );
+        assertFalse(errorContain(test.getError(),"ERROR: FAMILY: US16: F2 male members don`t have same last name.") );
     }
 
     @Test
@@ -381,7 +390,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US17") );
+        assertTrue(errorContain(test.getError(),"Error US17") );
     }
 
     @Test
@@ -392,7 +401,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US17") );
+        assertFalse(errorContain(test.getError(),"Error US17") );
     }
 
     @Test
@@ -404,7 +413,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("Error US08") );
+        assertTrue(errorContain(test.getError(),"Error US08") );
     }
 
     @Test
@@ -415,7 +424,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("Error US08") );
+        assertFalse(errorContain(test.getError(),"Error US08") );
     }
 
     @Test
@@ -427,7 +436,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("ERROR: FAMILY: US19") );
+        assertTrue(errorContain(test.getError(),"ERROR: FAMILY: US19") );
     }
 
     @Test
@@ -439,7 +448,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("ERROR: FAMILY: US19") );
+        assertFalse(errorContain(test.getError(),"ERROR: FAMILY: US19") );
     }
 
     @Test
@@ -451,7 +460,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertTrue(test.getError().contains("ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1") );
+        assertTrue(errorContain(test.getError(),"ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1") );
     }
 
     @Test
@@ -463,7 +472,7 @@ public class userStoriesTest
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.IterateFam(Fams,indis);
-        assertFalse(test.getError().contains("ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1") );
+        assertFalse(errorContain(test.getError(),"ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1") );
     }
 
 }
