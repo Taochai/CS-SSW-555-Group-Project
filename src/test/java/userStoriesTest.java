@@ -1,9 +1,10 @@
 import org.junit.Test;
 import tools.readGedcomFile;
+import tools.us01;
 import tools.userStories;
 
 import java.net.URL;
-import java.util.HashSet;
+import java.util.Set;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -18,10 +19,8 @@ public class userStoriesTest
 //    private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
 //
 //    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
-    String testFilePath = "C:\\Users\\jason\\Documents\\Git\\CS-SSW-555-Group-Project\\src\\main\\resources\\testOne.ged";//relative path is not morking! using your path can run!
-    String testUS17 = "/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/UserStory17.ged";
 
-    public boolean errorContain(java.util.Set<java.lang.String> errorSet, String errorInfo){
+    private boolean errorContain(Set<String> errorSet, String errorInfo){
         for (String s : errorSet) {
             if(s.contains(errorInfo))
                 return true;
@@ -31,9 +30,10 @@ public class userStoriesTest
 
     @Test
     public void TestUS01T() throws Exception {
+        String trueTestFile = "C:\\Users\\jason\\Documents\\Git\\CS-SSW-555-Group-Project\\src\\main\\resources\\testOne.ged";//relative path is not morking! using your path can run!
         readGedcomFile read = new readGedcomFile();
-        read.readFile(testFilePath);
-        userStories test = new userStories();
+        read.readFile(trueTestFile);
+        us01 test = new us01();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US01(Fams,indis);
@@ -42,9 +42,10 @@ public class userStoriesTest
 
     @Test
     public void TestUS01F() throws Exception {
+        String falseTestFile = "C:\\Users\\jason\\Documents\\Git\\CS-SSW-555-Group-Project\\src\\main\\resources\\testOne.ged";//relative path is not morking! using your path can run!
         readGedcomFile read = new readGedcomFile();
-        read.readFile(testFilePath);
-        userStories test = new userStories();
+        read.readFile(falseTestFile);
+        us01 test = new us01();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
         test.US01(Fams,indis);
