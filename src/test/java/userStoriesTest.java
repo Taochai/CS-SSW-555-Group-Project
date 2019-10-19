@@ -17,7 +17,7 @@ public class userStoriesTest
 {
 
 //            static String testfile = "US01/testOne.ged";
-//    private static final String testFilePath = userStoriesTest.class.getResource(testfile).getFile();
+//    private static final String falseTestFile = userStoriesTest.class.getResource(testfile).getFile();
 //
 //    URL url = Thread.currentThread().getContextClassLoader().getResource("US01/testOne.ged");
 
@@ -84,7 +84,7 @@ public class userStoriesTest
             Family curFam = entry.getValue();
             test.US02(curFam, _indis);
         }
-        assertFalse(errorContain(test.getError(),"Error US02") );
+        assertFalse(errorContain(test.getError(),"US02") );
     }
 
     @Test
@@ -101,7 +101,7 @@ public class userStoriesTest
             Individual curIndis = entry.getValue();
             test.US03(curIndis);
         }
-        assertTrue(errorContain(test.getError(),"Error US03") );
+        assertTrue(errorContain(test.getError(),"US03") );
     }
 
     @Test
@@ -118,35 +118,50 @@ public class userStoriesTest
             Individual curIndis = entry.getValue();
             test.US03(curIndis);
         }
-        assertFalse(errorContain(test.getError(),"Error US03") );
+        assertFalse(errorContain(test.getError(),"US03") );
+    }
+
+    @Test
+    public void TestUS04T() throws Exception {
+        String trueTestFile = "resources/us04/us04MarriageAfterDivorce.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+//        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us04 test = new us04();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US04(curFam);
+        }
+        assertTrue(errorContain(test.getError(),"US04") );
+    }
+
+    @Test
+    public void TestUS04F() throws Exception {
+        String falseTestFile = "resources/us04/us04MarriageBeforeDivorce.ged";//relative path is not morking! using your path can run!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+//        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us04 test = new us04();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US04(curFam);
+        }
+        assertFalse(errorContain(test.getError(),"US04") );
     }
 
 //    @Test
-//    public void TestUS04F() throws Exception {
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error US04") );
-//    }
-//
-//    @Test
-//    public void TestUS04T() throws Exception {
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error US04") );
-//    }
-//
-//    @Test
 //    public void TestUS05T() throws Exception {
+//String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -157,7 +172,8 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS05F() throws Exception {
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -167,8 +183,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS06F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -178,8 +195,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS06T() throws Exception {
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -189,8 +207,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS07T() throws Exception {
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -200,8 +219,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS07F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -212,8 +232,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS08T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -223,8 +244,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS08F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -234,8 +256,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS09T() throws Exception {
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -245,8 +268,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS09F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -256,8 +280,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS10T() throws Exception {
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -267,8 +292,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS10F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -279,8 +305,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS11T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -290,8 +317,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS11F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -302,8 +330,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS12T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -313,8 +342,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS12F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -324,8 +354,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS13T() throws Exception {
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -335,8 +366,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS13F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -346,8 +378,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS14T() throws Exception {
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -357,8 +390,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS14F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -369,8 +403,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS15T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -380,8 +415,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS15F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -392,8 +428,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS16T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -403,8 +440,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS16F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -414,8 +452,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS17T() throws Exception {
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testUS17);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -425,6 +464,7 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS17F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
 //        read.readFile(testUS17);
 //        userStories test = new userStories();
@@ -437,8 +477,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS18T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -448,8 +489,9 @@ public class userStoriesTest
 //
 //    @Test
 //    public void TestUS18F() throws Exception {
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -460,8 +502,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS19T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -472,8 +515,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS19F() throws Exception {
 ////        System.out.println(url.getPath());
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -484,8 +528,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS20T() throws Exception {
 ////        System.out.println(url.getPath());
+// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(trueTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
@@ -496,8 +541,9 @@ public class userStoriesTest
 //    @Test
 //    public void TestUS20F() throws Exception {
 ////        System.out.println(url.getPath());
+// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
 //        readGedcomFile read = new readGedcomFile();
-//        read.readFile(testFilePath);
+//        read.readFile(falseTestFile);
 //        userStories test = new userStories();
 //        Map indis = read.printIndi();
 //        Map Fams = read.printFam();
