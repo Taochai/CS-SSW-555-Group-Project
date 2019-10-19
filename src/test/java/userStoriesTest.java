@@ -393,79 +393,115 @@ public class userStoriesTest
         assertFalse(errorContain(test.getError(),"US11") );
     }
 
-//    @Test
-//    public void TestUS12T() throws Exception {
-////        System.out.println(url.getPath());
-// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error US12") );
-//    }
-//
-//    @Test
-//    public void TestUS12F() throws Exception {
-// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not working on travis ci!!!
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error US12") );
-//    }
-//
-//    @Test
-//    public void TestUS13T() throws Exception {
-// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.US10(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error: US13") );
-//    }
-//
-//    @Test
-//    public void TestUS13F() throws Exception {
-// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not working on travis ci!!!
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.US10(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error: US13") );
-//    }
-//
-//    @Test
-//    public void TestUS14T() throws Exception {
-// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.US10(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error: US14") );
-//    }
-//
-//    @Test
-//    public void TestUS14F() throws Exception {
-// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not working on travis ci!!!
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.US10(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error: US14") );
-//    }
-//
+    @Test
+    public void TestUS12T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile = "resources/us12/us12ParentsTooOld.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us12 test = new us12();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US12(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"US12") );
+    }
+
+    @Test
+    public void TestUS12F() throws Exception {
+        String falseTestFile = "resources/us12/us12ParentsNotOld.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us12 test = new us12();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US12(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"US12") );
+    }
+
+    @Test
+    public void TestUS13T() throws Exception {
+        String trueTestFile = "resources/us13/us13SiblingBirthNotSeperate.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us13 test = new us13();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US13(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"US13") );
+    }
+
+    @Test
+    public void TestUS13F() throws Exception {
+        String falseTestFile = "resources/us13/us13SiblingBirthSeperate.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us13 test = new us13();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US13(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"US13") );
+    }
+
+    @Test
+    public void TestUS14T() throws Exception {
+        String trueTestFile = "resources/us14/us14FiveMoreSiblingSameDay.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us14 test = new us14();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US14(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"US14") );
+    }
+
+    @Test
+    public void TestUS14F() throws Exception {
+        String falseTestFile = "resources/us14/us14FiveLessSiblingSameDay.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us14 test = new us14();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US14(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"US14") );
+    }
+
 //    @Test
 //    public void TestUS15T() throws Exception {
 ////        System.out.println(url.getPath());
