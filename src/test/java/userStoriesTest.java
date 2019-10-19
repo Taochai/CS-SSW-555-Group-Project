@@ -157,30 +157,42 @@ public class userStoriesTest
         assertFalse(errorContain(test.getError(),"US04") );
     }
 
-//    @Test
-//    public void TestUS05T() throws Exception {
-//String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error US05") );
-//    }
-//
-//    @Test
-//    public void TestUS05F() throws Exception {
-//        readGedcomFile read = new readGedcomFile();
-//String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
-//        read.readFile(falseTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error US05") );
-//    }
-//
+    @Test
+    public void TestUS05T() throws Exception {
+        String trueTestFile = "resources/us05/us05MarriageAfterDeath.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us05 test = new us05();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US05(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"US05") );
+    }
+
+    @Test
+    public void TestUS05F() throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        String falseTestFile = "resources/us05/us05MarriageBeforeDeath.ged";//relative path is not morking! using your path can run!
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us05 test = new us05();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US05(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"US05") );
+    }
+
 //    @Test
 //    public void TestUS06F() throws Exception {
 // String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
