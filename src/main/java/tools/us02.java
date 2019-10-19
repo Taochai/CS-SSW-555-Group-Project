@@ -24,11 +24,12 @@ public class us02 {
         Individual wife = _indis.get(_Fam.getWifeID());
         if (husband.getBirthday() != null && _Fam.getMarried() != null && husband.getBirthday().after(_Fam.getMarried())) {
             errStr = "ERROR: FAMILY: US02: " +  _Fam.getId() + ": husband's birthday " + Formatdate.dateToString(husband.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
+            this.ErrorInfo.add(errStr);
         }
         if (wife.getBirthday() != null && _Fam.getMarried() != null && wife.getBirthday().after(_Fam.getMarried())){
             errStr = "ERROR: FAMILY: US02: " +  _Fam.getId() + ": wife's birthday " + Formatdate.dateToString(wife.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
+            this.ErrorInfo.add(errStr);
         }
-        this.ErrorInfo.add(errStr);
         return errStr;
     }
 }

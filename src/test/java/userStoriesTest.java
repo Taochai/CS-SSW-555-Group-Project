@@ -229,30 +229,42 @@ public class userStoriesTest
         assertFalse(errorContain(test.getError(),"US06") );
     }
 
-//    @Test
-//    public void TestUS07T() throws Exception {
-// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateInds(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error US07") );
-//    }
-//
-//    @Test
-//    public void TestUS07F() throws Exception {
-// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateInds(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error US07") );
-//    }
-//
+    @Test
+    public void TestUS07T() throws Exception {
+        String trueTestFile = "resources/us07/us07GreaterThan150years.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+//        Map _Fams = read.getFam();
+
+        us07 test = new us07();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US07(curIndis);
+        }
+        assertTrue(errorContain(test.getError(),"US07") );
+    }
+
+    @Test
+    public void TestUS07F() throws Exception {
+        String falseTestFile = "resources/us07/us07LessThan150years.ged";//relative path is not morking! using your path can run!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+//        Map _Fams = read.getFam();
+
+        us07 test = new us07();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US07(curIndis);
+        }
+        assertFalse(errorContain(test.getError(),"US07") );
+    }
+
 //    @Test
 //    public void TestUS08T() throws Exception {
 ////        System.out.println(url.getPath());
