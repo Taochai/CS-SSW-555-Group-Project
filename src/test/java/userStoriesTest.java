@@ -193,30 +193,42 @@ public class userStoriesTest
         assertFalse(errorContain(test.getError(),"US05") );
     }
 
-//    @Test
-//    public void TestUS06F() throws Exception {
-// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not morking! using your path can run!
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error US06") );
-//    }
-//
-//    @Test
-//    public void TestUS06T() throws Exception {
-// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error US06") );
-//    }
-//
+    @Test
+    public void TestUS06T() throws Exception {
+        String trueTestFile = "resources/us06/us06DivorceAfterDeath.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us06 test = new us06();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US06(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"US06") );
+    }
+
+    @Test
+    public void TestUS06F() throws Exception {
+        String falseTestFile = "resources/us06/us06DivorceBeforeDeath.ged";//relative path is not morking! using your path can run!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us06 test = new us06();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US06(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"US06") );
+    }
+
 //    @Test
 //    public void TestUS07T() throws Exception {
 // String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
