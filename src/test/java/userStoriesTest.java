@@ -366,31 +366,33 @@ public class userStoriesTest
         assertFalse(errorContain(test.getError(),"US10") );
     }
 
-//    @Test
-//    public void TestUS11T() throws Exception {
-////        System.out.println(url.getPath());
-// String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertTrue(errorContain(test.getError(),"Error US11") );
-//    }
-//
-//    @Test
-//    public void TestUS11F() throws Exception {
-// String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not working on travis ci!!!
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        userStories test = new userStories();
-//        Map indis = read.printIndi();
-//        Map Fams = read.printFam();
-//        test.IterateFam(Fams,indis);
-//        assertFalse(errorContain(test.getError(),"Error US11") );
-//    }
-//
+    @Test
+    public void TestUS11T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile = "resources/us11/us11Bigamy.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us11 test = new us11();
+        test.US11(_Fams, _indis);
+        assertTrue(errorContain(test.getError(),"US11") );
+    }
+
+    @Test
+    public void TestUS11F() throws Exception {
+        String falseTestFile = "resources/us11/us11NoBigamy.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us11 test = new us11();
+        test.US11(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US11") );
+    }
+
 //    @Test
 //    public void TestUS12T() throws Exception {
 ////        System.out.println(url.getPath());

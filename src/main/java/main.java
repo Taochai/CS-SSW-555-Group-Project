@@ -30,10 +30,10 @@ public class main {
         outputStr = readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS09("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS10("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS11("",outputStr);
-//        outputStr = readDemoFileUS12("",outputStr);
-//        outputStr = readDemoFileUS13("",outputStr);
-//        outputStr = readDemoFileUS14("",outputStr);
+        outputStr = readDemoFileUS11("src/main/resources/testOne.ged",outputStr);
+//        outputStr = readDemoFileUS12("src/main/resources/testOne.ged",outputStr);
+//        outputStr = readDemoFileUS13("src/main/resources/testOne.ged",outputStr);
+//        outputStr = readDemoFileUS14("src/main/resources/testOne.ged",outputStr);
 //        outputStr = readDemoFileUS15("",outputStr);
 //        outputStr = readDemoFileUS16("",outputStr);
 //        outputStr = readDemoFileUS17("",outputStr);
@@ -251,7 +251,22 @@ public class main {
         }
         return Str.toString();
     }
-//    public static String readDemoFileUS02(String _testFileName, String _errorStr) throws Exception {
+    public static String readDemoFileUS11(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us11 test = new us11();
+        test.US11(_Fams, _indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    //    public static String readDemoFileUS02(String _testFileName, String _errorStr) throws Exception {
 //        readGedcomFile read = new readGedcomFile();
 //        read.readFile(_testFileName);
 //        Map _indis = read.getIndi();
