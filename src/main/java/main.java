@@ -12,15 +12,7 @@ import java.util.Map;
 
 import objects.Family;
 import objects.Individual;
-import tools.outputTxt;
-import tools.readGedcomFile;
-import tools.us01;
-import tools.us02;
-import tools.us03;
-import tools.us04;
-import tools.us05;
-import tools.us06;
-import tools.us07;
+import tools.*;
 
 /**
  * main function
@@ -35,9 +27,9 @@ public class main {
         outputStr = readDemoFileUS05("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS06("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS07("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS09("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS10("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS09("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS10("src/main/resources/TestGEDCOM.ged",outputStr);
 //        outputStr = readDemoFileUS11("",outputStr);
 //        outputStr = readDemoFileUS12("",outputStr);
 //        outputStr = readDemoFileUS13("",outputStr);
@@ -205,46 +197,60 @@ public class main {
         }
         return Str.toString();
     }
-//    public static String readDemoFileUS02(String _testFileName, String _errorStr) throws Exception {
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(_testFileName);
-//        Map _indis = read.getIndi();
-//        Map _Fams = read.getFam();
-//
-//        us02 test = new us02();
-//        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
-//        while (entries1.hasNext()) {
-//            Map.Entry<String, Family> entry = entries1.next();
-//            Family curFam = entry.getValue();
-//            test.US02(curFam, _indis);
-//        }
-//
-//        StringBuilder Str = new StringBuilder(_errorStr);
-//        for (String a : test.getError()) {
-//            Str.append(a+"\n");
-//        }
-//        return Str.toString();
-//    }
-//    public static String readDemoFileUS02(String _testFileName, String _errorStr) throws Exception {
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(_testFileName);
-//        Map _indis = read.getIndi();
-//        Map _Fams = read.getFam();
-//
-//        us02 test = new us02();
-//        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
-//        while (entries1.hasNext()) {
-//            Map.Entry<String, Family> entry = entries1.next();
-//            Family curFam = entry.getValue();
-//            test.US02(curFam, _indis);
-//        }
-//
-//        StringBuilder Str = new StringBuilder(_errorStr);
-//        for (String a : test.getError()) {
-//            Str.append(a+"\n");
-//        }
-//        return Str.toString();
-//    }
+    public static String readDemoFileUS08(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+        us08 test = new us08();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US08(curFam, _indis);
+        }
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    public static String readDemoFileUS09(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us09 test = new us09();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US09(curFam, _indis);
+        }
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    public static String readDemoFileUS10(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us10 test = new us10();
+        test.US10(_Fams, _indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
 //    public static String readDemoFileUS02(String _testFileName, String _errorStr) throws Exception {
 //        readGedcomFile read = new readGedcomFile();
 //        read.readFile(_testFileName);
