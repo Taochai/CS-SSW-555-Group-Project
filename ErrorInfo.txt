@@ -1,0 +1,23 @@
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: FAMILY: US20: F1 : nephew: I1 married uncle: I1
+ERROR: FAMILY: US20: F1 : niece: I2 married uncle: I1
+ERROR: FAMILY: US20: F4 : nephew: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : nephew: I6 married uncle: I6
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ERROR: INDIVIDUAL: US09: I13 Birthday 2007-07-10 before father's death on 2009-06-10
+ERROR: INDIVIDUAL: US09: I16 Birthday 2008-05-07 before father's death on 2009-06-10
+ERROR: INDIVIDUAL: US11: I6 married in Family: [F4, F5]
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
