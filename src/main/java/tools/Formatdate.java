@@ -1,10 +1,10 @@
 /*
  * @Description:
  * @Author: Tao Chai, Zhe Sun, Yining Wen, Jiaxian Xing, Ge Chang
- * @Github: https://github.com/Taochai/SSW-CS-555-Group-project
+ * @Github: https://github.com/Taochai/CS-SSW-555-Group-Project
  * @Date: 2019-09-30 13:18:32
  * @LastEditors: Zhe Sun
- * @LastEditTime: 2019-09-30 13:18:32
+ * @LastEditTime: 2019-10-19 22:13:18
  */
 package tools;
 
@@ -20,7 +20,7 @@ public class Formatdate {
     }
 
     static String dateToString(Date date) throws ParseException {
-        if(date==null){
+        if (date == null) {
             return "NA";
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
