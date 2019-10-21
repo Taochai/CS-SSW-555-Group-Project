@@ -245,6 +245,7 @@ public class userStories {
                 Date wd = wife.getDeath();
                 if(child.getBirthday().after(wd)) {
                     errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) +" before mother's death on " + Formatdate.dateToString(wife.getDeath());
+                    this.ErrorInfo.add(errStr);
                 }
             }
         }
