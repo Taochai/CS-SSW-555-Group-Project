@@ -33,15 +33,15 @@ public class us09 {
                 hrightNow.setTime(hdeath);
                 hrightNow.add(Calendar.MONTH, -9);//结婚前9个月
                 Date hd9 = hrightNow.getTime();
-                if(child.getBirthday().before(hd9)){
-                    errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) +" before father's death on " + Formatdate.dateToString(husband.getDeath());
+                if(child.getBirthday().after(hd9)){
+                    errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) +" after father's death on " + Formatdate.dateToString(husband.getDeath());
                     this.ErrorInfo.add(errStr);
                 }
             }
             if(wife.getDeath() != null) {
                 Date wd = wife.getDeath();
-                if(child.getBirthday().before(wd)) {
-                    errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) +" before mother's death on " + Formatdate.dateToString(wife.getDeath());
+                if(child.getBirthday().after(wd)) {
+                    errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) +" after mother's death on " + Formatdate.dateToString(wife.getDeath());
                     this.ErrorInfo.add(errStr);
                 }
             }
