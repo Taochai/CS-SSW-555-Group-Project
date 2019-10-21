@@ -6,7 +6,10 @@
  * @LastEditors: Zhe Sun
  * @LastEditTime: 2019-10-19 22:12:02
  */
+
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import tools.ExportErrInfoToTxtFile;
 import tools.UserStories;
@@ -16,46 +19,62 @@ public class main {
 
 
     /**
-     *  NOTE * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE *
-     *  ***************************************************
-     *
-     *  IF YOU ARE UNDER WINDOWS SYSTEM, THEN ASSIGN --> win_System -> true
-     *  or rather assign:  win_System -> false
-     *
-     *  ***************************************************
-     *   NOTE * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE *
+     * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE *
+     * ***************************************************
+     * <p>
+     * IF YOU ARE UNDER WINDOWS SYSTEM, THEN ASSIGN:  win_System -> true
+     * or rather assign:  win_System -> false
+     * <p>
+     * ***************************************************
+     * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE *
      */
     private static boolean win_System = true;
 
+    // created to print out the elements in the set and skip empty string
+    private static void printSet(Set<String> s) {
+        for (String error:s) {
+            if (error.equals("")) continue;
+            System.out.println(error);
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         readGedcomFile read = new readGedcomFile();
-        // C:\Users\jason\Documents\Git\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
-        // G:\Courses Info\SSW 555 Agile Dev\Sprint1\SSW-CS-555-Group-project\CS555\My-Family-17-Sep-2019-579.ged
-//        read.readFile("src\\main\\resources\\My-Family-17-Sep-2019-579.ged");
-//        read.readFile("src\\main\\resources\\TestFamilyTreeWithmanyissues.ged");
-        read.readFile("src\\test\\resources\\us20\\testyi.ged");
-//        read.readFile("src\\main\\resources\\TestGEDCOM.ged");
-//        read.readFile("src\\main\\resources\\testTwo.ged");
-//        read.readFile("src\\main\\resources\\testOne.ged");
-//        read.readFile("src\\main\\resources\\testUs1314.ged");
-//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestFamilyTreeWithmanyissues.ged");
-//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/TestGEDCOM.ged");
-//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/UserStory17.ged");
-//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/testOne.ged");
-//        read.readFile("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/US18.ged");
-//        read.readFile(("/Users/michaelwen/Documents/555/homework/CS-SSW-555-Group-Project/src/main/resources/testTwo.ged"));
 
-        Map indis = read.printIndi();
-        Map Fams = read.printFam();
+        // initialize a set to store all the error info got from each test file
+        Set<String> result = new TreeSet<>();
+        result.clear();
 
-        UserStories test = new UserStories();
-        test.IterateFam(Fams,indis);
-        test.IterateInds(Fams,indis);
+        // if needed add more test file paths to this string array so as to output more error info messages
+        String[] winFilePaths = {
+                "src\\main\\resources\\us19.ged",
+        };
+        String[] linuxfFilePaths = {
+                "src/main/resources/us11.ged",
+        };
 
-        test.printErrorInfo();
+        // examine every test file specified in the winFilePaths array or linuxfFilePaths array
+        for (String path : (win_System) ? winFilePaths : linuxfFilePaths) {
+            System.out.println("read this file root: ----> " + path);
+            // read file
+            read.readFile(path);
+
+            Map indis = read.printIndi();
+            Map Fams = read.printFam();
+
+            UserStories test = new UserStories();
+            test.IterateFam(Fams, indis);
+            test.IterateInds(Fams, indis);
+
+            // add error messages to the final result set collection
+            result.addAll(test.getErrorInfo());
+        }
+
+        // print all the error messages
+        printSet(result);
 
         // export all the error message to an "ErrorInfo.txt" file at the root of the project
         ExportErrInfoToTxtFile output = new ExportErrInfoToTxtFile();
-        output.exportFile(win_System, test.getErrorInfo());
+        output.exportFile(win_System, result);
     }
 }

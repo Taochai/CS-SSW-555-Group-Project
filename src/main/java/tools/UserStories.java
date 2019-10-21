@@ -52,6 +52,7 @@ public class UserStories {
             this.US16(curFam, _indis);
             this.US17(curFam, _indis);
             this.US18(curFam, _indis);
+            this.US19(curFam, _Fams, _indis);
             this.US20(curFam, _Fams, _indis);
         }
     }
@@ -65,7 +66,7 @@ public class UserStories {
             this.US03(curIndis);
             this.US07(curIndis);
             this.US11(_Fams, _indis);
-            this.US19(curIndis, _Fams, _indis);
+
 
         }
     }
@@ -79,76 +80,78 @@ public class UserStories {
 
     // US01: Dates before current date(Jiaxian Xing)
     public void US01(Map _Fams, Map _indis) throws ParseException {
-        String errStr = "";
+        String errStr;
         Date today = new Date();
         Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
         while (entries1.hasNext()) {
             Map.Entry<String, Family> entry = entries1.next();
             Family curFam = entry.getValue();
             if (curFam.getDivorced() != null) {
-                if (curFam.getDivorced().after(today))
+                if (curFam.getDivorced().after(today)) {
                     errStr = "ERROR: FAMILY: US01: " + curFam.getId() + ": Divorced date " + Formatdate.dateToString(curFam.getDivorced()) + " occurs in the future";
-                this.ErrorInfo.add(errStr);
+                    this.ErrorInfo.add(errStr);
+                }
             }
             if (curFam.getMarried() != null) {
-                if (curFam.getMarried().after(today))
+                if (curFam.getMarried().after(today)) {
                     errStr = "ERROR: FAMILY: US01: " + curFam.getId() + ": Married date " + Formatdate.dateToString(curFam.getMarried()) + " occurs in the future";
-                this.ErrorInfo.add(errStr);
+                    this.ErrorInfo.add(errStr);
+                }
             }
         }
         for (Map.Entry<String, Individual> entry : (Iterable<Map.Entry<String, Individual>>) _indis.entrySet()) {
             Individual curInd = entry.getValue();
             if (curInd.getBirthday() != null) {
-                if (curInd.getBirthday().after(today))
+                if (curInd.getBirthday().after(today)) {
                     errStr = "ERROR: INDIVIDUAL: US01: " + curInd.getId() + ": Birthday " + Formatdate.dateToString(curInd.getBirthday()) + " occurs in the future";
-                this.ErrorInfo.add(errStr);
+                    this.ErrorInfo.add(errStr);
+                }
             }
             if (curInd.getDeath() != null) {
-                if (curInd.getDeath().after(today))
+                if (curInd.getDeath().after(today)) {
                     errStr = "ERROR: INDIVIDUAL: US01: " + curInd.getId() + ": Death " + Formatdate.dateToString(curInd.getDeath()) + " occurs in the future";
-                this.ErrorInfo.add(errStr);
+                    this.ErrorInfo.add(errStr);
+                }
             }
         }
     }
 
     // US02: Birth before marriage(Ge Chang)
-    public String US02(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
+    public void US02(Family _Fam, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         Individual husband = _indis.get(_Fam.getHusbandID());
         Individual wife = _indis.get(_Fam.getWifeID());
         if (husband.getBirthday() != null && _Fam.getMarried() != null && husband.getBirthday().after(_Fam.getMarried())) {
             errStr = "ERROR: FAMILY: US02: " + _Fam.getId() + ": husband's birthday " + Formatdate.dateToString(husband.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
+            this.ErrorInfo.add(errStr);
         }
         if (wife.getBirthday() != null && _Fam.getMarried() != null && wife.getBirthday().after(_Fam.getMarried())) {
             errStr = "ERROR: FAMILY: US02: " + _Fam.getId() + ": wife's birthday " + Formatdate.dateToString(wife.getBirthday()) + " after marriage " + Formatdate.dateToString(_Fam.getMarried());
+            this.ErrorInfo.add(errStr);
         }
-        this.ErrorInfo.add(errStr);
-        return errStr;
     }
 
     // US03: Birth before death(Ge Chang)
-    public String US03(Individual _indi) throws ParseException {
+    public void US03(Individual _indi) throws ParseException {
         String errStr = "";
         if (_indi.getDeath() != null && !_indi.getBirthday().equals(_indi.getDeath()) && _indi.getBirthday().after(_indi.getDeath())) {
             errStr = "ERROR: INDIVIDUAL: US03: " + _indi.getId() + ": Died " + Formatdate.dateToString(_indi.getDeath()) + " before born " + Formatdate.dateToString(_indi.getBirthday());
+            this.ErrorInfo.add(errStr);
         }
-        this.ErrorInfo.add(errStr);
-        return errStr;
     }
 
     // US04: Marriage before divorce(Zhe Sun)
-    public String US04(Family _Fam) throws ParseException {
-        String errStr = "";
+    public void US04(Family _Fam) throws ParseException {
+        String errStr;
         if (_Fam.getMarried() != null && _Fam.getDivorced() != null && _Fam.getMarried().after(_Fam.getDivorced())) {
             errStr = "ERROR: FAMILY: US04: " + _Fam.getId() + ": Divorced " + Formatdate.dateToString(_Fam.getDivorced()) + " before married " + Formatdate.dateToString(_Fam.getMarried());
+            this.ErrorInfo.add(errStr);
         }
-        this.ErrorInfo.add(errStr);
-        return errStr;
     }
 
     // US05: Marriage before death(Tao Chai)
-    public String US05(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
+    public void US05(Family _Fam, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         Individual husband = _indis.get(_Fam.getHusbandID());
         Individual wife = _indis.get(_Fam.getWifeID());
         //
@@ -162,12 +165,11 @@ public class UserStories {
             errStr = "ERROR: FAMILY: US05: " + _Fam.getId() + " Married " + Formatdate.dateToString(_Fam.getMarried()) + " after husband's (" + husband.getId() + ") death on " + Formatdate.dateToString(husband.getDeath());
             this.ErrorInfo.add(errStr);
         }
-        return errStr;
     }
 
     // US06: Divorce before death(Tao Chai)
-    public String US06(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
+    public void US06(Family _Fam, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         Individual husband = _indis.get(_Fam.getHusbandID());
         Individual wife = _indis.get(_Fam.getWifeID());
         if (husband.getDeath() != null && wife.getDeath() != null && _Fam.getDivorced() != null && (_Fam.getDivorced().after(husband.getDeath()) && (_Fam.getDivorced().after(wife.getDeath())))) {
@@ -180,25 +182,23 @@ public class UserStories {
             errStr = "ERROR: FAMILY: US06: " + _Fam.getId() + " Divorced " + Formatdate.dateToString(_Fam.getDivorced()) + " after husband's (" + husband.getId() + ") death on " + Formatdate.dateToString(husband.getDeath());
             this.ErrorInfo.add(errStr);
         }
-        return errStr;
     }
 
     // US07: Less than 150 years old(Zhe Sun)
-    public String US07(Individual _indi) throws ParseException {
-        String errStr = "";
+    public void US07(Individual _indi) throws ParseException {
+        String errStr;
         if (_indi.getBirthday() != null && _indi.getDeath() != null && _indi.getDeath().after(_indi.getBirthday()) && CalculateAge.getAge(_indi.getBirthday(), _indi.getDeath()) > 150) {
             errStr = "ERROR: INDIVIDUAL: US07: " + _indi.getId() + ": More than 150 years old - Birth date " + Formatdate.dateToString(_indi.getBirthday()) + ": Death " + Formatdate.dateToString(_indi.getDeath());
+            this.ErrorInfo.add(errStr);
         } else if (_indi.getBirthday() != null && _indi.getDeath() == null && CalculateAge.getAge(_indi.getBirthday()) > 150) {
             errStr = "ERROR: INDIVIDUAL: US07: " + _indi.getId() + ": More than 150 years old - Birth date " + Formatdate.dateToString(_indi.getBirthday());
+            this.ErrorInfo.add(errStr);
         }
-        this.ErrorInfo.add(errStr);
-        return errStr;
     }
 
     //  US08: Birth before marriage of parents(Yining Wen)
-    public String US08(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
-//        String wrongname = "";
+    public void US08(Family _Fam, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         Iterator itr = _Fam.getChildren().iterator(); // traversing over HashSet
         while (itr.hasNext()) {
             String curchild = (String) itr.next();
@@ -217,25 +217,21 @@ public class UserStories {
                 rightafter.add(Calendar.MONTH, +9);//9 months after
                 Date divo9 = rightafter.getTime();
                 if (child.getBirthday().after(divo9)) {
-//                wrongname += child.getName();
                     errStr = "ANOMALY: FAMILY: US08: " + _Fam.getId() + ": Child " + child.getId() + " born " + Formatdate.dateToString(child.getBirthday()) + " after divorce on " + Formatdate.dateToString(_Fam.getDivorced());
                     this.ErrorInfo.add(errStr);
                 }
             }
 
             if (child.getBirthday().before(marr9)) {
-//                wrongname += child.getName();
                 errStr = "ANOMALY: FAMILY: US08: " + _Fam.getId() + ": Child " + child.getId() + " born " + Formatdate.dateToString(child.getBirthday()) + " before marriage on " + Formatdate.dateToString(_Fam.getMarried());
                 this.ErrorInfo.add(errStr);
-//                errStr = "error: US08: " + wrongname + "'s birthday is earlier than parents wedding day";
             }
         }
-        return errStr;
     }
 
     //    US09: Birth before death of parents(Yining Wen)
-    public String US09(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
+    public void US09(Family _Fam, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         String wname = "";
         Iterator itr = _Fam.getChildren().iterator(); // traversing over HashSet
         while (itr.hasNext()) {
@@ -249,25 +245,24 @@ public class UserStories {
                 hrightNow.setTime(hdeath);
                 hrightNow.add(Calendar.MONTH, -9);//结婚前9个月
                 Date hd9 = hrightNow.getTime();
-                if (child.getBirthday().before(hd9)) {
+                if (child.getBirthday().after(hd9)) {
                     errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) + " before father's death on " + Formatdate.dateToString(husband.getDeath());
                     this.ErrorInfo.add(errStr);
                 }
             }
             if (wife.getDeath() != null) {
                 Date wd = wife.getDeath();
-                if (child.getBirthday().before(wd)) {
+                if (child.getBirthday().after(wd)) {
                     errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) + " before mother's death on " + Formatdate.dateToString(wife.getDeath());
+                    this.ErrorInfo.add(errStr);
                 }
             }
         }
-        return errStr;
     }
 
     // US10: Marriage after 14(Jiaxian Xing)
-    public String US10(Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
-        Date today = new Date();
+    public void US10(Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
         while (entries1.hasNext()) {
             Map.Entry<String, Family> entry = entries1.next();
@@ -314,27 +309,44 @@ public class UserStories {
                 }
             }
         }
-        return errStr;
     }
 
     // US11: No bigamy -> Marriage should not occur during marriage to another spouse (Ge Chang)
-    public String US11(Map<String, Family> _Fams, Map<String, Individual> _indis) {
-        String errStr = "";
+    public void US11(Map<String, Family> _Fams, Map<String, Individual> _indis) {
+        String errStr;
         Iterator<Map.Entry<String, Individual>> entries = _indis.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry<String, Individual> entry = entries.next();
             Individual curIndi = entry.getValue();
             if (curIndi.getSpouse().size() > 1) {
-                errStr = "ERROR: INDIVIDUAL: US11: " + curIndi.getId() + " married in Family: " + curIndi.getSpouse();
-                this.ErrorInfo.add(errStr);
+                for (String famId : curIndi.getSpouse()) {
+                    Family fam = _Fams.get(famId);
+                    for (String otherFamId : curIndi.getSpouse()) {
+                        Family otherFam = _Fams.get(otherFamId);
+                        if (famId.equals(otherFamId)) {
+                            continue;
+                        }
+                        if (fam.getMarried().before(otherFam.getMarried())) {
+                            if (fam.getDivorced() == null || fam.getDivorced().after(otherFam.getMarried())) {
+                                errStr = "ERROR: INDIVIDUAL: US11: The person with id " + curIndi.getId() + " is married to the person " + (curIndi.getId().equals(otherFam.getHusbandID()) ? otherFam.getWifeID() : otherFam.getHusbandID()) + " with family id " + otherFam.getId() + " while the person is still married to person with id " + (curIndi.getId().equals(fam.getHusbandID()) ? fam.getWifeID() : fam.getHusbandID()) + " in family " + fam.getId();
+                                this.ErrorInfo.add(errStr);
+                            }
+                        }
+                        if (otherFam.getMarried().before(fam.getMarried())) {
+                            if (otherFam.getDivorced() == null || otherFam.getDivorced().after(fam.getMarried())) {
+                                errStr = "ERROR: INDIVIDUAL: US11: The person with id " + curIndi.getId() + " is married to the person " + (curIndi.getId().equals(fam.getHusbandID()) ? fam.getWifeID() : fam.getHusbandID()) + " with family id " + fam.getId() + " while the person is still married to person with id " + (curIndi.getId().equals(otherFam.getHusbandID()) ? otherFam.getWifeID() : otherFam.getHusbandID()) + " in family " + otherFam.getId();
+                                this.ErrorInfo.add(errStr);
+                            }
+                        }
+                    }
+                }
             }
         }
-        return errStr;
     }
 
     // US12: Parents not too old(Ge Chang)
-    public String US12(Family _Fam, Map<String, Individual> _indis) {
-        String errStr = "";
+    public void US12(Family _Fam, Map<String, Individual> _indis) {
+        String errStr;
         Calendar calendar = Calendar.getInstance();
         Individual husband = _indis.get(_Fam.getHusbandID());
         calendar.setTime(husband.getBirthday());
@@ -360,14 +372,13 @@ public class UserStories {
                 this.ErrorInfo.add(errStr);
             }
         }
-        return errStr;
     }
 
     // Jiaxian Xing
     // US13 Birth dates of siblings should be more than 8 months apart or less than 2 days apart
     // (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
-    public String US13(Family _Fam, Map<String, Individual> _indis) {
-        String errStr = "";
+    public void US13(Family _Fam, Map<String, Individual> _indis) {
+        String errStr;
         Map<String, Date> siblings = new HashMap<>();
         //put every child <id,birthday> in HashMap;
         for (String siblingId : _Fam.getChildren()) {
@@ -388,14 +399,15 @@ public class UserStories {
                 }
                 long diff = SiblingBd1.getTime() - SiblingBd2.getTime();
                 int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
-                int diffMonth = (int) (diffDays / 30);
-                int diffYear = (int) (diffMonth / 12);
+                int diffMonth = diffDays / 30;
+                int diffYear = diffMonth / 12;
                 if (diffYear == 0) {
                     if (diffMonth < 8) {
                         if (diffMonth == 0) {
-                            if (diffDays > 2)
+                            if (diffDays > 2) {
                                 errStr = "ERROR: INDIVIDUAL: US13: FamilyID: " + _Fam.getId() + " children: " + siblingId1 + " and children: " + siblingId2 + " birthday difference greater than 2 days AND less than 8 months ";
-                            this.ErrorInfo.add(errStr);
+                                this.ErrorInfo.add(errStr);
+                            }
                         } else {
                             errStr = "ERROR: INDIVIDUAL: US13: FamilyID: " + _Fam.getId() + " children: " + siblingId1 + " and children: " + siblingId2 + " birthday difference less than 8 months AND greater than 2 days";
                             this.ErrorInfo.add(errStr);
@@ -404,12 +416,11 @@ public class UserStories {
                 }
             }
         }
-        return errStr;
     }
 
     //US14 No more than five siblings should be born at the same time (Jiaxian Xing)
-    public String US14(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
+    public void US14(Family _Fam, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         //put every child <birthday> in HashSet;
         Map<Date, Integer> siblings = new HashMap<>();
         for (String siblingId : _Fam.getChildren()) {
@@ -431,22 +442,20 @@ public class UserStories {
                 this.ErrorInfo.add(errStr);
             }
         }
-        return errStr;
     }
 
     //US15:  fewer than 15 siblings in a family
-    public String US15(Family _Fam) {
-        String errStr = "";
+    public void US15(Family _Fam) {
+        String errStr;
         if (_Fam.getChildren().size() >= 15) {
             errStr = "ERROR: FAMILY: US15: " + _Fam.getId() + " has more or equal than 15 siblings.";
             this.ErrorInfo.add(errStr);
         }
-        return errStr;
     }
 
     //US16: Family male should have same last name.
-    public String US16(Family _Fam, Map<String, Individual> _indis) {
-        String errStr = "";
+    public void US16(Family _Fam, Map<String, Individual> _indis) {
+        String errStr;
         String fatherLastName = _Fam.getFatherLastName();
         for (String indiID : _Fam.getChildren()) {
             Individual child = _indis.get(indiID);
@@ -455,12 +464,11 @@ public class UserStories {
                 this.ErrorInfo.add(errStr);
             }
         }
-        return errStr;
     }
 
     //    No marriages to children(Yining Wen)
-    public String US17(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
+    public void US17(Family _Fam, Map<String, Individual> _indis) {
+        String errStr;
         Set<String> children = _Fam.getChildren();
         if (children != null) {
             for (String child : children) {
@@ -475,15 +483,12 @@ public class UserStories {
                 }
             }
         }
-        return errStr;
     }
 
     // Siblings should not marry(Yining Wen)
-    public String US18(Family _Fam, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
+    public void US18(Family _Fam, Map<String, Individual> _indis) {
+        String errStr;
         Set<String> children = _Fam.getChildren();
-        Set<String> husbandchildfamID = _indis.get(_Fam.getHusbandID()).getChild();
-        Set<String> wifechildfamID = _indis.get(_Fam.getWifeID()).getChild();
         Set<String> allspouse = new HashSet<>();
 
         for (String childID : children) {
@@ -496,192 +501,240 @@ public class UserStories {
                 }
             }
         }
-
-//
-        return errStr;
     }
+
 
     // US19: First cousins should not marry one another(Zhe Sun)
-    public String US19(Individual indis, Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
-        String errStr = "";
-        // If this person has a spouse then we do the judgement
-        // or rather there is no need to do the judgement
-        if (indis.getSpouse().size() != 0) {
-
-            // iterate all the spouse, to see in each relationship
-            // whether the marriage meet the requirement did not marry cousin
-            // Actually spouse below is a family ID pointing to that one relationship
-            for (String spouse : indis.getSpouse()) {
-
-                // get the husband ID in present relationship to be checked
-                String husID = _Fams.get(spouse).getHusbandID();
-
-                // get the wife ID in present relationship to be checked
-                String wifeID = _Fams.get(spouse).getWifeID();
-
-                // get the husband's parent's family ID, to see husband belongs to which family
-                Set<String> husFirstGenFam = _indis.get(husID).getChild();
-
-                // get the wife's parent's family ID, to see wife belongs to which family
-                Set<String> wifeFirstGenFam = _indis.get(wifeID).getChild();
-
-                // get the ID of husband's fathers and mothers
-                List<String> hussfathers = new ArrayList<>();
-                List<String> hussmothers = new ArrayList<>();
-
-                for (String id : husFirstGenFam) {
-                    hussfathers.add(_Fams.get(id).getHusbandID());
-                    hussmothers.add(_Fams.get(id).getWifeID());
-                }
-
-                // get the family ID of husband's grandparents
-                Set<String> famIdOfHusband = new HashSet<>();
-
-                // get all the grand family ID from father side
-                for (String father : hussfathers) {
-                    for (String fID : _indis.get(father).getChild()) {
-                        famIdOfHusband.add(fID);
-                    }
-                }
-
-                // get all the grand family ID from mother side
-                for (String mother : hussmothers) {
-                    for (String fID : _indis.get(mother).getChild()) {
-                        famIdOfHusband.add(fID);
-                    }
-                }
-
-                // get the ID of wife's fathers and mothers
-                List<String> wifesfathers = new ArrayList<>();
-                List<String> wifesmothers = new ArrayList<>();
-
-                for (String id : wifeFirstGenFam) {
-                    wifesfathers.add(_Fams.get(id).getHusbandID());
-                    wifesmothers.add(_Fams.get(id).getWifeID());
-                }
-
-                // get the family ID of wife's grandparents
-                Set<String> famIdOfWife = new HashSet<>();
-
-                // get all the grand family ID from father side
-                for (String father : wifesfathers) {
-                    for (String fID : _indis.get(father).getChild()) {
-                        famIdOfWife.add(fID);
-                    }
-                }
-
-                // get all the grand family ID from mother side
-                for (String mother : wifesmothers) {
-                    for (String fID : _indis.get(mother).getChild()) {
-                        famIdOfWife.add(fID);
-                    }
-                }
-
-                // to see if they have common grandparents
-                famIdOfHusband.retainAll(famIdOfWife);
-
-                // if they have common grandparents then print out the error message
-                if (famIdOfHusband.size() != 0) {
-                    errStr = "ERROR: FAMILY: US19: " + indis.getId() + " married cousin " + wifeID;
-                }
-
-                this.ErrorInfo.add(errStr);
-            }
-        }
-        return errStr;
-    }
-
- /*   // US20: Aunts and uncles should not marry their nieces or nephews(Zhe Sun)
-    public String US20(Individual indis, Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
-
-        String errStr = "";
-        // get myself's ID
-        String selfID = indis.getId();
-
-        // assume me a relative young person get married in this relationship
-        // assign myself a appellation whether I am niece or nephew
-        String appellation = (indis.getGender() == 'M') ? "nephew" : "niece";
-        System.out.println("Start----> I am: " + selfID + " " + appellation);
-        // if I have a spouse then go ahead, or rather there is no need to go further
-        if (indis.getSpouse().size() != 0) {
-
-            // to see I belong to which family, in another I am which family's children
-            Set<String> myFamilies = _indis.get(selfID).getChild();
-
-            // generate a list to store all my fathers
-            List<String> myfathers = new ArrayList<>();
-            for (String fID : myFamilies) {
-                myfathers.add(_Fams.get(fID).getHusbandID());
-                System.out.println("my father: " + _Fams.get(fID).getHusbandID());
-            }
-
-            // generate a list to store all my mothers
-            List<String> mymothers = new ArrayList<>();
-            for (String fID : myFamilies) {
-                mymothers.add(_Fams.get(fID).getWifeID());
-                System.out.println("my mother: " + _Fams.get(fID).getWifeID());
-            }
-
-            System.out.println("Enter my spouse");
-            // iterate all my spouse, to get my spouse's parents
-            for (String spouse : indis.getSpouse()) {
-                if (spouse.equals("")) continue;;
-                System.out.println("di yi ci xun huan");
-                // get children of my spouse's parents to see if any of my parents is a child of my spouse's parent
-                // in another word, just to see whether my parents are brother/sister to my spouse
-                Set<String> childrenOfSpousesParents = _Fams.get(spouse).getChildren();
-                myfathers.containsAll(childrenOfSpousesParents);
-                mymothers.containsAll(childrenOfSpousesParents);
-                // get my spouse's ID and assign my spouse a appellation
-                String theother = (selfID == _Fams.get(spouse).getHusbandID()) ? _Fams.get(spouse).getWifeID() : _Fams.get(spouse).getHusbandID();
-                String spouseappellation = "";
-                if (_indis.get(theother).getGender() != '\0')
-                    if (_indis.get(theother).getGender() == 'M') {
-                        spouseappellation = "uncle";
-                    } else {
-                        spouseappellation = "aunt";
-                    }
-                // if the intersection is not null, my father is my spouse's brother
-                if (myfathers.size() != 0) {
-                    errStr = "ERROR: FAMILY: US20: " + spouse + " : " + appellation + ": " + selfID + " married " + spouseappellation + ": " + theother;
-                    this.ErrorInfo.add(errStr);
-                }
-                // if the intersection is not null, my mother is my spouse's sister
-                if (mymothers.size() != 0) {
-                    errStr = "ERROR: FAMILY: US20: " + spouse + " : " + appellation + ": " + selfID + " married " + spouseappellation + ": " + theother;
-                    this.ErrorInfo.add(errStr);
-                }
-            }
-        }
-        return errStr;
-    }*/
-
-
-    // US20: Aunts and uncles should not marry their nieces or nephews(Zhe Sun)
-    public void US20(Family _Fam, Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
-
+    public void US19(Family _Fam, Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
+        String errStr;
         String famID = _Fam.getId();
         String husID = _Fam.getHusbandID();
         String wifeID = _Fam.getWifeID();
         boolean husSafe = false;
         boolean wifeSafe = false;
         Set<String> husParents = null;
+        Set<String> husGrandParents = null;
         Set<String> wifeParents = null;
+        Set<String> wifeGrandParents = null;
 
-
-
-        if (_indis.get(husID).getChild() == null){
+        // if husband has a family record
+        if (_indis.get(husID).getChild().isEmpty()) {
+            // no record means safe
             husSafe = true;
         } else {
+            // get husband's family ID set
             husParents = _indis.get(husID).getChild();
         }
-        if (_indis.get(wifeID).getChild() == null){
+
+        // if wife has a family record
+        if (_indis.get(wifeID).getChild().isEmpty()) {
+            // no record means safe
             wifeSafe = true;
         } else {
-            wifeParents = _indis.get(husID).getChild();
+            // get wife's family ID set
+            wifeParents = _indis.get(wifeID).getChild();
         }
 
+        // to see once one of the couple is safe so the relationship is safe, then we can finish
+        if (husSafe || wifeSafe) {
+            return;
 
+            // husband and wife both have a record of their family
+        } else {
+
+            // to get wife's all grandParents family IDs
+            for (String wfam : wifeParents) {
+
+                // get wife's mother ID
+                String wifeMID = _Fams.get(wfam).getWifeID();
+
+                // get wife's father ID
+                String wifeFID = _Fams.get(wfam).getHusbandID();
+
+                // to get wife's grandParents family IDs
+                // if wife's mother does not have a record of her parents
+                if (_indis.get(wifeMID).getChild().isEmpty()) {
+
+                    // if wife's father does not have a record of his parents
+                    if (_indis.get(wifeFID).getChild().isEmpty()) {
+                        // then wife is safe since she has no relationship with husband's family
+                        return;
+                    } else {
+                        wifeGrandParents = _indis.get(wifeFID).getChild();
+                    }
+                    // if wife's mother has a record of her parents
+                } else {
+                    // record wife's mother's family ID set
+                    wifeGrandParents = _indis.get(wifeMID).getChild();
+
+                    // if wife's father has a record of his parents
+                    if (!_indis.get(wifeFID).getChild().isEmpty()) {
+                        wifeGrandParents.addAll(_indis.get(wifeFID).getChild());
+                    }
+                }
+            }
+
+            // to get husband's all grandParents family IDs
+            for (String hfam : husParents) {
+
+                // get husband's mother ID
+                String husMID = _Fams.get(hfam).getWifeID();
+
+                // get husband's father ID
+                String husFID = _Fams.get(hfam).getHusbandID();
+
+                // to get husband's all grandParents family IDs
+                // if husband's mother does not have a record of her parents
+                if (_indis.get(husMID).getChild().isEmpty()) {
+
+                    // if husband's father does not have a record of his parents
+                    if (_indis.get(husFID).getChild().isEmpty()) {
+                        // then husband is safe since he has no relationship with wife's family
+                        return;
+                    } else {
+                        husGrandParents = _indis.get(husFID).getChild();
+                    }
+                    // if husband's mother has a record of her parents
+                } else {
+                    // record husband's mother's family ID set
+                    husGrandParents = _indis.get(husMID).getChild();
+
+                    // if husband's father has a record of his parents
+                    if (!_indis.get(husFID).getChild().isEmpty()) {
+                        husGrandParents.addAll(_indis.get(husFID).getChild());
+                    }
+                }
+            }
+
+            if (husGrandParents.size() != 0 && wifeGrandParents.size() != 0) {
+                husGrandParents.retainAll(wifeGrandParents);
+                if (husGrandParents.size() != 0) {
+                    errStr = "ERROR: FAMILY: US19: " + famID + " first cousins should not marry one another; but " + wifeID + " and " + husID + " did this";
+                    this.ErrorInfo.add(errStr);
+                }
+            }
+        }
     }
 
+
+    // US20: Aunts and uncles should not marry their nieces or nephews(Zhe Sun)
+    public void US20(Family _Fam, Map<String, Family> _Fams, Map<String, Individual> _indis) {
+
+        String errStr;
+        String famID = _Fam.getId();
+        String husID = _Fam.getHusbandID();
+        String wifeID = _Fam.getWifeID();
+        boolean husSafe = false;
+        boolean wifeSafe = false;
+        Set<String> husParents = null;
+        Set<String> husGrandParents;
+        Set<String> wifeParents = null;
+        Set<String> wifeGrandParents;
+
+        // if husband has a family record
+        if (_indis.get(husID).getChild().isEmpty()) {
+            // no record means safe
+            husSafe = true;
+        } else {
+            // get husband's family ID set
+            husParents = _indis.get(husID).getChild();
+        }
+
+        // if wife has a family record
+        if (_indis.get(wifeID).getChild().isEmpty()) {
+            // no record means safe
+            wifeSafe = true;
+        } else {
+            // get wife's family ID set
+            wifeParents = _indis.get(wifeID).getChild();
+        }
+
+        // to see once one of the couple is safe so the relationship is safe, then we can finish
+        if (husSafe || wifeSafe) {
+            return;
+        } else {
+            // husband and wife both have a record of their family
+
+            // assumption ONE: niece and uncle
+            for (String wfam : wifeParents) {
+
+                // get wife's mother ID
+                String wifeMID = _Fams.get(wfam).getWifeID();
+
+                // get wife's father ID
+                String wifeFID = _Fams.get(wfam).getHusbandID();
+
+                // if wife's mother does not have a record of her parents
+                if (_indis.get(wifeMID).getChild().isEmpty()) {
+
+                    // if wife's father does not have a record of his parents
+                    if (_indis.get(wifeFID).getChild().isEmpty()) {
+                        // then wife is safe since she has no relationship with husband's family
+                        return;
+                    } else {
+                        wifeGrandParents = _indis.get(wifeFID).getChild();
+                    }
+                    // if wife's mother has a record of her parents
+                } else {
+                    // record wife's mother's family ID set
+                    wifeGrandParents = _indis.get(wifeMID).getChild();
+
+                    // if wife's father has a record of his parents
+                    if (!_indis.get(wifeFID).getChild().isEmpty()) {
+                        wifeGrandParents.addAll(_indis.get(wifeFID).getChild());
+                    }
+                }
+
+                // to see if they have common parents
+                for (String husFam : husParents) {
+                    if (wifeGrandParents.contains(husFam)) {
+                        errStr = "ERROR: FAMILY: US20: " + famID + " niece: " + wifeID + " married uncle: " + husID;
+                        this.ErrorInfo.add(errStr);
+                        return;
+                    }
+                }
+            }
+
+
+            // assumption TWO: nephew and aunt
+            for (String hfam : husParents) {
+
+                // get husband's mother ID
+                String husMID = _Fams.get(hfam).getWifeID();
+
+                // get husband's father ID
+                String husFID = _Fams.get(hfam).getHusbandID();
+
+                // if husband's mother does not have a record of her parents
+                if (_indis.get(husMID).getChild().isEmpty()) {
+
+                    // if husband's father does not have a record of his parents
+                    if (_indis.get(husFID).getChild().isEmpty()) {
+                        // then husband is safe since he has no relationship with wife's family
+                        return;
+                    } else {
+                        husGrandParents = _indis.get(husFID).getChild();
+                    }
+                    // if husband's mother has a record of her parents
+                } else {
+                    // record husband's mother's family ID set
+                    husGrandParents = _indis.get(husMID).getChild();
+
+                    // if husband's father has a record of his parents
+                    if (!_indis.get(husFID).getChild().isEmpty()) {
+                        husGrandParents.addAll(_indis.get(husFID).getChild());
+                    }
+                }
+
+                // to see if they have common parents
+                for (String wifeFam : wifeParents) {
+                    if (husGrandParents.contains(wifeFam)) {
+                        errStr = "ERROR: FAMILY: US20: " + famID + " nephew: " + husID + " married aunt: " + wifeID;
+                        this.ErrorInfo.add(errStr);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }

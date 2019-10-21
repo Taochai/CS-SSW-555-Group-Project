@@ -28,6 +28,15 @@ public class readGedcomFile {
     Boolean ifIndi = false;
     Boolean ifFam = false;
 
+
+    public Map<String, Individual> getIndis() {
+        return Indis;
+    }
+
+    public Map<String, Family> getFams() {
+        return Fams;
+    }
+
     public readGedcomFile() {
         this.Indis = new HashMap<>();
         this.Fams = new HashMap<>();
@@ -88,8 +97,12 @@ public class readGedcomFile {
                             tmpIndi.setId(arguments);
                         }
                         if (tag.equals("FAM")) {
+                            if (this.ifIndi.equals(true) && tmpIndi != null) {
+                                this.Indis.put(tmpIndi.getId(), tmpIndi);
+                            }
                             this.ifFam = true;
                             this.ifIndi = false;
+
                             if (tmpFam != null) {
                                 this.Fams.put(tmpFam.getId(), tmpFam);
                             }
@@ -137,28 +150,28 @@ public class readGedcomFile {
 
             }
         }
-        if (tmpIndi != null)
-            this.Indis.put(tmpIndi.getId(), tmpIndi);
-        if (tmpFam != null)
+        if (tmpFam != null) {
             this.Fams.put(tmpFam.getId(), tmpFam);
+        }
 
     }
 
+
     public void setIndiAttributes(String tag, String arguments, Individual indi) throws ParseException {
         if (tag.equals("NAME")) {
-            arguments.replace(" ", "/");
+            arguments = arguments.replace("/", "");
             indi.setName(arguments);
         } else if (tag.equals("SEX")) {
             indi.setGender(arguments.charAt(0));
         } else if (tag.equals("DATE")) {
             if (this.ifBIRT) {
                 Date date = Formatdate.stringtodate(arguments);
-                indi.setBirthday(date); //// need function transform date to DATE type;
+                indi.setBirthday(date); // need function transform date to DATE type;
                 this.ifBIRT = false;
             }
             if (this.ifDEAT) {
                 Date date = Formatdate.stringtodate(arguments);
-                indi.setDeath(date); //// need function transform date to DATE type;
+                indi.setDeath(date); // need function transform date to DATE type;
                 this.ifDEAT = false;
             }
         } else if (tag.equals("FAMC")) {
@@ -180,12 +193,12 @@ public class readGedcomFile {
         } else if (tag.equals("DATE")) {
             if (this.ifMARR) {
                 Date date = Formatdate.stringtodate(arguments);
-                fam.setMarried(date);//// need function transform date to DATE type;
+                fam.setMarried(date);// need function transform date to DATE type;
                 this.ifMARR = false;
             }
             if (this.ifDIV) {
                 Date date = Formatdate.stringtodate(arguments);
-                fam.setDivorced(date);//// need function transform date to DATE type;
+                fam.setDivorced(date);// need function transform date to DATE type;
                 this.ifDIV = false;
             }
         }
@@ -194,8 +207,7 @@ public class readGedcomFile {
     public Map printIndi() throws Exception {
         ConsoleTable tI = new ConsoleTable(9, true);
         tI.appendRow();
-        tI.appendColum("ID").appendColum("Name").appendColum("Gender").appendColum("Birthday").appendColum("Age")
-                .appendColum("Alive").appendColum("Death").appendColum("Child").appendColum("Spouse");
+        tI.appendColum("ID").appendColum("Name").appendColum("Gender").appendColum("Birthday").appendColum("Age").appendColum("Alive").appendColum("Death").appendColum("Child").appendColum("Spouse");
         Iterator<Map.Entry<String, Individual>> entries = this.Indis.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry<String, Individual> entry = entries.next();
@@ -213,7 +225,7 @@ public class readGedcomFile {
             tI.appendColum(curindi.getId()).appendColum(curindi.getName()).appendColum(curindi.getGender())
                     .appendColum(Formatdate.dateToString(curindi.getBirthday()))
                     .appendColum(CalculateAge.getAge(curindi.getBirthday())).appendColum(curindi.getAlive())
-                    .appendColum(Formatdate.dateToString(curindi.getDeath())).appendColum(child).appendColum(spouse);
+                    .appendColum(Formatdate.dateToString(curindi.getDeath())).appendColum((child.equals(""))? "---": child).appendColum((spouse.equals(""))? "---": spouse);
         }
         System.out.println("Individuals:");
         System.out.println(tI.toString());
@@ -224,8 +236,7 @@ public class readGedcomFile {
         ConsoleTable tF = new ConsoleTable(8, true);
 
         tF.appendRow();
-        tF.appendColum("ID").appendColum("Married").appendColum("Divorced").appendColum("Husband ID")
-                .appendColum("Husband Name").appendColum("Wife ID").appendColum("Wife Name").appendColum("Children");
+        tF.appendColum("ID").appendColum("Married").appendColum("Divorced").appendColum("Husband ID").appendColum("Husband Name").appendColum("Wife ID").appendColum("Wife Name").appendColum("Children");
 
         Iterator<Map.Entry<String, Family>> entries1 = this.Fams.entrySet().iterator();
         while (entries1.hasNext()) {

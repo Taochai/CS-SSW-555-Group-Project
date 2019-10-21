@@ -9,33 +9,21 @@
 
 import objects.Family;
 import objects.Individual;
-import org.junit.Test;
 import tools.readGedcomFile;
 import tools.UserStories;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
-/**
- * Unit test for user stories.
- */
-public class userStoriesTest {
-//    String testFilePath = "G:\\Courses Info\\SSW 555 Agile Dev\\Sprint\\CS-SSW-555-Group-Project\\src\\main\\resources\\TestGEDCOM.ged";//relative path is not morking! using your path can run!
-//    String testUS17 = "G:\\Courses Info\\SSW 555 Agile Dev\\Sprint\\CS-SSW-555-Group-Project\\src\\main\\resources\\UserStory17.ged";
-    //    String testFilePath = "src\\test\\resources\\us01\\us01DatesAfterToday.ged";//relative path is not morking! using your path can run!
-    private boolean win_System = true;
+import org.junit.Test;
 
-    private boolean errorContain(Set<String> errorSet, String errorInfo) {
-        for (String s : errorSet) {
-            if (s.contains(errorInfo))
-                return true;
-        }
-        return false;
-    }
+
+public class userStoriesTest {
 
     /**
      * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE *
@@ -48,14 +36,24 @@ public class userStoriesTest {
      * ***************************************************
      * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE * NOTE *
      */
-//    private static boolean win_System = true;
+    private boolean win_System = true;
+
+    // function to check whether target error info in the generated errorInfo set(-By Jiaxian Xing) Great job! :)
+    private boolean errorContain(Set<String> errorSet, String errorInfo) {
+        for (String s : errorSet) {
+            if (s.contains(errorInfo))
+                return true;
+        }
+        return false;
+    }
+
     @Test
     public void TestUS01T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us01\\us01DatesAfterToday.ged";
+            trueTestFile = "src\\test\\resources\\us01.ged";
         } else {
-            trueTestFile = "resources/us01/us01DatesAfterToday.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us01.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -71,9 +69,9 @@ public class userStoriesTest {
     public void TestUS01F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us01\\us01DatesBeforeToday.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us01/us01DatesBeforeToday.ged";//relative path is not working on travis ci!!!
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -89,9 +87,9 @@ public class userStoriesTest {
     public void TestUS02T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us02\\us02BirthAfterMarriage.ged";
+            trueTestFile = "src\\test\\resources\\us02.ged";
         } else {
-            trueTestFile = "resources/us02/us02BirthAfterMarriage.ged";
+            trueTestFile = "src/test/resources/us02.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -111,10 +109,10 @@ public class userStoriesTest {
     @Test
     public void TestUS02F() throws Exception {
         String falseTestFile;
-        if (win_System){
-            falseTestFile = "src\\test\\resources\\us02\\us02BirthBeforeMarriage.ged";
+        if (win_System) {
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us02/us02BirthBeforeMarriage.ged";//relative path is not working on travis ci!!!
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -135,9 +133,9 @@ public class userStoriesTest {
     public void TestUS03T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us03\\us03BirthAfterDeath.ged";
+            trueTestFile = "src\\test\\resources\\us03.ged";
         } else {
-            trueTestFile = "src/test/resources/us03/us03BirthAfterDeath.ged";
+            trueTestFile = "src/test/resources/us03.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -156,10 +154,10 @@ public class userStoriesTest {
     @Test
     public void TestUS03F() throws Exception {
         String falseTestFile;
-        if (win_System){
-            falseTestFile = "src\\test\\resources\\us03\\us03BirthBeforeDeath.ged";
+        if (win_System) {
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -179,9 +177,9 @@ public class userStoriesTest {
     public void TestUS04T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us04\\us04MarriageAfterDivorce.ged";
+            trueTestFile = "src\\test\\resources\\us04.ged";
         } else {
-            trueTestFile = "resources/us04/us04MarriageAfterDivorce.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us04.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -197,9 +195,9 @@ public class userStoriesTest {
     public void TestUS04F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us04\\us04MarriageBeforeDivorce.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us04/us04MarriageBeforeDivorce.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -216,9 +214,9 @@ public class userStoriesTest {
     public void TestUS05T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us05\\us05MarriageAfterDeath.ged";
+            trueTestFile = "src\\test\\resources\\us05.ged";
         } else {
-            trueTestFile = "resources/us01/us05MarriageAfterDeath.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us05.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -239,9 +237,9 @@ public class userStoriesTest {
     public void TestUS05F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us05\\us05MarriageBeforeDeath.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us05/us05MarriageBeforeDeath.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -262,9 +260,9 @@ public class userStoriesTest {
     public void TestUS06T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us06\\us06DivorceAfterDeath.ged";
+            trueTestFile = "src\\test\\resources\\us06.ged";
         } else {
-            trueTestFile = "resources/us06/us06DivorceAfterDeath.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us06.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -285,9 +283,9 @@ public class userStoriesTest {
     public void TestUS06F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us06\\us06DivorceBeforeDeath.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us06/us06DivorceBeforeDeath.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -309,9 +307,9 @@ public class userStoriesTest {
     public void TestUS07T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us07\\us07GreaterThan150years.ged";
+            trueTestFile = "src\\test\\resources\\us07.ged";
         } else {
-            trueTestFile = "resources/us07/us07GreaterThan150years.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us07.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -332,9 +330,9 @@ public class userStoriesTest {
     public void TestUS07F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us07\\us07LessThan150years.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us07/us07LessThan150years.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -355,9 +353,9 @@ public class userStoriesTest {
     public void TestUS08T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us08\\us08BirthBeforeParentsMarriage.ged";
+            trueTestFile = "src\\test\\resources\\us08.ged";
         } else {
-            trueTestFile = "resources/us08/us08BirthBeforeParentsMarriage.ged";
+            trueTestFile = "src/test/resources/us08.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -378,9 +376,9 @@ public class userStoriesTest {
     public void TestUS08F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us08\\us08BirthAfterParentsMarriage.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us08/us08BirthAfterParentsMarriage.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -401,9 +399,9 @@ public class userStoriesTest {
     public void TestUS09T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us09\\us09BirthAfterParentsDeath.ged";
+            trueTestFile = "src\\test\\resources\\us09.ged";
         } else {
-            trueTestFile = "resources/us09/us09BirthAfterParentsDeath.ged";
+            trueTestFile = "src/test/resources/us09.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -424,9 +422,9 @@ public class userStoriesTest {
     public void TestUS09F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us09\\us09BirthBeforeParentsDeath.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us09/us09BirthBeforeParentsDeath.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -447,9 +445,9 @@ public class userStoriesTest {
     public void TestUS10T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us10\\us10MarriageBefore14years.ged";
+            trueTestFile = "src\\test\\resources\\us10.ged";
         } else {
-            trueTestFile = "resources/us10/us10MarriageBefore14years.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us10.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -465,9 +463,9 @@ public class userStoriesTest {
     public void TestUS10F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us10\\us10MarriageAfter14years.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us10/us10MarriageAfter14years.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -483,11 +481,10 @@ public class userStoriesTest {
     public void TestUS11T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us11\\us11Bigamy.ged";
+            trueTestFile = "src\\test\\resources\\us11.ged";
         } else {
-            trueTestFile = "resources/us11/us11Bigamy.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us11.ged";
         }
-//        System.out.println(url.getPath());
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         UserStories test = new UserStories();
@@ -503,9 +500,9 @@ public class userStoriesTest {
     public void TestUS11F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us11\\us11NoBigamy.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us11/us11NoBigamy.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -521,9 +518,9 @@ public class userStoriesTest {
     public void TestUS12T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us12\\us12ParentsTooOld.ged";
+            trueTestFile = "src\\test\\resources\\us12.ged";
         } else {
-            trueTestFile = "resources/us12/us12ParentsTooOld.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us12.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -544,9 +541,9 @@ public class userStoriesTest {
     public void TestUS12F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us12\\us12ParentsNotOld.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us12/us12ParentsNotOld.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -567,9 +564,9 @@ public class userStoriesTest {
     public void TestUS13T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us13\\us13SiblingBirthNotSeperate.ged";
+            trueTestFile = "src\\test\\resources\\us13.ged";
         } else {
-            trueTestFile = "resources/us13/us13SiblingBirthNotSeperate.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us13.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -590,9 +587,9 @@ public class userStoriesTest {
     public void TestUS13F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us13\\us13SiblingBirthSeperate.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us13/us13SiblingBirthSeperate.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -613,9 +610,9 @@ public class userStoriesTest {
     public void TestUS14T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us14\\us14FiveMoreSiblingSameDay.ged";
+            trueTestFile = "src\\test\\resources\\us14.ged";
         } else {
-            trueTestFile = "resources/us14/us14FiveMoreSiblingSameDay.ged";
+            trueTestFile = "src/test/resources/us14.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -636,9 +633,9 @@ public class userStoriesTest {
     public void TestUS14F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us14\\us14FiveLessSiblingSameDay.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us14/us14FiveLessSiblingSameDay.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -659,9 +656,9 @@ public class userStoriesTest {
     public void TestUS15T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us15\\us15MoreThan15Sibling.ged";
+            trueTestFile = "src\\test\\resources\\us15.ged";
         } else {
-            trueTestFile = "resources/us15/us15MoreThan15Sibling.ged";
+            trueTestFile = "src/test/resources/us15.ged";
         }
 //        System.out.println(url.getPath());
         readGedcomFile read = new readGedcomFile();
@@ -683,9 +680,9 @@ public class userStoriesTest {
     public void TestUS15F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us15\\us15LessThan15Sibling.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us15/us15LessThan15Sibling.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -706,9 +703,9 @@ public class userStoriesTest {
     public void TestUS16T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us16\\us16FamilyNameDiff.ged";
+            trueTestFile = "src\\test\\resources\\us16.ged";
         } else {
-            trueTestFile = "resources/us16/us16FamilyNameDiff.ged";
+            trueTestFile = "src/test/resources/us16.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -729,9 +726,9 @@ public class userStoriesTest {
     public void TestUS16F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us16\\us16FamilyNameSame.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us16/us16FamilyNameSame.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -752,9 +749,9 @@ public class userStoriesTest {
     public void TestUS17T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us17\\us17MarryToChildren.ged";
+            trueTestFile = "src\\test\\resources\\us17.ged";
         } else {
-            trueTestFile = "resources/us17/us17MarryToChildren.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us17.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -775,9 +772,9 @@ public class userStoriesTest {
     public void TestUS17F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us17\\us17NoMarryToChildren.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us17/us17NoMarryToChildren.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -798,11 +795,10 @@ public class userStoriesTest {
     public void TestUS18T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us18\\us18SiblingMarryEachother.ged";
+            trueTestFile = "src\\test\\resources\\us18.ged";
         } else {
-            trueTestFile = "resources/us18/us18SiblingMarryEachother.ged";//relative path is not working on travis ci!!!
+            trueTestFile = "src/test/resources/us18.ged";
         }
-//        System.out.println(url.getPath());
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         UserStories test = new UserStories();
@@ -822,9 +818,9 @@ public class userStoriesTest {
     public void TestUS18F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us18\\us18SiblingNotMarryEachother.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us18/us18SiblingNotMarryEachother.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -845,21 +841,20 @@ public class userStoriesTest {
     public void TestUS19T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us19\\us19CousinsMarry.ged";
+            trueTestFile = "src\\test\\resources\\us19.ged";
         } else {
-            trueTestFile = "resources/us19/us19CousinsMarry.ged";
+            trueTestFile = "src/test/resources/us19.ged";
         }
-//        System.out.println(url.getPath());
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         UserStories test = new UserStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
-        Iterator<Map.Entry<String, Individual>> entries1 = indis.entrySet().iterator();
+        Iterator<Map.Entry<String, Family>> entries1 = Fams.entrySet().iterator();
         while (entries1.hasNext()) {
-            Map.Entry<String, Individual> entry = entries1.next();
-            Individual curIndis = entry.getValue();
-            test.US19(curIndis,Fams, indis);
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US19(curFam, Fams, indis);
         }
         String expected = "US19";
         assertTrue(errorContain(test.getErrorInfo(), expected));
@@ -869,20 +864,20 @@ public class userStoriesTest {
     public void TestUS19F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us19\\us19NoCousinsMarry.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us19/us19NoCousinsMarry.ged";//relative path is not working on travis ci!!!
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         UserStories test = new UserStories();
         Map indis = read.printIndi();
         Map Fams = read.printFam();
-        Iterator<Map.Entry<String, Individual>> entries1 = indis.entrySet().iterator();
+        Iterator<Map.Entry<String, Family>> entries1 = Fams.entrySet().iterator();
         while (entries1.hasNext()) {
-            Map.Entry<String, Individual> entry = entries1.next();
-            Individual curIndis = entry.getValue();
-            test.US19(curIndis,Fams, indis);
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US19(curFam, Fams, indis);
         }
         String expected = "US19";
         assertFalse(errorContain(test.getErrorInfo(), expected));
@@ -892,9 +887,9 @@ public class userStoriesTest {
     public void TestUS20T() throws Exception {
         String trueTestFile;
         if (win_System) {
-            trueTestFile = "src\\test\\resources\\us20\\us20AuntsUnclesMarryNiecesNephews.ged";
+            trueTestFile = "src\\test\\resources\\us20.ged";
         } else {
-            trueTestFile = "resources/us20/us20AuntsUnclesMarryNiecesNephews.ged";
+            trueTestFile = "src/test/resources/us20.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -905,7 +900,7 @@ public class userStoriesTest {
         while (entries1.hasNext()) {
             Map.Entry<String, Family> entry = entries1.next();
             Family curFam = entry.getValue();
-            test.US20(curFam,Fams, indis);
+            test.US20(curFam, Fams, indis);
         }
         String expected = "US20";
         assertTrue(errorContain(test.getErrorInfo(), expected));
@@ -915,9 +910,9 @@ public class userStoriesTest {
     public void TestUS20F() throws Exception {
         String falseTestFile;
         if (win_System) {
-            falseTestFile = "src\\test\\resources\\us20\\us20AuntsUnclesNotMarryNiecesNephews.ged";
+            falseTestFile = "src\\test\\resources\\ControlGroup.ged";
         } else {
-            falseTestFile = "resources/us20/us20AuntsUnclesNotMarryNiecesNephews.ged";
+            falseTestFile = "src/test/resources/ControlGroup.ged";
         }
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
@@ -928,7 +923,7 @@ public class userStoriesTest {
         while (entries1.hasNext()) {
             Map.Entry<String, Family> entry = entries1.next();
             Family curFam = entry.getValue();
-            test.US20(curFam,Fams, indis);
+            test.US20(curFam, Fams, indis);
         }
         String expected = "US20";
         assertFalse(errorContain(test.getErrorInfo(), expected));
