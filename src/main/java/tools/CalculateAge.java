@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-
+//US27: Include individual ages(Yining Wen)
 public class CalculateAge {
     public static void main(String[] args) {
         try {
@@ -50,7 +50,11 @@ public class CalculateAge {
         int yearNow = cal.get(Calendar.YEAR);  //当前年份
         int monthNow = cal.get(Calendar.MONTH);  //当前月份
         int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH); //当前日期
-        cal.setTime(birthDay);
+        //US27 changed, send the
+        if(birthDay != null){
+            cal.setTime(birthDay);
+        }
+        //
         int yearBirth = cal.get(Calendar.YEAR);
         int monthBirth = cal.get(Calendar.MONTH);
         int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);

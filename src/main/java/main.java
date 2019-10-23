@@ -40,8 +40,8 @@ public class main {
         outputStr = readDemoFileUS18("src/main/resources/US18.ged",outputStr);
         outputStr = readDemoFileUS19("src/main/resources/US18.ged",outputStr);
         outputStr = readDemoFileUS20("src/main/resources/testTwo.ged",outputStr);
-        outputStr = readDemoFileUS21("src/test/resources/us21/us21Uncorrectgenderforrole.ged",outputStr);
-//        outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
+        outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
         outputTxt text = new outputTxt();
         text.log(outputStr);
         System.out.print(outputStr);

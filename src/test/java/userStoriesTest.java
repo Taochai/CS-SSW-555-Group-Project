@@ -762,4 +762,37 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"US21") );
     }
 
+    @Test
+    public void TestUS27T() throws Exception {
+        String trueTestFile = "resources/us27/us27Can'tCalculateAge.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+//        Map _Fams = read.printFam();
+        us27 test = new us27();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US27(curIndis);
+        }
+        assertTrue(errorContain(test.getError(),"US27") );
+    }
+
+    @Test
+    public void TestUS27F() throws Exception {
+        String falseTestFile = "resources/us27/us27CalculateAge.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.printIndi();
+//        Map _Fams = read.printFam();
+        us27 test = new us27();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US27(curIndis);
+        }
+        assertFalse(errorContain(test.getError(),"US27") );
+    }
 }
