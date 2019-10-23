@@ -31,10 +31,10 @@ public class us09 {
                 Date hdeath = husband.getDeath();
                 Calendar hrightNow = Calendar.getInstance();
                 hrightNow.setTime(hdeath);
-                hrightNow.add(Calendar.MONTH, -9);//结婚前9个月
+                hrightNow.add(Calendar.MONTH, 9);//结婚前9个月
                 Date hd9 = hrightNow.getTime();
                 if(child.getBirthday().after(hd9)){
-                    errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) +" after father's death on " + Formatdate.dateToString(husband.getDeath());
+                    errStr = "ERROR: INDIVIDUAL: US09: " + child.getId() + " Birthday " + Formatdate.dateToString(child.getBirthday()) +" is 9 months later than father's death " + Formatdate.dateToString(husband.getDeath());
                     this.ErrorInfo.add(errStr);
                 }
             }
