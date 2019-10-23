@@ -14,8 +14,13 @@ import java.util.Date;
 
 public class Formatdate {
     static Date stringtodate(String date) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-        Date date1 = dateFormat.parse(date);
+        Date date1 = null;
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+            date1 = dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return date1;
     }
 

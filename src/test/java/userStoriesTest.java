@@ -688,23 +688,23 @@ public class userStoriesTest
     }
 
     @Test
-    public void TestUS20T() throws Exception {
+public void TestUS20T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us20/us20AuntsUnclesMarryNiecesNephews.ged";
-        readGedcomFile read = new readGedcomFile();
-        read.readFile(trueTestFile);
-        Map _indis = read.getIndi();
-        Map _Fams = read.getFam();
+    String trueTestFile = "resources/us20/us20AuntsUnclesMarryNiecesNephews.ged";
+    readGedcomFile read = new readGedcomFile();
+    read.readFile(trueTestFile);
+    Map _indis = read.getIndi();
+    Map _Fams = read.getFam();
 
-        us20 test = new us20();
-        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
-        while (entries1.hasNext()) {
-            Map.Entry<String, Individual> entry = entries1.next();
-            Individual curIndis = entry.getValue();
-            test.US20(curIndis,_Fams, _indis);
-        }
-        assertTrue(errorContain(test.getError(),"US20") );
+    us20 test = new us20();
+    Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+    while (entries1.hasNext()) {
+        Map.Entry<String, Individual> entry = entries1.next();
+        Individual curIndis = entry.getValue();
+        test.US20(curIndis,_Fams, _indis);
     }
+    assertTrue(errorContain(test.getError(),"US20") );
+}
 
     @Test
     public void TestUS20F() throws Exception {
@@ -723,6 +723,43 @@ public class userStoriesTest
             test.US20(curIndis,_Fams, _indis);
         }
         assertFalse(errorContain(test.getError(),"US20") );
+    }
+
+    @Test
+    public void TestUS21T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile = "resources/us21/us21Uncorrectgenderforrole.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us21 test = new us21();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US21(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"US21") );
+    }
+
+    @Test
+    public void TestUS21F() throws Exception {
+        String falseTestFile = "resources/us21/us21Correctgenderforrole.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us21 test = new us21();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US21(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"US21") );
     }
 
 }

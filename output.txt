@@ -43,3 +43,464 @@ ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
 ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
 ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
 ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I2 married uncle: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I2 married uncle: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I2 married uncle: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I2 married uncle: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1
+ERROR: INDIVIDUAL: US27: Can't getI1's age
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I2 married uncle: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US20: F1 : niece: I1 married uncle: I1
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I1 married aunt: I1
+ERROR: FAMILY: US20: F1 : nephew: I2 married aunt: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I1 married aunt: I1
+ERROR: FAMILY: US20: F1 : nephew: I2 married aunt: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US21: F1 the husbandPablo /Alboran/ gender is not male
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I1 married aunt: I1
+ERROR: FAMILY: US20: F1 : nephew: I2 married aunt: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US21: The family: F1 the husbandI1 gender is not male
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I1 married aunt: I1
+ERROR: FAMILY: US20: F1 : nephew: I2 married aunt: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US21: The family: F1 the husbandI1 gender is not male
+ERROR: INDIVIDUAL: US01: I15: Birthday 2022-07-06 occurs in the future
+ERROR: FAMILY: US02: F1: wife's birthday 1989-08-28 after marriage 1988-07-13
+ERROR: FAMILY: US02: F1: husband's birthday 1989-03-31 after marriage 1988-07-13
+ERROR: INDIVIDUAL: US03: I14: Died 2011-04-02 before born 2012-06-11
+ERROR: INDIVIDUAL: US03: I15: Died 2019-10-01 before born 2022-07-06
+ERROR: INDIVIDUAL: US03: I2: Died 1989-07-03 before born 1989-08-28
+ERROR: FAMILY: US04: F3: Divorced 1964-03-08 before married 1984-07-12
+ERROR: FAMILY: US05: F4 Married 2010-05-04 after husband's (I6) death on 2009-06-10
+ERROR: FAMILY: US06: F1 Divorced 1990-04-03 after wife's (I2) death on 1989-07-03
+ERROR: INDIVIDUAL: US07: I5: More than 150 years old - Birth date 1860-06-15: Death 2019-10-01
+ANOMALY: FAMILY: US08: F4: Child I16 born 2008-05-07 before marriage on 2010-05-04
+ANOMALY: FAMILY: US08: F1: Child I3 born 2018-01-01 after divorce on 1990-04-03
+ANOMALY: FAMILY: US08: F1: Child I17 born 2018-01-01 after divorce on 1990-04-03
+ERROR: INDIVIDUAL: US09: I17 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I14 Birthday 2012-06-11 is 9 months later than father's death 2009-06-10
+ERROR: INDIVIDUAL: US09: I3 Birthday 2018-01-01 after mother's death on 1989-07-03
+ERROR: INDIVIDUAL: US09: I15 Birthday 2022-07-06 is 9 months later than father's death 2009-06-10
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but husband: I1 Pablo /Alboran/born on 1989-03-31 age < 14 when married
+ERROR: FAMILY: US10: F1 Married 1988-07-13 but wife: I2 Sarah /Peter/born on 1989-08-28 age < 14 when married
+ERROR: INDIVIDUAL: US11: The person with id I6 is married to the person I7 with family id F4 while the person is still married to person with id I12 in family F5
+ERROR: INDIVIDUAL: US12: I8 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I2 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I6 is more than 80 years younger than Father: I4
+ERROR: INDIVIDUAL: US12: I8 is more than 60 years younger than Mother: I5
+ERROR: INDIVIDUAL: US12: I2 is more than 80 years younger than Father: I4
+ERROR: US13: FamilyID:F4 children:I15 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I14 and children:I16birthday difference greater than 2 days AND less than 8 months 
+ERROR: US13: FamilyID:F4 children:I16 and children:I15birthday difference greater than 2 days AND less than 8 months 
+ERROR: US14: FamilyID:F5 has more than five child is born in date:2018-01-01
+ERROR: FAMILY: US15: F4 has more or equal than 15 siblings.
+ERROR: FAMILY: US16: F2 male members don`t have same last name.
+ERROR: FAMILY: US16: F1 male members don`t have same last name.
+ERROR: FAMILY: US17: Family: F1's member AnnaBelle /Smith/ married parent
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+
+ERROR: FAMILY: US19: I14 married cousin I15
+ERROR: FAMILY: US19: I15 married cousin I15
+ERROR: FAMILY: US20: F1 : nephew: I1 married aunt: I1
+ERROR: FAMILY: US20: F1 : nephew: I2 married aunt: I1
+ERROR: FAMILY: US20: F4 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F5 : niece: I6 married uncle: I6
+ERROR: FAMILY: US20: F6 : niece: I8 married uncle: I8
+ERROR: FAMILY: US20: F7 : nephew: I19 married uncle: I16
+ERROR: FAMILY: US20: F7 : niece: I16 married uncle: I16
+ERROR: FAMILY: US21: The family: F1 the husband: I1 gender is not male
