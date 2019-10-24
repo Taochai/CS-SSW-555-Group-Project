@@ -31,7 +31,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS01T() throws Exception {
-        String trueTestFile = "resources/us01/us01DatesAfterToday.ged";//relative path is not working on travis ci!!!
+        String trueTestFile = "src/test/resources/us01/us01DatesAfterToday.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         us01 test = new us01();
@@ -43,7 +43,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS01F() throws Exception {
-        String falseTestFile = "resources/us01/us01DatesBeforeToday.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us01/us01DatesBeforeToday.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         us01 test = new us01();
@@ -55,7 +55,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS02T() throws Exception {
-        String trueTestFile = "resources/us02/us02BirthAfterMarriage.ged";
+        String trueTestFile = "src/test/resources/us02/us02BirthAfterMarriage.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         us02 test = new us02();
@@ -72,7 +72,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS02F() throws Exception {
-        String falseTestFile = "resources/us02/us02BirthBeforeMarriage.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us02/us02BirthBeforeMarriage.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         us02 test = new us02();
