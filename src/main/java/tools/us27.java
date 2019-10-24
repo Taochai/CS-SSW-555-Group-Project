@@ -20,7 +20,7 @@ public class us27 {
     // US27: Include individual ages(Yining Wen)
     public String US27(Individual _indi) throws ParseException {
         String errStr = "";
-        if (_indi.getBirthday() == null || CalculateAge.getAge(_indi.getBirthday())== 0) {
+        if (_indi.getBirthday() == null) {
             errStr = "ERROR: INDIVIDUAL: US27: Can't get " + _indi.getId()+ "'s age";
             this.ErrorInfo.add(errStr);
         }
