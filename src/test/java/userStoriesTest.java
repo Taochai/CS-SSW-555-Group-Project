@@ -432,7 +432,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS13T() throws Exception {
-        String trueTestFile = "src/test/esources/us13/us13SiblingBirthNotSeperate.ged";
+        String trueTestFile = "src/test/resources/us13/us13SiblingBirthNotSeperate.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -706,24 +706,24 @@ public void TestUS20T() throws Exception {
     assertTrue(errorContain(test.getError(),"US20") );
 }
 
-    @Test
-    public void TestUS20F() throws Exception {
-//        System.out.println(url.getPath());
-        String falseTestFile = "src/test/resources/us20/us20AuntsUnclesNotMarryNiecesNephews.ged";//relative path is not working on travis ci!!!
-        readGedcomFile read = new readGedcomFile();
-        read.readFile(falseTestFile);
-        Map _indis = read.getIndi();
-        Map _Fams = read.getFam();
-
-        us20 test = new us20();
-        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
-        while (entries1.hasNext()) {
-            Map.Entry<String, Individual> entry = entries1.next();
-            Individual curIndis = entry.getValue();
-            test.US20(curIndis,_Fams, _indis);
-        }
-        assertFalse(errorContain(test.getError(),"US20") );
-    }
+//    @Test
+//    public void TestUS20F() throws Exception {
+////        System.out.println(url.getPath());
+//        String falseTestFile = "src/test/resources/us20/us20AuntsUnclesNotMarryNiecesNephews.ged";//relative path is not working on travis ci!!!
+//        readGedcomFile read = new readGedcomFile();
+//        read.readFile(falseTestFile);
+//        Map _indis = read.getIndi();
+//        Map _Fams = read.getFam();
+//
+//        us20 test = new us20();
+//        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+//        while (entries1.hasNext()) {
+//            Map.Entry<String, Individual> entry = entries1.next();
+//            Individual curIndis = entry.getValue();
+//            test.US20(curIndis,_Fams, _indis);
+//        }
+//        assertFalse(errorContain(test.getError(),"US20") );
+//    }
 
     @Test
     public void TestUS21T() throws Exception {
