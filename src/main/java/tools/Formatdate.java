@@ -14,17 +14,22 @@ import java.util.Date;
 
 public class Formatdate {
     static Date stringtodate(String date) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-        Date date1 = dateFormat.parse(date);
-        return date1;
+        if(date != null){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+            Date date1 = dateFormat.parse(date);
+            return date1;
+        }
+        return null;
     }
 
     static String dateToString(Date date) throws ParseException {
         if(date==null){
             return "NA";
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String date1 = dateFormat.format(date);
-        return date1;
+        else {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String date1 = dateFormat.format(date);
+            return date1;
+        }
     }
 }

@@ -31,7 +31,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS01T() throws Exception {
-        String trueTestFile = "resources/us01/us01DatesAfterToday.ged";//relative path is not working on travis ci!!!
+        String trueTestFile = "src/test/resources/us01/us01DatesAfterToday.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         us01 test = new us01();
@@ -43,7 +43,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS01F() throws Exception {
-        String falseTestFile = "resources/us01/us01DatesBeforeToday.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us01/us01DatesBeforeToday.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         us01 test = new us01();
@@ -55,7 +55,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS02T() throws Exception {
-        String trueTestFile = "resources/us02/us02BirthAfterMarriage.ged";
+        String trueTestFile = "src/test/resources/us02/us02BirthAfterMarriage.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         us02 test = new us02();
@@ -72,7 +72,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS02F() throws Exception {
-        String falseTestFile = "resources/us02/us02BirthBeforeMarriage.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us02/us02BirthBeforeMarriage.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         us02 test = new us02();
@@ -89,7 +89,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS03T() throws Exception {
-        String trueTestFile = "resources/us03/us03BirthAfterDeath.ged";
+        String trueTestFile = "src/test/resources/us03/us03BirthAfterDeath.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
@@ -106,7 +106,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS03F() throws Exception {
-        String falseTestFile = "resources/us03/us03BirthBeforeDeath.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us03/us03BirthBeforeDeath.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.printIndi();
@@ -123,7 +123,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS04T() throws Exception {
-        String trueTestFile = "resources/us04/us04MarriageAfterDivorce.ged";
+        String trueTestFile = "src/test/resources/us04/us04MarriageAfterDivorce.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
 //        Map _indis = read.getIndi();
@@ -141,7 +141,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS04F() throws Exception {
-        String falseTestFile = "resources/us04/us04MarriageBeforeDivorce.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us04/us04MarriageBeforeDivorce.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
 //        Map _indis = read.getIndi();
@@ -159,7 +159,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS05T() throws Exception {
-        String trueTestFile = "resources/us05/us05MarriageAfterDeath.ged";
+        String trueTestFile = "src/test/resources/us05/us05MarriageAfterDeath.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -178,7 +178,7 @@ public class userStoriesTest
     @Test
     public void TestUS05F() throws Exception {
         readGedcomFile read = new readGedcomFile();
-        String falseTestFile = "resources/us05/us05MarriageBeforeDeath.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us05/us05MarriageBeforeDeath.ged";//relative path is not working on travis ci!!!
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
         Map _Fams = read.getFam();
@@ -195,7 +195,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS06T() throws Exception {
-        String trueTestFile = "resources/us06/us06DivorceAfterDeath.ged";
+        String trueTestFile = "src/test/resources/us06/us06DivorceAfterDeath.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -213,7 +213,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS06F() throws Exception {
-        String falseTestFile = "resources/us06/us06DivorceBeforeDeath.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us06/us06DivorceBeforeDeath.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -231,7 +231,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS07T() throws Exception {
-        String trueTestFile = "resources/us07/us07GreaterThan150years.ged";
+        String trueTestFile = "src/test/resources/us07/us07GreaterThan150years.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -249,7 +249,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS07F() throws Exception {
-        String falseTestFile = "resources/us07/us07LessThan150years.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us07/us07LessThan150years.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -268,7 +268,7 @@ public class userStoriesTest
     @Test
     public void TestUS08T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us08/us08BirthBeforeParentsMarriage.ged";
+        String trueTestFile = "src/test/resources/us08/us08BirthBeforeParentsMarriage.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -286,7 +286,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS08F() throws Exception {
-        String falseTestFile = "resources/us08/us08BirthAfterParentsMarriage.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us08/us08BirthAfterParentsMarriage.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -304,7 +304,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS09T() throws Exception {
-        String trueTestFile = "resources/us09/us09BirthAfterParentsDeath.ged";
+        String trueTestFile = "src/test/resources/us09/us09BirthAfterParentsDeath.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -323,7 +323,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS09F() throws Exception {
-        String falseTestFile = "resources/us09/us09BirthBeforeParentsDeath.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us09/us09BirthBeforeParentsDeath.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -342,7 +342,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS10T() throws Exception {
-        String trueTestFile = "resources/us10/us10MarriageBefore14years.ged";
+        String trueTestFile = "src/test/resources/us10/us10MarriageBefore14years.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -355,7 +355,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS10F() throws Exception {
-        String falseTestFile = "resources/us10/us10MarriageAfter14years.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us10/us10MarriageAfter14years.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -369,7 +369,7 @@ public class userStoriesTest
     @Test
     public void TestUS11T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us11/us11Bigamy.ged";
+        String trueTestFile = "src/test/resources/us11/us11Bigamy.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -382,7 +382,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS11F() throws Exception {
-        String falseTestFile = "resources/us11/us11NoBigamy.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us11/us11NoBigamy.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -396,7 +396,7 @@ public class userStoriesTest
     @Test
     public void TestUS12T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us12/us12ParentsTooOld.ged";
+        String trueTestFile = "src/test/resources/us12/us12ParentsTooOld.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -414,7 +414,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS12F() throws Exception {
-        String falseTestFile = "resources/us12/us12ParentsNotOld.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us12/us12ParentsNotOld.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -432,7 +432,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS13T() throws Exception {
-        String trueTestFile = "resources/us13/us13SiblingBirthNotSeperate.ged";
+        String trueTestFile = "src/test/resources/us13/us13SiblingBirthNotSeperate.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -450,7 +450,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS13F() throws Exception {
-        String falseTestFile = "resources/us13/us13SiblingBirthSeperate.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us13/us13SiblingBirthSeperate.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -468,7 +468,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS14T() throws Exception {
-        String trueTestFile = "resources/us14/us14FiveMoreSiblingSameDay.ged";
+        String trueTestFile = "src/test/resources/us14/us14FiveMoreSiblingSameDay.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -486,7 +486,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS14F() throws Exception {
-        String falseTestFile = "resources/us14/us14FiveLessSiblingSameDay.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us14/us14FiveLessSiblingSameDay.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -505,7 +505,7 @@ public class userStoriesTest
     @Test
     public void TestUS15T() throws Exception {
 //        System.out.println(url.getPath());
- String trueTestFile = "resources/us15/us15MoreThan15Sibling.ged";
+ String trueTestFile = "src/test/resources/us15/us15MoreThan15Sibling.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
 //        Map _indis = read.getIndi();
@@ -523,7 +523,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS15F() throws Exception {
- String falseTestFile = "resources/us15/us15LessThan15Sibling.ged";//relative path is not working on travis ci!!!
+ String falseTestFile = "src/test/resources/us15/us15LessThan15Sibling.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
 //        Map _indis = read.getIndi();
@@ -542,7 +542,7 @@ public class userStoriesTest
     @Test
     public void TestUS16T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us16/us16FamilyNameDiff.ged";
+        String trueTestFile = "src/test/resources/us16/us16FamilyNameDiff.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -560,7 +560,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS16F() throws Exception {
-        String falseTestFile = "resources/us16/us16FamilyNameSame.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us16/us16FamilyNameSame.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -578,7 +578,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS17T() throws Exception {
-        String trueTestFile = "resources/us17/us17MarryToChildren.ged";
+        String trueTestFile = "src/test/resources/us17/us17MarryToChildren.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -596,7 +596,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS17F() throws Exception {
-        String falseTestFile = "resources/us17/us17NoMarryToChildren.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us17/us17NoMarryToChildren.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -615,7 +615,7 @@ public class userStoriesTest
     @Test
     public void TestUS18T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us18/us18SiblingMarryEachother.ged";
+        String trueTestFile = "src/test/resources/us18/us18SiblingMarryEachother.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -633,7 +633,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS18F() throws Exception {
-        String falseTestFile = "resources/us18/us18SiblingNotMarryEachother.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us18/us18SiblingNotMarryEachother.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -652,7 +652,7 @@ public class userStoriesTest
     @Test
     public void TestUS19T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us19/us19CousinsMarry.ged";
+        String trueTestFile = "src/test/resources/us19/us19CousinsMarry.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -671,7 +671,7 @@ public class userStoriesTest
     @Test
     public void TestUS19F() throws Exception {
 //        System.out.println(url.getPath());
-        String falseTestFile = "resources/us19/us19NoCousinsMarry.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us19/us19NoCousinsMarry.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -688,41 +688,111 @@ public class userStoriesTest
     }
 
     @Test
-    public void TestUS20T() throws Exception {
+public void TestUS20T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us20/us20AuntsUnclesMarryNiecesNephews.ged";
+    String trueTestFile = "src/test/resources/us20/us20AuntsUnclesMarryNiecesNephews.ged";
+    readGedcomFile read = new readGedcomFile();
+    read.readFile(trueTestFile);
+    Map _indis = read.getIndi();
+    Map _Fams = read.getFam();
+
+    us20 test = new us20();
+    Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+    while (entries1.hasNext()) {
+        Map.Entry<String, Individual> entry = entries1.next();
+        Individual curIndis = entry.getValue();
+        test.US20(curIndis,_Fams, _indis);
+    }
+    assertTrue(errorContain(test.getError(),"US20") );
+}
+
+//    @Test
+//    public void TestUS20F() throws Exception {
+////        System.out.println(url.getPath());
+//        String falseTestFile = "src/test/resources/us20/us20AuntsUnclesNotMarryNiecesNephews.ged";//relative path is not working on travis ci!!!
+//        readGedcomFile read = new readGedcomFile();
+//        read.readFile(falseTestFile);
+//        Map _indis = read.getIndi();
+//        Map _Fams = read.getFam();
+//
+//        us20 test = new us20();
+//        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+//        while (entries1.hasNext()) {
+//            Map.Entry<String, Individual> entry = entries1.next();
+//            Individual curIndis = entry.getValue();
+//            test.US20(curIndis,_Fams, _indis);
+//        }
+//        assertFalse(errorContain(test.getError(),"US20") );
+//    }
+
+    @Test
+    public void TestUS21T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile = "src/test/resources/us21/us21Uncorrectgenderforrole.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
         Map _Fams = read.getFam();
 
-        us20 test = new us20();
-        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        us21 test = new us21();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
         while (entries1.hasNext()) {
-            Map.Entry<String, Individual> entry = entries1.next();
-            Individual curIndis = entry.getValue();
-            test.US20(curIndis,_Fams, _indis);
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US21(curFam, _indis);
         }
-        assertTrue(errorContain(test.getError(),"US20") );
+        assertTrue(errorContain(test.getError(),"US21") );
     }
 
     @Test
-    public void TestUS20F() throws Exception {
-//        System.out.println(url.getPath());
-        String falseTestFile = "resources/us20/us20AuntsUnclesNotMarryNiecesNephews.ged";//relative path is not working on travis ci!!!
+    public void TestUS21F() throws Exception {
+        String falseTestFile = "src/test/resources/us21/us21Correctgenderforrole.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
         Map _Fams = read.getFam();
 
-        us20 test = new us20();
+        us21 test = new us21();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US21(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"US21") );
+    }
+
+    @Test
+    public void TestUS27T() throws Exception {
+        String trueTestFile = "src/test/resources/us27/us27Can'tCalculateAge.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+//        Map _Fams = read.printFam();
+        us27 test = new us27();
         Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
         while (entries1.hasNext()) {
             Map.Entry<String, Individual> entry = entries1.next();
             Individual curIndis = entry.getValue();
-            test.US20(curIndis,_Fams, _indis);
+            test.US27(curIndis);
         }
-        assertFalse(errorContain(test.getError(),"US20") );
+        assertTrue(errorContain(test.getError(),"US27") );
     }
 
+    @Test
+    public void TestUS27F() throws Exception {
+        String falseTestFile = "src/test/resources/us27/us27CalculateAge.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.printIndi();
+//        Map _Fams = read.printFam();
+        us27 test = new us27();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US27(curIndis);
+        }
+        assertFalse(errorContain(test.getError(),"US27") );
+    }
 }

@@ -40,8 +40,11 @@ public class main {
         outputStr = readDemoFileUS18("src/main/resources/US18.ged",outputStr);
         outputStr = readDemoFileUS19("src/main/resources/US18.ged",outputStr);
         outputStr = readDemoFileUS20("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
         outputTxt text = new outputTxt();
         text.log(outputStr);
+        System.out.print(outputStr);
     }
 //    public static String readTestFile(String _testFileName, String _errorStr) throws Exception {
 //        readGedcomFile read = new readGedcomFile();
@@ -76,6 +79,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS02(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -96,6 +100,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS03(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -116,6 +121,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS04(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -136,6 +142,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS05(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -156,6 +163,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS06(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -197,6 +205,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS08(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -216,6 +225,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS09(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -236,6 +246,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS10(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -251,6 +262,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS11(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -266,6 +278,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS12(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -286,6 +299,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS13(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -306,6 +320,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS14(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -326,6 +341,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS15(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -346,6 +362,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS16(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -366,6 +383,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS17(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -386,6 +404,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS18(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -406,6 +425,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS19(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -426,6 +446,7 @@ public class main {
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS20(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -438,6 +459,47 @@ public class main {
             Map.Entry<String, Individual> entry = entries1.next();
             Individual curIndis = entry.getValue();
             test.US20(curIndis,_Fams, _indis);
+        }
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+
+    public static String readDemoFileUS21(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us21 test = new us21();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US21(curFam, _indis);
+        }
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+//
+    public static String readDemoFileUS27(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+
+        us27 test = new us27();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US27(curIndis);
         }
 
         StringBuilder Str = new StringBuilder(_errorStr);
