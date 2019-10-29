@@ -303,7 +303,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS09T() throws Exception {
-        String trueTestFile = "src/test/esources/us09/us09BirthAfterParentsDeath.ged";
+        String trueTestFile = "src/test/resources/us09/us09BirthAfterParentsDeath.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
