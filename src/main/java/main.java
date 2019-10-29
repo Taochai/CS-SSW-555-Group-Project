@@ -44,9 +44,9 @@ public class main {
         outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS22("src/main/resources/test22.ged",outputStr);
         outputStr = readDemoFileUS23("src/main/resources/test23True.ged",outputStr);
-        outputStr = readDemoFileUS25("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS25("src/main/resources/US25.ged",outputStr);
         outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
-        outputStr = readDemoFileUS28("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS28("src/main/resources/US28.ged",outputStr);
 
 
 

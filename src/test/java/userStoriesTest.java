@@ -3,9 +3,6 @@ import objects.Individual;
 import org.junit.Test;
 import tools.*;
 
-import java.io.IOException;
-import java.net.URL;
-import java.text.ParseException;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Map;
@@ -306,7 +303,7 @@ public class userStoriesTest
 
     @Test
     public void TestUS09T() throws Exception {
-        String trueTestFile = "src/test/resources/us09/us09BirthAfterParentsDeath.ged";
+        String trueTestFile = "src/test/esources/us09/us09BirthAfterParentsDeath.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -873,7 +870,7 @@ public void TestUS20T() throws Exception {
     @Test
     public void TestUS28T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "src/test/resources/us28/CannotOrder.ged";
+        String trueTestFile = "src/test/resources/us28/OrderSiblings.ged";
         // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -882,12 +879,12 @@ public void TestUS20T() throws Exception {
 
         us28 test = new us28();
         test.US28(_Fams, _indis);
-        assertFalse(errorContain(test.getError(),"US28") );
+        assertTrue(errorContain(test.getError(),"US28") );
     }
 
     @Test
     public void TestUS28F() throws Exception {
-        String falseTestFile = "src/test/resources/us28/OrderSiblings.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us28/CannotOrder.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.printIndi();

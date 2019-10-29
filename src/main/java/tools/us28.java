@@ -12,6 +12,7 @@ import objects.Family;
 import objects.Individual;
 
 public class us28 {
+    //if family has 0 children，then it has no output
     private Set<String> ErrorInfo;
 
     public us28() {
@@ -62,7 +63,7 @@ public class us28 {
                 indiList.add(index, indi);
             }
             
-            errStr = "Siblings in family with id" + curFam.getId();
+            errStr = "US28: Siblings in family with id" + curFam.getId();
             for (Individual indi : indiList) {
                 errStr += "\n\tid: " + indi.getId() + " birthday: " + Formatdate.dateToString(indi.getBirthday());
             }
