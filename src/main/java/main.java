@@ -43,10 +43,13 @@ public class main {
         outputStr = readDemoFileUS20("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS22("src/main/resources/test22.ged",outputStr);
-        outputStr = readDemoFileUS23("src/main/resources/test23.ged",outputStr);
+        outputStr = readDemoFileUS23("src/main/resources/test23True.ged",outputStr);
         outputStr = readDemoFileUS25("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
-        outputStr = readDemoFileUS29("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS28("src/main/resources/testTwo.ged",outputStr);
+
+
+
         outputTxt text = new outputTxt();
         text.log(outputStr);
         System.out.print(outputStr);
@@ -561,14 +564,14 @@ public class main {
         return Str.toString();
     }
 
-    public static String readDemoFileUS29(String _testFileName, String _errorStr) throws Exception {
+    public static String readDemoFileUS28(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
         Map _indis = read.getIndi();
         Map _Fams = read.getFam();
 
-        us29 test = new us29();
-        test.US29(_Fams, _indis);
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
 
         StringBuilder Str = new StringBuilder(_errorStr);
         for (String a : test.getError()) {

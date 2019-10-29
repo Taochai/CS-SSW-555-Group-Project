@@ -11,10 +11,10 @@ import java.util.Set;
 import objects.Family;
 import objects.Individual;
 
-public class us29 {
+public class us28 {
     private Set<String> ErrorInfo;
 
-    public us29() {
+    public us28() {
         ErrorInfo = new HashSet<>();
     }
 
@@ -22,19 +22,19 @@ public class us29 {
         return this.ErrorInfo;
     }
 
-    public String US29(Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
+    public String US28(Map<String, Family> _Fams, Map<String, Individual> _indis) throws ParseException {
         String errStr = "";
         Iterator<Map.Entry<String, Family>> entries = _Fams.entrySet().iterator();
         out: while (entries.hasNext()) {
             Map.Entry<String, Family> entry = entries.next();
             Family curFam = entry.getValue();
             if (curFam.getChildren().size() == 0) {
-            	errStr = "ERROR: FAMILY: US29: No child in Family with id " + curFam.getId();
+            	errStr = "ERROR: FAMILY: US28: No child in Family with id " + curFam.getId();
             	//ErrorInfo.add(errStr);
             	continue;
             }
             if (curFam.getChildren().size() == 1) {
-            	errStr = "ERROR: FAMILY: US29: Only one child in Family with id " + curFam.getId();
+            	errStr = "ERROR: FAMILY: US28: Only one child in Family with id " + curFam.getId();
             	//ErrorInfo.add(errStr);
             	continue;
             }
@@ -43,14 +43,14 @@ public class us29 {
             for (String indiId : curFam.getChildren()) {
                 Individual indi = _indis.get(indiId);
                 if (indi.getBirthday() == null) {
-                	errStr = "ERROR: FAMILY: US29: Individual with id " + indi.getId() + " don't have birthday in Family with id " + curFam.getId();
+                	errStr = "ERROR: FAMILY: US28: Individual with id " + indi.getId() + " don't have birthday in Family with id " + curFam.getId();
                 	//ErrorInfo.add(errStr);
                 	continue out;
                 }
                 int index = 0;
                 for (Individual i : indiList) {
                 	if (i.getBirthday().equals(indi.getBirthday())) {
-                    	errStr = "ERROR: FAMILY: US29: Individual with id " + i.getId() + " and Individual with id " + indi.getId() + " has the same birthday " + Formatdate.dateToString(i.getBirthday()) + " in Family with id " + curFam.getId();
+                    	errStr = "ERROR: FAMILY: US28: Individual with id " + i.getId() + " and Individual with id " + indi.getId() + " has the same birthday " + Formatdate.dateToString(i.getBirthday()) + " in Family with id " + curFam.getId();
                     	//ErrorInfo.add(errStr);
                     	continue out;
                 	}

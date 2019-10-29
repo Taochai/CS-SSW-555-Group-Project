@@ -814,7 +814,7 @@ public void TestUS20T() throws Exception {
     @Test
     public void TestUS25T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "/Users/crystal1831/Desktop/CS_555/CS-SSW-555-Group-Project/src/test/resources/us26/NotUnique.ged";
+        String trueTestFile = "src/test/resources/us25/NotUnique.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
@@ -827,7 +827,7 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS25F() throws Exception {
-        String falseTestFile = "/Users/crystal1831/Desktop/CS_555/CS-SSW-555-Group-Project/src/test/resources/us26/UniqueName.ged";//relative path is not working on travis ci!!!
+        String falseTestFile = "src/test/resources/us25/UniqueName.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.printIndi();
@@ -871,31 +871,31 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"US27") );
     }
     @Test
-    public void TestUS29T() throws Exception {
+    public void TestUS28T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "/Users/crystal1831/Desktop/CS_555/CS-SSW-555-Group-Project/src/test/resources/us29/CannotOrder.ged";
+        String trueTestFile = "src/test/resources/us28/CannotOrder.ged";
         // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
         Map _Fams = read.printFam();
 
-        us29 test = new us29();
-        test.US29(_Fams, _indis);
-        assertFalse(errorContain(test.getError(),"US29") );
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US28") );
     }
 
     @Test
-    public void TestUS29F() throws Exception {
-        String falseTestFile = "/Users/crystal1831/Desktop/CS_555/CS-SSW-555-Group-Project/src/test/resources/us29/OrderSiblings.ged";//relative path is not working on travis ci!!!
+    public void TestUS28F() throws Exception {
+        String falseTestFile = "src/test/resources/us28/OrderSiblings.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.printIndi();
         Map _Fams = read.printFam();
 
-        us29 test = new us29();
-        test.US29(_Fams, _indis);
-        assertFalse(errorContain(test.getError(),"US29") );
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US28") );
     }
 
 

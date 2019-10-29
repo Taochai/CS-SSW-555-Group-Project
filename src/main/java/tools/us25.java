@@ -40,7 +40,7 @@ public class us25 {
                 if (prevIndi == null) {
                     birthdayMap.put(indi.getBirthday(), indi);
                 } else {
-                    errStr = "ERROR: FAMILY: US26: The person with id " + indi.getId() + " has the same name " + indi.getName() + " and birthday " + Formatdate.dateToString(indi.getBirthday()) + " with person with id " + prevIndi.getId() + " in family with id " + curFam.getId();
+                    errStr = "ERROR: FAMILY: US25: The person with id " + indi.getId() + " has the same name " + indi.getName() + " and birthday " + Formatdate.dateToString(indi.getBirthday()) + " with person with id " + prevIndi.getId() + " in family with id " + curFam.getId();
                     this.ErrorInfo.add(errStr);
                 }
             }
