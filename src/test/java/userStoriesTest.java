@@ -3,7 +3,9 @@ import objects.Individual;
 import org.junit.Test;
 import tools.*;
 
+import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Map;
@@ -761,7 +763,54 @@ public void TestUS20T() throws Exception {
         }
         assertFalse(errorContain(test.getError(),"US21") );
     }
+    @Test
+    public void TestUS22T() throws Exception {
+        String trueTestFile = "src/test/resources/us22/Test22.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+        us22 test = new us22();
+        test.US22(_Fams,_indis);
 
+        assertTrue(errorContain(test.getError(),"US22") );
+    }
+    @Test
+    public void TestUS22F() throws Exception {
+        String trueTestFile = "src/test/resources/us22/Test22True.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+        us22 test = new us22();
+        test.US22(_Fams,_indis);
+
+        assertFalse(errorContain(test.getError(),"US22") );
+    }
+    @Test
+
+    public void TestUS23T() throws Exception {
+        String trueTestFile = "src/test/resources/us23/Test23.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        us23 test = new us23();
+        test.US23(_indis);
+
+        assertTrue(errorContain(test.getError(),"US23") );
+    }
+    @Test
+    public void TestUS23F() throws Exception {
+        String trueTestFile = "src/test/resources/us23/Test23True.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+
+        us23 test = new us23();
+        test.US23(_indis);
+
+        assertFalse(errorContain(test.getError(),"US23") );
+    }
     @Test
     public void TestUS27T() throws Exception {
         String trueTestFile = "src/test/resources/us27/us27Can'tCalculateAge.ged";
