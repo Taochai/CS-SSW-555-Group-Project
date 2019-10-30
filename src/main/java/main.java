@@ -20,6 +20,7 @@ import tools.*;
 public class main {
     public static void main(String[] args) throws Exception {
        String outputStr = "";
+
         outputStr = readDemoFileUS01("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS02("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS03("src/main/resources/TestGEDCOM.ged",outputStr);
@@ -41,7 +42,16 @@ public class main {
         outputStr = readDemoFileUS19("src/main/resources/US18.ged",outputStr);
         outputStr = readDemoFileUS20("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS22("src/main/resources/test22.ged",outputStr);
+        outputStr = readDemoFileUS23("src/main/resources/test23True.ged",outputStr);
+        outputStr = readDemoFileUS24("src/main/resources/US24.ged",outputStr);
+        outputStr = readDemoFileUS25("src/main/resources/US25.ged",outputStr);
+        outputStr = readDemoFileUS26("src/main/resources/US26.ged",outputStr);
         outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
+        outputStr = readDemoFileUS28("src/main/resources/US28.ged",outputStr);
+
+
+
         outputTxt text = new outputTxt();
         text.log(outputStr);
         System.out.print(outputStr);
@@ -488,7 +498,83 @@ public class main {
         }
         return Str.toString();
     }
+    public static String readDemoFileUS22(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+//        read.printIndi();
+//        read.printFam();
+        us22 test = new us22();
+        test.US22(_Fams,_indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    public static String readDemoFileUS23(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        read.printIndi();
+
+        us23 test = new us23();
+        test.US23(_indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    public static String readDemoFileUS24(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us24 test = new us24();
+        test.US24(_Fams,_indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    public static String readDemoFileUS25(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us25 test = new us25();
+        test.US25(_Fams, _indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
 //
+public static String readDemoFileUS26(String _testFileName, String _errorStr) throws Exception {
+    readGedcomFile read = new readGedcomFile();
+    read.readFile(_testFileName);
+    Map _indis = read.getIndi();
+    Map _Fams = read.getFam();
+
+    us26 test = new us26();
+    test.US26(_Fams, _indis);
+
+    StringBuilder Str = new StringBuilder(_errorStr);
+    for (String a : test.getError()) {
+        Str.append(a+"\n");
+    }
+    return Str.toString();
+}
     public static String readDemoFileUS27(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -501,6 +587,22 @@ public class main {
             Individual curIndis = entry.getValue();
             test.US27(curIndis);
         }
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+
+    public static String readDemoFileUS28(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
 
         StringBuilder Str = new StringBuilder(_errorStr);
         for (String a : test.getError()) {

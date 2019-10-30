@@ -21,6 +21,8 @@ import java.util.*;
 public class readGedcomFile {
     Map<String, Individual> Indis;
     Map<String, Family> Fams;
+    Map<String,Integer> sameIndiID = new HashMap<>();
+    Map<String,Integer> sameFamID = new HashMap<>();
     Boolean ifBIRT = false;
     Boolean ifDEAT = false;
     Boolean ifMARR = false;
@@ -75,15 +77,31 @@ public class readGedcomFile {
                     }
                     if((strArr[2].equals("INDI") || strArr[2].equals("FAM"))){
                         tag = strArr[2];
-                        arguments = strArr[1];
+                        arguments = strArr[1]; // id
                         if(tag.equals("INDI")){
                             this.ifFam = false;
                             this.ifIndi = true;
                             if(tmpIndi!=null){
                                 this.Indis.put(tmpIndi.getId(),tmpIndi);
                             }
-                            tmpIndi = new Individual();
-                            tmpIndi.setId(arguments);
+                            if(this.Indis.containsKey(arguments)){
+
+                                if(!this.sameIndiID.containsKey(arguments)){
+                                    this.sameIndiID.put(arguments,1);
+                                }else {
+                                    this.sameIndiID.put(arguments,this.sameIndiID.get(arguments)+1);
+                                }
+                                //相同ID的前置特殊符号
+                                String strUnique = "";
+                                for(int i=0;i<this.sameIndiID.get(arguments);i++){
+                                    strUnique+="*";
+                                }
+                                tmpIndi = new Individual();
+                                tmpIndi.setId(strUnique+arguments);
+                            }else {
+                                tmpIndi = new Individual();
+                                tmpIndi.setId(arguments);
+                            }
                         }
                         if(tag.equals("FAM")){
                             this.ifFam = true;
@@ -91,8 +109,24 @@ public class readGedcomFile {
                             if(tmpFam!=null){
                                 this.Fams.put(tmpFam.getId(),tmpFam);
                             }
-                            tmpFam = new Family();
-                            tmpFam.setId(arguments);
+                            if(this.Fams.containsKey(arguments)){
+
+                                if(!this.sameFamID.containsKey(arguments)){
+                                    this.sameFamID.put(arguments,1);
+                                }else {
+                                    this.sameFamID.put(arguments,this.sameFamID.get(arguments)+1);
+                                }
+                                //相同ID的前置特殊符号
+                                String strUnique = "";
+                                for(int i=0;i<this.sameFamID.get(arguments);i++){
+                                    strUnique+="*";
+                                }
+                                tmpFam = new Family();
+                                tmpFam.setId(strUnique+arguments);
+                            }else {
+                                tmpFam = new Family();
+                                tmpFam.setId(arguments);
+                            }
                         }
                         continue;
                     }
