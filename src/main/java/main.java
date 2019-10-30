@@ -43,7 +43,7 @@ public class main {
         outputStr = readDemoFileUS20("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS22("src/main/resources/test22.ged",outputStr);
-        outputStr = readDemoFileUS23("src/main/resources/test23True.ged",outputStr);
+        outputStr = readDemoFileUS23("src/main/resources/test23.ged",outputStr);
         outputStr = readDemoFileUS24("src/main/resources/US24.ged",outputStr);
         outputStr = readDemoFileUS25("src/main/resources/US25.ged",outputStr);
         outputStr = readDemoFileUS26("src/main/resources/US26.ged",outputStr);
