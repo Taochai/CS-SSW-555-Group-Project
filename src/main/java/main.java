@@ -44,7 +44,9 @@ public class main {
         outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
         outputStr = readDemoFileUS22("src/main/resources/test22.ged",outputStr);
         outputStr = readDemoFileUS23("src/main/resources/test23True.ged",outputStr);
+        outputStr = readDemoFileUS24("src/main/resources/US24.ged",outputStr);
         outputStr = readDemoFileUS25("src/main/resources/US25.ged",outputStr);
+        outputStr = readDemoFileUS26("src/main/resources/US26.ged",outputStr);
         outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
         outputStr = readDemoFileUS28("src/main/resources/US28.ged",outputStr);
 
@@ -527,7 +529,21 @@ public class main {
         }
         return Str.toString();
     }
+    public static String readDemoFileUS24(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
 
+        us24 test = new us24();
+        test.US24(_Fams,_indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
     public static String readDemoFileUS25(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -544,6 +560,21 @@ public class main {
         return Str.toString();
     }
 //
+public static String readDemoFileUS26(String _testFileName, String _errorStr) throws Exception {
+    readGedcomFile read = new readGedcomFile();
+    read.readFile(_testFileName);
+    Map _indis = read.getIndi();
+    Map _Fams = read.getFam();
+
+    us26 test = new us26();
+    test.US26(_Fams, _indis);
+
+    StringBuilder Str = new StringBuilder(_errorStr);
+    for (String a : test.getError()) {
+        Str.append(a+"\n");
+    }
+    return Str.toString();
+}
     public static String readDemoFileUS27(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);

@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class userStoriesTest
 {
-    final static boolean cloud_test = true;//if you are testing locally change it to false, for Travis change it to true.
+    final static boolean cloud_test = false;//if you are testing locally change it to false, for Travis change it to true.
 
     private boolean errorContain(Set<String> errorSet, String errorInfo){
         for (String s : errorSet) {
@@ -820,6 +820,34 @@ public void TestUS20T() throws Exception {
     }
 
     @Test
+    public void TestUS24T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us24/us24sameNameDateMarriage.ged";//relative path is not working on travis ci!!! need to change the idea configer
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us24 test = new us24();
+        test.US24(_Fams,_indis);
+
+        assertTrue(errorContain(test.getError(),"US24") );
+    }
+
+    @Test
+    public void TestUS24F() throws Exception {
+        String falseTestFile =  WhereTest() +"resources/us24/us24normal.ged";//relative path is not working on travis ci!!!need to change the idea configer
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us24 test = new us24();
+        test.US24(_Fams,_indis);
+
+        assertFalse(errorContain(test.getError(),"US24") );
+    }
+
+    @Test
     public void TestUS25T() throws Exception {
 //        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us25/NotUnique.ged";
@@ -844,6 +872,34 @@ public void TestUS20T() throws Exception {
         us25 test = new us25();
         test.US25(_Fams, _indis);
         assertFalse(errorContain(test.getError(),"US25") );
+    }
+
+    @Test
+    public void TestUS26T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile =  WhereTest() +"resources/us26/us26notCorresponding.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us26 test = new us26();
+        test.US26(_Fams, _indis);
+
+        assertTrue(errorContain(test.getError(),"US26") );
+    }
+
+    @Test
+    public void TestUS26F() throws Exception {
+        String falseTestFile =  WhereTest() + "resources/us26/us26normal.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us26 test = new us26();
+        test.US26(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US26") );
     }
 
     @Test
@@ -908,5 +964,59 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"US28") );
     }
 
+    @Test
+    public void TestUS29T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile =  WhereTest() +"resources/us28/OrderSiblings.ged";
+        // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
 
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
+        assertTrue(errorContain(test.getError(),"US28") );
+    }
+
+    @Test
+    public void TestUS29F() throws Exception {
+        String falseTestFile = WhereTest() + "resources/us28/CannotOrder.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US28") );
+    }
+
+    @Test
+    public void TestUS30T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile =  WhereTest() +"resources/us28/OrderSiblings.ged";
+        // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
+        assertTrue(errorContain(test.getError(),"US28") );
+    }
+
+    @Test
+    public void TestUS30F() throws Exception {
+        String falseTestFile = WhereTest() + "resources/us28/CannotOrder.ged";//relative path is not working on travis ci!!!
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us28 test = new us28();
+        test.US28(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US28") );
+    }
 }
