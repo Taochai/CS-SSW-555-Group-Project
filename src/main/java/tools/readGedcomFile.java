@@ -21,18 +21,14 @@ import java.util.*;
 public class readGedcomFile {
     Map<String, Individual> Indis;
     Map<String, Family> Fams;
-    Map<String,Integer> sameIndiID = new HashMap<>();
-    Map<String,Integer> sameFamID = new HashMap<>();
+    Map<String,Integer> sameIndiID = new HashMap<>(); // added
+    Map<String,Integer> sameFamID = new HashMap<>(); // added
     Boolean ifBIRT = false;
     Boolean ifDEAT = false;
     Boolean ifMARR = false;
     Boolean ifDIV = false;
     Boolean ifIndi = false;
     Boolean ifFam = false;
-    public readGedcomFile(){
-        this.Indis = new HashMap<>();
-        this.Fams = new HashMap<>();
-    }
     Map<String,String> tagLevelMap = new HashMap<String, String>(){
         {
             put("INDI","0");
@@ -54,6 +50,19 @@ public class readGedcomFile {
             put("NOTE","0");
         }
     };
+    public readGedcomFile(){
+        this.Indis = new HashMap<>();
+        this.Fams = new HashMap<>();
+    }
+
+    public Map<String, Individual> getIndi() {
+        return Indis;
+    }
+
+    public Map<String, Family> getFam() {
+        return Fams;
+    }
+
     public void readFile(String file) throws IOException, ParseException {
         FileInputStream fileInput = new FileInputStream(file);
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(fileInput));
@@ -62,7 +71,6 @@ public class readGedcomFile {
         String inputLine ;
         Individual tmpIndi = null;
         Family tmpFam = null;
-
 
         while((inputLine = bufferRead.readLine())!=null){
             inputLine = inputLine.replace("@","");
@@ -82,6 +90,7 @@ public class readGedcomFile {
                             this.ifFam = false;
                             this.ifIndi = true;
                             if(tmpIndi!=null){
+                                tmpIndi.setAlive();
                                 this.Indis.put(tmpIndi.getId(),tmpIndi);
                             }
                             if(this.Indis.containsKey(arguments)){
@@ -104,6 +113,10 @@ public class readGedcomFile {
                             }
                         }
                         if(tag.equals("FAM")){
+                            if (this.ifIndi.equals(true) && tmpIndi != null) {
+                                tmpIndi.setAlive();
+                                this.Indis.put(tmpIndi.getId(), tmpIndi);
+                            }
                             this.ifFam = true;
                             this.ifIndi = false;
                             if(tmpFam!=null){
@@ -170,7 +183,7 @@ public class readGedcomFile {
 
             }
         }
-        if(tmpIndi!=null) this.Indis.put(tmpIndi.getId(),tmpIndi);
+//        if(tmpIndi!=null) this.Indis.put(tmpIndi.getId(),tmpIndi);
         if(tmpFam!=null)  this.Fams.put(tmpFam.getId(),tmpFam);
 
     }
@@ -272,11 +285,5 @@ public class readGedcomFile {
         System.out.println("Family:");
         System.out.println(tF.toString());
         return this.Fams;
-    }
-    public Map getFam(){
-        return this.Fams;
-    }
-    public Map getIndi(){
-        return this.Indis;
     }
 }

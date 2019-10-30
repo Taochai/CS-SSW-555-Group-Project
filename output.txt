@@ -1878,3 +1878,24 @@ US28: Siblings in family with idF1
 US28: Siblings in family with idF5
 	id: I16 birthday: 2010-11-02
 	id: I12 birthday: 2011-07-10
+ERROR: FAMILY: US18:  FamilyID: F4 has two children that married each other
+	I4: Sam /Peter/ in family F3 is living right now
+	I8: Dean /Alboran/ in family F2 is living right now
+	I13: null in family F4 is living right now
+	I1: Pablo /Alboran/ in family F1 is living right now
+	I9: null in family F2 is living right now
+	I4: Sam /Peter/ in family F3 is living right now
+	I8: Dean /Alboran/ in family F2 is living right now
+	I13: null in family F4 is living right now
+	I1: Pablo /Alboran/ in family F1 is living right now
+	I9: null in family F2 is living right now
+	I4: Sam /Peter/ in family F3 is living right now
+	I8: Dean /Alboran/ in family F2 is living right now
+	I13: null in family F4 is living right now
+	I1: Pablo /Alboran/ in family F1 is living right now
+	I9: null in family F2 is living right now
+FAMILY: US30: List all living married people in this GEDCOM file:	I4: Sam /Peter/ in family F3 is living right now
+	I8: Dean /Alboran/ in family F2 is living right now
+	I13: null in family F4 is living right now
+	I1: Pablo /Alboran/ in family F1 is living right now
+	I9: null in family F2 is living right now
