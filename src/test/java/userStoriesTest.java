@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class userStoriesTest
 {
-    final static boolean cloud_test = false;//if you are testing locally change it to false, for Travis change it to true.
+    final static boolean cloud_test = true;//if you are testing locally change it to false, for Travis change it to true.
 
     private boolean errorContain(Set<String> errorSet, String errorInfo){
         for (String s : errorSet) {
