@@ -21,37 +21,38 @@ public class main {
     public static void main(String[] args) throws Exception {
        String outputStr = "";
 
-//        outputStr = readDemoFileUS01("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS02("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS03("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS04("src/main/resources/testOne.ged",outputStr);
-//        outputStr = readDemoFileUS05("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS06("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS07("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS09("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS10("src/main/resources/TestGEDCOM.ged",outputStr);
-//        outputStr = readDemoFileUS11("src/main/resources/testOne.ged",outputStr);
-//        outputStr = readDemoFileUS12("src/main/resources/testOne.ged",outputStr);
-//        outputStr = readDemoFileUS13("src/main/resources/testOne.ged",outputStr);
-//        outputStr = readDemoFileUS14("src/main/resources/testOne.ged",outputStr);
-//        outputStr = readDemoFileUS15("src/main/resources/testUS15.ged",outputStr);
-//        outputStr = readDemoFileUS16("src/main/resources/testOne.ged",outputStr);
-//        outputStr = readDemoFileUS17("src/main/resources/UserStory17.ged",outputStr);
-//        outputStr = readDemoFileUS18("src/main/resources/US18.ged",outputStr);
-//        outputStr = readDemoFileUS19("src/main/resources/US18.ged",outputStr);
-//        outputStr = readDemoFileUS20("src/main/resources/testTwo.ged",outputStr);
-//        outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
-//        outputStr = readDemoFileUS22("src/main/resources/test22.ged",outputStr);
-//        outputStr = readDemoFileUS23("src/main/resources/test23True.ged",outputStr);
-//        outputStr = readDemoFileUS25("src/main/resources/US25.ged",outputStr);
-//        outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
-//        outputStr = readDemoFileUS28("src/main/resources/US28.ged",outputStr);
-//        outputStr = "INDIVIDUAL: US29: List all deceased individuals in a GEDCOM file:";
-//        outputStr = readDemoFileUS29("src/main/resources/US28.ged",outputStr);
+        outputStr = readDemoFileUS01("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS02("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS03("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS04("src/main/resources/testOne.ged",outputStr);
+        outputStr = readDemoFileUS05("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS06("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS07("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS09("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS10("src/main/resources/TestGEDCOM.ged",outputStr);
+        outputStr = readDemoFileUS11("src/main/resources/testOne.ged",outputStr);
+        outputStr = readDemoFileUS12("src/main/resources/testOne.ged",outputStr);
+        outputStr = readDemoFileUS13("src/main/resources/testOne.ged",outputStr);
+        outputStr = readDemoFileUS14("src/main/resources/testOne.ged",outputStr);
+        outputStr = readDemoFileUS15("src/main/resources/testUS15.ged",outputStr);
+        outputStr = readDemoFileUS16("src/main/resources/testOne.ged",outputStr);
+        outputStr = readDemoFileUS17("src/main/resources/UserStory17.ged",outputStr);
+        outputStr = readDemoFileUS18("src/main/resources/US18.ged",outputStr);
+        outputStr = readDemoFileUS19("src/main/resources/US18.ged",outputStr);
+        outputStr = readDemoFileUS20("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS21("src/main/resources/testTwo.ged",outputStr);
+        outputStr = readDemoFileUS22("src/main/resources/test22.ged",outputStr);
+        outputStr = readDemoFileUS23("src/main/resources/test23.ged",outputStr);
+        outputStr = readDemoFileUS24("src/main/resources/US24.ged",outputStr);
+        outputStr = readDemoFileUS25("src/main/resources/US25.ged",outputStr);
+        outputStr = readDemoFileUS26("src/main/resources/US26.ged",outputStr);
+        outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
+        outputStr = readDemoFileUS28("src/main/resources/US28.ged",outputStr);
+        outputStr = "INDIVIDUAL: US29: List all deceased individuals in a GEDCOM file:";
+        outputStr = readDemoFileUS29("src/main/resources/US28.ged",outputStr);
         outputStr = "FAMILY: US30: List all living married people in this GEDCOM file:";
         outputStr = readDemoFileUS30("src/main/resources/us19.ged",outputStr);
-
 
 
         outputTxt text = new outputTxt();
@@ -91,7 +92,6 @@ public class main {
         }
         return Str.toString();
     }
-
 
     public static String readDemoFileUS02(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
@@ -371,7 +371,7 @@ public class main {
 
         StringBuilder Str = new StringBuilder(_errorStr);
         for (String a : test.getError()) {
-            Str.append(a).append("\n");
+            Str.append(a+"\n");
         }
         return Str.toString();
     }
@@ -532,7 +532,21 @@ public class main {
         }
         return Str.toString();
     }
+    public static String readDemoFileUS24(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
 
+        us24 test = new us24();
+        test.US24(_Fams,_indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
     public static String readDemoFileUS25(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -549,6 +563,21 @@ public class main {
         return Str.toString();
     }
 //
+public static String readDemoFileUS26(String _testFileName, String _errorStr) throws Exception {
+    readGedcomFile read = new readGedcomFile();
+    read.readFile(_testFileName);
+    Map _indis = read.getIndi();
+    Map _Fams = read.getFam();
+
+    us26 test = new us26();
+    test.US26(_Fams, _indis);
+
+    StringBuilder Str = new StringBuilder(_errorStr);
+    for (String a : test.getError()) {
+        Str.append(a+"\n");
+    }
+    return Str.toString();
+}
     public static String readDemoFileUS27(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
