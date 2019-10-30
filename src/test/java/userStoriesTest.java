@@ -967,56 +967,42 @@ public void TestUS20T() throws Exception {
     @Test
     public void TestUS29T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile =  WhereTest() +"resources/us28/OrderSiblings.ged";
+        String trueTestFile =  WhereTest() +"resources/us29/ControlGroup.ged";
         // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
         Map _Fams = read.printFam();
 
-        us28 test = new us28();
-        test.US28(_Fams, _indis);
-        assertTrue(errorContain(test.getError(),"US28") );
+        us29 test = new us29();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US29(curIndis);
+        }
+        assertTrue(errorContain(test.getError(),"I40") );
     }
 
-    @Test
-    public void TestUS29F() throws Exception {
-        String falseTestFile = WhereTest() + "resources/us28/CannotOrder.ged";//relative path is not working on travis ci!!!
-        readGedcomFile read = new readGedcomFile();
-        read.readFile(falseTestFile);
-        Map _indis = read.printIndi();
-        Map _Fams = read.printFam();
 
-        us28 test = new us28();
-        test.US28(_Fams, _indis);
-        assertFalse(errorContain(test.getError(),"US28") );
-    }
 
     @Test
     public void TestUS30T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile =  WhereTest() +"resources/us28/OrderSiblings.ged";
+        String trueTestFile =  WhereTest() +"resources/us30/ControlGroup.ged";
         // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
         Map _Fams = read.printFam();
 
-        us28 test = new us28();
-        test.US28(_Fams, _indis);
-        assertTrue(errorContain(test.getError(),"US28") );
-    }
-
-    @Test
-    public void TestUS30F() throws Exception {
-        String falseTestFile = WhereTest() + "resources/us28/CannotOrder.ged";//relative path is not working on travis ci!!!
-        readGedcomFile read = new readGedcomFile();
-        read.readFile(falseTestFile);
-        Map _indis = read.printIndi();
-        Map _Fams = read.printFam();
-
-        us28 test = new us28();
-        test.US28(_Fams, _indis);
-        assertFalse(errorContain(test.getError(),"US28") );
+        us30 test = new us30();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US30(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"I13") );
     }
 }

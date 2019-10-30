@@ -63,6 +63,8 @@ public class Individual {
     }
 
     public Boolean getAlive() {
+//        setAlive();
+//        return this.Death == null;
         return Alive;
     }
 
