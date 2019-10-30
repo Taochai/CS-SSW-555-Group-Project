@@ -26,7 +26,7 @@ public class userStoriesTest
 
     private String WhereTest(){
         String Localtest = "";
-        String Travistest = "src/test";
+        String Travistest = "src/test/";
         if(cloud_test){
             return Travistest;
         }
