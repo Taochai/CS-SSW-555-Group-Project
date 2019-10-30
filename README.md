@@ -8,4 +8,4 @@ Team Member:
 Chai Tao, Zhe Sun, Yining Wen, Jiaxian Xing, Ge Chang
 
 ----
-project 2 lies in TaoChai branch!
+
