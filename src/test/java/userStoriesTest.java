@@ -817,7 +817,7 @@ public void TestUS20T() throws Exception {
     }
     @Test
     public void TestUS24T() throws Exception {
-        String trueTestFile = "resources/us24/us24sameNameDateMarriage.ged";//relative path is not working on travis ci!!! need to change the idea configer
+        String trueTestFile =  WhereTest() +"resources/us24/us24sameNameDateMarriage.ged";//relative path is not working on travis ci!!! need to change the idea configer
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -830,7 +830,7 @@ public void TestUS20T() throws Exception {
     }
     @Test
     public void TestUS24F() throws Exception {
-        String falseTestFile = "resources/us24/us24normal.ged";//relative path is not working on travis ci!!!need to change the idea configer
+        String falseTestFile =  WhereTest() +"resources/us24/us24normal.ged";//relative path is not working on travis ci!!!need to change the idea configer
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.getIndi();
@@ -870,7 +870,7 @@ public void TestUS20T() throws Exception {
     @Test
     public void TestUS26T() throws Exception {
 //        System.out.println(url.getPath());
-        String trueTestFile = "resources/us26/us26notCorresponding.ged";
+        String trueTestFile =  WhereTest() +"resources/us26/us26notCorresponding.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.getIndi();
@@ -884,7 +884,7 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS26F() throws Exception {
-        String falseTestFile = "resources/us26/us26normal.ged";//relative path is not working on travis ci!!!
+        String falseTestFile =  WhereTest() + "resources/us26/us26normal.ged";//relative path is not working on travis ci!!!
         readGedcomFile read = new readGedcomFile();
         read.readFile(falseTestFile);
         Map _indis = read.printIndi();
