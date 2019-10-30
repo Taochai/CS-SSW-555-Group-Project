@@ -7,6 +7,7 @@
  * @LastEditTime: 2019-10-19 22:12:02
  */
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -44,6 +45,10 @@ public class main {
         // initialize a set to store all the error info got from each test file
         Set<String> result = new TreeSet<>();
         result.clear();
+        Set<String> alldeadpeople = new HashSet<>();
+        alldeadpeople.clear();
+        Set<String> alllivingmarrriedpeople = new HashSet<>();
+        alllivingmarrriedpeople.clear();
 
         // if needed add more test file paths to this string array so as to output more error info messages
         String[] winFilePaths = {
@@ -68,10 +73,24 @@ public class main {
 
             // add error messages to the final result set collection
             result.addAll(test.getErrorInfo());
+
+            // add all living people who had married that messages to the alllivingmarrriedpeople set collection
+            alllivingmarrriedpeople.addAll(test.getAllMarriedLivingInfo());
+
+            // add all people who passed away that messages to the alldeadpeople set collection
+            alldeadpeople.addAll(test.getAllDeceasedIndi());
         }
 
         // print all the error messages
         printSet(result);
+
+        // print all the All Married Living Info and all dead person
+        System.out.println("FAMILY: US30: List all living married people in this GEDCOM file:");
+        printSet(alllivingmarrriedpeople);
+
+        System.out.println("INDIVIDUAL: US29: List all deceased individuals in a GEDCOM file:");
+        printSet(alldeadpeople);
+
 
         // export all the error message to an "ErrorInfo.txt" file at the root of the project
         ExportErrInfoToTxtFile output = new ExportErrInfoToTxtFile();

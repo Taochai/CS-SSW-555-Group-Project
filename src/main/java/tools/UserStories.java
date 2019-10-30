@@ -17,13 +17,26 @@ import java.util.*;
 public class UserStories {
 
     private Set<String> ErrorInfo;
+    private Set<String> AllMarriedLivingInfo;
+    private Set<String> AllDeceasedIndi;
 
     public Set<String> getErrorInfo() {
         return ErrorInfo;
     }
 
+    public Set<String> getAllMarriedLivingInfo() {
+        return AllMarriedLivingInfo;
+    }
+
+
+    public Set<String> getAllDeceasedIndi() {
+        return AllDeceasedIndi;
+    }
+
     public UserStories() {
         ErrorInfo = new TreeSet<String>();
+        AllMarriedLivingInfo = new TreeSet<String>();
+        AllDeceasedIndi = new TreeSet<String>();
     }
 
     public void AllUserStory(Map _Fams, Map _indis) throws ParseException {
@@ -54,6 +67,7 @@ public class UserStories {
             this.US18(curFam, _indis);
             this.US19(curFam, _Fams, _indis);
             this.US20(curFam, _Fams, _indis);
+            this.US30(curFam, _indis);
         }
     }
 
@@ -66,8 +80,7 @@ public class UserStories {
             this.US03(curIndis);
             this.US07(curIndis);
             this.US11(_Fams, _indis);
-
-
+            this.US29(curIndis);
         }
     }
 
@@ -735,6 +748,38 @@ public class UserStories {
                     }
                 }
             }
+        }
+    }
+
+    // US29: List deceased; List all deceased individuals in a GEDCOM file (Zhe Sun)
+    public void US29(Individual indi) throws ParseException {
+        String messagesStr;
+        String indiID = indi.getId();
+        String indiName = indi.getName();
+        if (!indi.getAlive()){
+            messagesStr = "\t" + indiID + ": " + indiName + " is dead on " + ((indi.getDeath() != null)? Formatdate.dateToString(indi.getDeath()): "Unknown");
+            this.AllDeceasedIndi.add(messagesStr);
+        }
+
+    }
+
+    // US30: List living married; List all living married people in a GEDCOM file (Zhe Sun)
+    public void US30(Family _Fam, Map<String, Individual> _indis){
+        String messageStr = "";
+        String husID = _Fam.getHusbandID();
+        String husName = _Fam.getHusbandName();
+        String wifeID = _Fam.getWifeID();
+        String wifeName = _Fam.getWifeName();
+
+        if (_indis.get(husID).getAlive()){
+            messageStr += "\t" + husID + ": " + husName + " in family " + _Fam.getId() + " is living right now";
+            this.AllMarriedLivingInfo.add(messageStr);
+            messageStr = "";
+        }
+
+        if (_indis.get(wifeID).getAlive()){
+            messageStr += "\t" + wifeID + ": " + wifeName + " in family " + _Fam.getId() + " is living right now";
+            this.AllMarriedLivingInfo.add(messageStr);
         }
     }
 }

@@ -929,4 +929,78 @@ public class userStoriesTest {
         assertFalse(errorContain(test.getErrorInfo(), expected));
     }
 
+
+    @Test
+    public void TestUS29T() throws Exception {
+        String trueTestFile;
+        if (win_System) {
+            trueTestFile = "src\\test\\resources\\us29.ged";
+        } else {
+            trueTestFile = "src/test/resources/us01.ged";
+        }
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        UserStories test = new UserStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US01(Fams, indis);
+        String expected = "";
+        assertTrue(errorContain(test.getAllDeceasedIndi(), expected));
+    }
+
+    @Test
+    public void TestUS29F() throws Exception {
+        String trueTestFile;
+        if (win_System) {
+            trueTestFile = "src\\test\\resources\\ControlGroup.ged";
+        } else {
+            trueTestFile = "src/test/resources/ControlGroup.ged";
+        }
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        UserStories test = new UserStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US01(Fams, indis);
+        String expected = "";
+        assertTrue(errorContain(test.getAllDeceasedIndi(), expected));
+    }
+
+
+    @Test
+    public void TestUS30T() throws Exception {
+        String trueTestFile;
+        if (win_System) {
+            trueTestFile = "src\\test\\resources\\us30.ged";
+        } else {
+            trueTestFile = "src/test/resources/us01.ged";
+        }
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        UserStories test = new UserStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US01(Fams, indis);
+        String expected = "";
+        assertTrue(errorContain(test.getAllMarriedLivingInfo(), expected));
+    }
+
+    @Test
+    public void TestUS30F() throws Exception {
+        String trueTestFile;
+        if (win_System) {
+            trueTestFile = "src\\test\\resources\\ControlGroup.ged";
+        } else {
+            trueTestFile = "src/test/resources/ControlGroup.ged";
+        }
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        UserStories test = new UserStories();
+        Map indis = read.printIndi();
+        Map Fams = read.printFam();
+        test.US01(Fams, indis);
+        String expected = "";
+        assertTrue(errorContain(test.getAllMarriedLivingInfo(), expected));
+    }
+
 }
