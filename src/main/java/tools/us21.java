@@ -17,7 +17,6 @@ public class us21 {
         return this.ErrorInfo;
     }
 
-    //US14 No more than five siblings should be born at the same time (Jiaxian Xing)
     public String US21(Family _Fam, Map<String, Individual> _indis) throws ParseException {
         String errStr = "";
         Individual husband = _indis.get(_Fam.getHusbandID());
@@ -27,7 +26,7 @@ public class us21 {
             this.ErrorInfo.add(errStr);
         }
         if(wife.getGender() != 'F'){
-            errStr ="ERROR: FAMILY: US21: The family: " + _Fam.getId() + " the wife: " + wife.getId() +" gender is not female";
+            errStr ="ERROR: FAMILY: US21: The family: " + _Fam.getId() + " the wife: 23" + wife.getId() +" gender is not female";
             this.ErrorInfo.add(errStr);
         }
         return errStr;

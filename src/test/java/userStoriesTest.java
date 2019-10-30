@@ -767,6 +767,7 @@ public void TestUS20T() throws Exception {
         }
         assertFalse(errorContain(test.getError(),"US21") );
     }
+
     @Test
     public void TestUS22T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us22/Test22.ged";
@@ -779,6 +780,7 @@ public void TestUS20T() throws Exception {
 
         assertTrue(errorContain(test.getError(),"US22") );
     }
+
     @Test
     public void TestUS22F() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us22/Test22True.ged";
@@ -791,8 +793,8 @@ public void TestUS20T() throws Exception {
 
         assertFalse(errorContain(test.getError(),"US22") );
     }
-    @Test
 
+    @Test
     public void TestUS23T() throws Exception {
         String trueTestFile = WhereTest() + "resources/us23/Test23.ged";
         readGedcomFile read = new readGedcomFile();
@@ -803,6 +805,7 @@ public void TestUS20T() throws Exception {
 
         assertTrue(errorContain(test.getError(),"US23") );
     }
+
     @Test
     public void TestUS23F() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us23/Test23True.ged";
@@ -815,6 +818,7 @@ public void TestUS20T() throws Exception {
 
         assertFalse(errorContain(test.getError(),"US23") );
     }
+
     @Test
     public void TestUS25T() throws Exception {
 //        System.out.println(url.getPath());
@@ -841,6 +845,7 @@ public void TestUS20T() throws Exception {
         test.US25(_Fams, _indis);
         assertFalse(errorContain(test.getError(),"US25") );
     }
+
     @Test
     public void TestUS27T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us27/us27Can'tCalculateAge.ged";
@@ -874,6 +879,7 @@ public void TestUS20T() throws Exception {
         }
         assertFalse(errorContain(test.getError(),"US27") );
     }
+
     @Test
     public void TestUS28T() throws Exception {
 //        System.out.println(url.getPath());
