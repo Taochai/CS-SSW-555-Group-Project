@@ -27,7 +27,6 @@ public class us30 {
         String wifeName = _Fam.getWifeName();
 
         if (_indis.get(husID).getAlive()){
-            System.out.println("jin getalive");
             messageStr += "\t" + husID + ": " + husName + " in family " + _Fam.getId() + " is living right now";
             this.AllMarriedLivingInfo.add(messageStr);
             messageStr = "";
