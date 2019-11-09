@@ -49,6 +49,7 @@ out/
 *.ipr
 *.iws
 build-idea/
+*.DS_Store
 
 # eclipse files
 .project
