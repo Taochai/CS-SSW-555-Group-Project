@@ -1005,4 +1005,80 @@ public void TestUS20T() throws Exception {
         }
         assertTrue(errorContain(test.getError(),"I13") );
     }
+
+    @Test
+    public void TestUS36T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile =  WhereTest() +"resources/us36/DiedLast30Days.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us36 test = new us36();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US36(curIndis);
+        }
+        assertTrue(errorContain(test.getError(),"I12") );
+    }
+
+    @Test
+    public void TestUS36F() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile =  WhereTest() +"resources/us36/DiedLast30Days.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us36 test = new us36();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US36(curIndis);
+        }
+        assertFalse(errorContain(test.getError(),"I5") );
+    }
+
+    @Test
+    public void TestUS37T() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile =  WhereTest() +"resources/us37/ListSurvive.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us37 test = new us37();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US37(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"Child I15 is survivor") );
+    }
+
+    @Test
+    public void TestUS37F() throws Exception {
+//        System.out.println(url.getPath());
+        String trueTestFile =  WhereTest() +"resources/us37/ListSurvive.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us37 test = new us37();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US37(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"Wife I10 is survivor") );
+    }
 }
