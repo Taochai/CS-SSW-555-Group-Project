@@ -12,6 +12,8 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 //US27: Include individual ages(Yining Wen)
 public class CalculateAge {
@@ -73,5 +75,55 @@ public class CalculateAge {
         long bod = DOB.getTime();
         long dod = DOD.getTime();
         return (int) ((dod - bod) /1000/60/60/24/365);
+    }
+
+    // return true if the birthday/anniversary date input is in the coming XX days or rather return false
+    static boolean isWithinXXDays(Date time, int days) {
+        Calendar cal = Calendar.getInstance();
+        Date calDate = cal.getTime();
+
+        Map<Integer, Integer> monthAccordingDateMap = new HashMap<Integer, Integer>() {
+            {
+                put(1, 31);
+                put(2, 28);
+                put(3, 31);
+                put(4, 30);
+                put(5, 31);
+                put(6, 30);
+                put(7, 31);
+                put(8, 31);
+                put(9, 30);
+                put(10, 31);
+                put(11, 30);
+                put(12, 31);
+            }
+        };
+        // birthday should be before present date then we can do the calculation.
+        if (calDate.after(time)) {
+            int monthNow = cal.get(Calendar.MONTH) + 1;  //当前月份
+            int dayOfMonthNow = cal.get(Calendar.DATE); //当前日期
+
+            if (time != null) {
+                cal.setTime(time);
+            }
+            int monthBirth = cal.get(Calendar.MONTH) + 1;
+            int dayOfMonthBirth = cal.get(Calendar.DATE);
+
+            if (monthNow == monthBirth) {
+                if (dayOfMonthNow < dayOfMonthBirth && (dayOfMonthBirth - dayOfMonthNow) < days) return true;
+            } else if (monthNow > monthBirth) {
+                return false;
+            } else {// monthBirth > monthNow
+                if ((monthBirth - monthNow) <= 1 && ((monthAccordingDateMap.get(monthNow) - dayOfMonthNow) + dayOfMonthBirth) < days) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        } else {
+            return false;
+        }
+        return false;
     }
 }

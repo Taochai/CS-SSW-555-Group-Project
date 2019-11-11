@@ -1081,4 +1081,83 @@ public void TestUS20T() throws Exception {
         }
         assertFalse(errorContain(test.getError(),"Wife I10 is survivor") );
     }
+
+
+    @Test
+    public void TestUS38T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us38/ControlGroup.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+
+        us38 test = new us38();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US38(curIndis);
+        }
+        assertTrue(errorContain(test.getError(),"I20") );
+    }
+
+    @Test
+    public void TestUS38F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us38/ControlGroupF.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+
+        us38 test = new us38();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US38(curIndis);
+        }
+        assertFalse(errorContain(test.getError(),"I20") );
+    }
+
+
+
+    @Test
+    public void TestUS39T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us39/ControlGroup.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us39 test = new us39();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US39(curFam);
+        }
+        assertTrue(errorContain(test.getError(),"F8") );
+    }
+
+
+
+    @Test
+    public void TestUS39F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us39/ControlGroupF.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us39 test = new us39();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US39(curFam);
+        }
+        assertFalse(errorContain(test.getError(),"F8") );
+    }
+
+
+
+
 }
