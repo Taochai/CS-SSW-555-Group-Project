@@ -8,6 +8,8 @@
  */
 package tools;
 
+import objects.Individual;
+
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -125,5 +127,32 @@ public class CalculateAge {
             return false;
         }
         return false;
+    }
+
+    static int getAgeByDate(Date DOB, Date givenDate)  {
+        Calendar cal = Calendar.getInstance();
+
+        //get the given date information
+        cal.setTime(givenDate);
+        int yearGivenDate = cal.get(Calendar.YEAR);
+        int monthGivenDate = cal.get(Calendar.MONTH);
+        int dayOfMonthGivenDate = cal.get(Calendar.DAY_OF_MONTH);
+
+        //get the birthday date information
+        cal.setTime(DOB);
+        int yearBirth = cal.get(Calendar.YEAR);
+        int monthBirth = cal.get(Calendar.MONTH);
+        int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
+
+        //calculate the age base on the given date.
+        int ageByDate = yearGivenDate - yearBirth;
+        if (monthGivenDate <= monthBirth) {
+            if (monthGivenDate == monthBirth) {
+                if (dayOfMonthGivenDate < dayOfMonthBirth) ageByDate--;
+            } else {
+                ageByDate--;
+            }
+        }
+        return ageByDate;
     }
 }

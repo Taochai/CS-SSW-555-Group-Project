@@ -30,6 +30,14 @@ public class main {
         outputStr = readDemoFileUS07("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
         // put into the string here is to avoid out of memory, and outputStr should be connected with a "+" mark to store all the message
+
+        //NOTICE: should not connect with += here.
+        // cuz we append the message in the function already(we send the outputStr to the function).
+        // you can check from the output.txt which duplicate too much info
+        // And that's why overflow String memory here(maybe not)
+        //If want to change to +=, need change each readDemoFile function first.
+        //(--jiaxian)
+
         text.log(outputStr);
         System.out.print(outputStr);
         outputStr = "";
@@ -60,22 +68,27 @@ public class main {
         outputStr = readDemoFileUS27("src/main/resources/US27.ged",outputStr);
         outputStr = readDemoFileUS28("src/main/resources/US28.ged",outputStr);
         outputStr = readDemoFileUS29("src/main/resources/US28.ged",outputStr);
-        outputStr = "FAMILY: US30: List all living married people in this GEDCOM file:\n";
+//        outputStr += "FAMILY: US30: List all living married people in this GEDCOM file:\n";
         outputStr = readDemoFileUS30("src/main/resources/us19.ged",outputStr);
-        outputStr = "INDIVIDUAL: US31: List all living single person in this GEDCOM file:\n";
+//        outputStr += "INDIVIDUAL: US31: List all living single person in this GEDCOM file:\n";
         outputStr = readDemoFileUS31("src/main/resources/US31.ged",outputStr);
-        outputStr = "INDIVIDUAL: US32: List all multiple births in this GEDCOM file:\n";
+//        outputStr = "INDIVIDUAL: US32: List all multiple births in this GEDCOM file:\n";
         outputStr = readDemoFileUS32("src/main/resources/US32.ged",outputStr);
-        outputStr = "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
+//        outputStr = "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
+        outputStr = readDemoFileUS34("src/main/resources/US34.ged",outputStr);
         outputStr = readDemoFileUS36("src/main/resources/DiedLast30Days.ged",outputStr);
+
+        //        outputStr += readDemoFileUS35("src/main/resources/us19.ged",outputStr);
+//        outputStr += "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
+        outputStr += readDemoFileUS36("src/main/resources/DiedLast30Days.ged",outputStr);
         text.log(outputStr);
         System.out.print(outputStr);
         outputStr = "";
-        outputStr = "FAMILY: US37: List all living spouses and descendants of people in this GEDCOM file who died in the last 30 days:\n";
+//        outputStr = "FAMILY: US37: List all living spouses and descendants of people in this GEDCOM file who died in the last 30 days:\n";
         outputStr = readDemoFileUS37("src/main/resources/ListSurvive.ged",outputStr);
-        outputStr = "INDIVIDUAL: US38: List all living people in a GEDCOM file whose birthdays occur in the next 30 days:\n";
+//        outputStr = "INDIVIDUAL: US38: List all living people in a GEDCOM file whose birthdays occur in the next 30 days:\n";
         outputStr = readDemoFileUS38("src/main/resources/ControlGroup.ged",outputStr);
-        outputStr = "FAMILY: US39: List upcoming anniversaries: List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days:\n";
+//        outputStr = "FAMILY: US39: List upcoming anniversaries: List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days:\n";
         outputStr = readDemoFileUS39("src/main/resources/ControlGroup.ged",outputStr);
         text.log(outputStr);
         System.out.print(outputStr);
@@ -675,7 +688,7 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
         }
         return Str.toString();
     }
-
+    
     public static String readDemoFileUS31(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -720,6 +733,37 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
         return Str.toString();
     }
 
+    public static String readDemoFileUS34(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us34 test = new us34();
+        test.US34(_Fams, _indis);
+        
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+
+    public static String readDemoFileUS35(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us35 test = new us35();
+        test.US35(_Fams, _indis);
+        
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
 
     public static String readDemoFileUS36(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
