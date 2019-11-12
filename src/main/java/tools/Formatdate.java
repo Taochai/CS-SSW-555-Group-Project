@@ -11,12 +11,21 @@ package tools;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 public class Formatdate {
-    static Date stringtodate(String date) throws ParseException {
+    static Date stringtodate(String date, Set<String> errDate) throws ParseException {
         if(date != null){
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
             Date date1 = dateFormat.parse(date);
+
+            try{
+                dateFormat.setLenient(false);
+                Date date2 = dateFormat.parse(date);
+            }
+            catch (Exception ex){
+                errDate.add(date);
+            }
             return date1;
         }
         return null;

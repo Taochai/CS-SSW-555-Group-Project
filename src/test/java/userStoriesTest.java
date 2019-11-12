@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class userStoriesTest
 {
-    final static boolean cloud_test = true;//if you are testing locally change it to false, for Travis change it to true.
+    final static boolean cloud_test = false;//if you are testing locally change it to false, for Travis change it to true.
 
     private boolean errorContain(Set<String> errorSet, String errorInfo){
         for (String s : errorSet) {
@@ -1015,6 +1015,24 @@ public void TestUS20T() throws Exception {
     }
 
     @Test
+    public void TestUS31F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us31/US31.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us31 test = new us31();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US31(curIndis);
+        }
+        assertFalse(errorContain(test.getError(),"I4") );
+    }
+
+    @Test
     public void TestUS32T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us32/US32.ged";
         readGedcomFile read = new readGedcomFile();
@@ -1031,6 +1049,53 @@ public void TestUS20T() throws Exception {
         }
         assertTrue(errorContain(test.getError(),"F1") );
     }
+
+    @Test
+    public void TestUS32F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us32/US32.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us32 test = new us32();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US32(curFam, _indis);
+        }
+        assertFalse(errorContain(test.getError(),"F0") );
+    }
+
+    @Test
+    public void TestUS33T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us33/US33.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us33 test = new us33();
+        test.US33(_Fams,_indis);
+
+
+        assertTrue(errorContain(test.getError(),"US33") );
+    }
+
+    @Test
+    public void TestUS33F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us33/US33.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us33 test = new us33();
+        test.US33(_Fams,_indis);
+        assertTrue(errorContain(test.getError(),"US33") );
+    }
+
     @Test
     public void TestUS34T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us34/us34hubansTwoTimesOldWhenMarry.ged";
@@ -1057,32 +1122,33 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"US34") );
     }
 
-//    @Test
-//    public void TestUS26T() throws Exception {
-//        String trueTestFile =  WhereTest() +"resources/us26/us26notCorresponding.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        Map _indis = read.getIndi();
-//        Map _Fams = read.getFam();
-//
-//        us26 test = new us26();
-//        test.US26(_Fams, _indis);
-//
-//        assertTrue(errorContain(test.getError(),"US26") );
-//    }
-//
-//    @Test
-//    public void TestUS26F() throws Exception {
-//        String falseTestFile =  WhereTest() + "resources/us26/us26normal.ged";//relative path is not working on travis ci!!!(added the whereTEst! Work Now)
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        Map _indis = read.printIndi();
-//        Map _Fams = read.printFam();
-//
-//        us26 test = new us26();
-//        test.US26(_Fams, _indis);
-//        assertFalse(errorContain(test.getError(),"US26") );
-//    }
+    @Test
+    public void TestUS35T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us35/us35bornWithin30Day.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us35 test = new us35();
+        test.US35(_Fams, _indis);
+
+        assertTrue(errorContain(test.getError(),"US35") );
+    }
+
+    @Test
+    public void TestUS35F() throws Exception {
+        String falseTestFile =  WhereTest() + "resources/us35/us35noOneBornLast30Day.ged";//relative path is not working on travis ci!!!(added the whereTEst! Work Now)
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us35 test = new us35();
+        test.US35(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US35") );
+    }
+
     @Test
     public void TestUS36T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us36/DiedLast30Days.ged";
@@ -1155,7 +1221,6 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"Wife I10 is survivor") );
     }
 
-
     @Test
     public void TestUS38T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us38/ControlGroup.ged";
@@ -1190,8 +1255,6 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"I20") );
     }
 
-
-
     @Test
     public void TestUS39T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us39/ControlGroup.ged";
@@ -1209,8 +1272,6 @@ public void TestUS20T() throws Exception {
         }
         assertTrue(errorContain(test.getError(),"F8") );
     }
-
-
 
     @Test
     public void TestUS39F() throws Exception {
@@ -1230,7 +1291,27 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"F8") );
     }
 
+    @Test
+    public void TestUS42T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us42/US42.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Set<String> errDateString = read.getErrDate();
+        us42 test = new us42();
+        test.US42(errDateString);
 
+        assertTrue(errorContain(test.getError(),"US42") );
+    }
 
+    @Test
+    public void TestUS42F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us42/US42F.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Set<String> errDateString = read.getErrDate();
+        us42 test = new us42();
+        test.US42(errDateString);
 
+        assertFalse(errorContain(test.getError(),"US42") );
+    }
 }

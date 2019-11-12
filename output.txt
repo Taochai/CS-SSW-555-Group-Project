@@ -73,7 +73,19 @@ US28: Siblings in family with idF1
 US28: Siblings in family with idF5
 	id: I16 birthday: 2010-11-02
 	id: I12 birthday: 2011-07-10
-	I11: Liz /Elisabeth/ is dead on 2015-02-06
+INDIVIDUAL: US29: List all deceased individuals in a GEDCOM file:
+	I4: Elijah /Armstrong/ is dead on 2012-02-05
+	I7: Omar /Springhall/ is dead on 1980-04-03
+	I25: Antonio /Armstrong/ is dead on 2008-01-31
+	I36: Blair /Bennett/ is dead on 1982-07-06
+	I33: Booth /Springhall/ is dead on 2018-02-22
+	I40: Avery /Bennett/ is dead on 1991-06-05
+	I6: Odelia /Clemens/ is dead on 1999-09-09
+	I29: Yehudi /Armstrong/ is dead on 2010-04-11
+	I5: Omar /Armstrong/ is dead on 1950-12-06
+	I34: Veronica /Anderson/ is dead on 2016-05-07
+	I26: Keith /Dillon/ is dead on 2003-11-29
+	I8: Nancy /Hansom/ is dead on 1979-06-16
 FAMILY: US30: List all living married people in this GEDCOM file:
 	I4: Sam /Peter/ in family F3 is living right now
 	I9: null in family *F2 is living right now
@@ -94,10 +106,9 @@ INDIVIDUAL: US32: List all multiple births in this GEDCOM file:
 	F1 has multiple births:  Child3 /Test/and Child1 /Test/
 	F1 has multiple births:  Child2 /Test/and Child1 /Test/
 	F1 has multiple births:  Child3 /Test/and Child2 /Test/
-ERROR: US34: Family: when the family:F2 get married. The husband: I1 was more than twice as old as the wife: I2
-	I13: Dick /Peter/ is dead in the last 30 days on 2019-10-30
-	I12: Liz /Elisabeth/ is dead in the last 30 days on 2019-11-02
-	I6: Jake /Peter/ is dead in the last 30 days on 2019-10-30
+INDIVIDUAL: US33: ID: I3 is an orphan!
+OOPS: US34: Family: when the family:F2 get married. The husband: I1 was more than twice as old as the wife: I2
+OOPS: US35: Individual: The Person:I1Pablo /Alboran/ born within last 30 days from today
 INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:
 	I13: Dick /Peter/ is dead in the last 30 days on 2019-10-30
 	I12: Liz /Elisabeth/ is dead in the last 30 days on 2019-11-02
@@ -133,3 +144,4 @@ INDIVIDUAL: US38: List all living people in a GEDCOM file whose birthdays occur 
 	I13: Yale /Armstrong/'s birthday is on 1988-11-18 and birthday will occur in the next 30 days
 FAMILY: US39: List upcoming anniversaries: List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days:
 	Family: F8 married on 2014-12-01 which its anniversary will occurs in the next 30 days.
+US42: This date is illegal:35 Feb 2008

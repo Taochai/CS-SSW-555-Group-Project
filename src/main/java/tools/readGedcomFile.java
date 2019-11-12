@@ -29,6 +29,8 @@ public class readGedcomFile {
     Boolean ifDIV = false;
     Boolean ifIndi = false;
     Boolean ifFam = false;
+    int InputLineNum ;
+    Set<String> errDate = new HashSet<>();
     Map<String,String> tagLevelMap = new HashMap<String, String>(){
         {
             put("INDI","0");
@@ -53,6 +55,7 @@ public class readGedcomFile {
     public readGedcomFile(){
         this.Indis = new HashMap<>();
         this.Fams = new HashMap<>();
+        this.InputLineNum = 0;
     }
 
     public Map<String, Individual> getIndi() {
@@ -73,6 +76,7 @@ public class readGedcomFile {
         Family tmpFam = null;
 
         while((inputLine = bufferRead.readLine())!=null){
+            this.InputLineNum++;
             inputLine = inputLine.replace("@","");
             String[] strArr = inputLine.split("\\s");
             String level = strArr[0];
@@ -197,12 +201,13 @@ public class readGedcomFile {
         }
         else if(tag.equals("DATE")){
             if(this.ifBIRT){
-                Date date = Formatdate.stringtodate(arguments);
+                Date date = Formatdate.stringtodate(arguments,errDate);
+
                 indi.setBirthday(date);   //// need function transform date to DATE type;
                 this.ifBIRT = false;
             }
             if(this.ifDEAT){
-                Date date = Formatdate.stringtodate(arguments);
+                Date date = Formatdate.stringtodate(arguments,errDate);
                 indi.setDeath(date);   //// need function transform date to DATE type;
                 this.ifDEAT = false;
             }
@@ -228,12 +233,12 @@ public class readGedcomFile {
         }
         else if(tag.equals("DATE")){
             if(this.ifMARR){
-                Date date = Formatdate.stringtodate(arguments);
+                Date date = Formatdate.stringtodate(arguments,errDate);
                 fam.setMarried(date);//// need function transform date to DATE type;
                 this.ifMARR = false;
             }
             if(this.ifDIV){
-                Date date = Formatdate.stringtodate(arguments);
+                Date date = Formatdate.stringtodate(arguments,errDate);
                 fam.setDivorced(date);//// need function transform date to DATE type;
                 this.ifDIV = false;
             }
@@ -285,5 +290,11 @@ public class readGedcomFile {
         System.out.println("Family:");
         System.out.println(tF.toString());
         return this.Fams;
+    }
+    public int getInputLineNum(){
+        return this.InputLineNum;
+    }
+    public Set<String> getErrDate(){
+        return this.errDate;
     }
 }

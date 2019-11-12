@@ -10,4 +10,10 @@ public class outputTxt {
         out.write(message);
         out.close();
     }
+
+    public static void logWithoutPre(String message) throws IOException {
+        PrintWriter out = new PrintWriter(new FileWriter("output.txt", false), true);
+        out.write(message);
+        out.close();
+    }
 }
