@@ -74,6 +74,7 @@ US28: Siblings in family with idF5
 	id: I16 birthday: 2010-11-02
 	id: I12 birthday: 2011-07-10
 	I11: Liz /Elisabeth/ is dead on 2015-02-06
+FAMILY: US30: List all living married people in this GEDCOM file:
 	I4: Sam /Peter/ in family F3 is living right now
 	I9: null in family *F2 is living right now
 	I8: Dean /Alboran/ in family F2 is living right now
@@ -84,7 +85,9 @@ US28: Siblings in family with idF5
 	I1: Pablo /Alboran/ in family *F1 is living right now
 	I8: Dean /Alboran/ in family *F2 is living right now
 	I13: null in family *F4 is living right now
+INDIVIDUAL: US31: List all living single person in this GEDCOM file:
 	I3: Single /Test/ is a living single person.
+INDIVIDUAL: US32: List all multiple births in this GEDCOM file:
 	F1 has multiple births:  Child1 /Test/and Child2 /Test/
 	F1 has multiple births:  Child2 /Test/and Child3 /Test/
 	F1 has multiple births:  Child1 /Test/and Child3 /Test/
@@ -95,49 +98,11 @@ ERROR: US34: Family: when the family:F2 get married. The husband: I1 was more th
 	I13: Dick /Peter/ is dead in the last 30 days on 2019-10-30
 	I12: Liz /Elisabeth/ is dead in the last 30 days on 2019-11-02
 	I6: Jake /Peter/ is dead in the last 30 days on 2019-10-30
-ERROR: INDIVIDUAL: US27: Can't get I1's age
-US28: Siblings in family with idF2
-	id: I1 birthday: 1989-03-31
-	id: I18 birthday: 1990-02-21
-	id: I17 birthday: 1992-02-02
-US28: Siblings in family with idF4
-	id: I13 birthday: 2014-06-11
-	id: I14 birthday: 2015-07-11
-US28: Siblings in family with idF3
-	id: I6 birthday: 1987-06-11
-	id: I2 birthday: 1992-07-12
-	id: I8 birthday: 1993-02-04
-US28: Siblings in family with idF1
-	id: I3 birthday: 2017-01-01
-	id: I15 birthday: 2018-08-02
-US28: Siblings in family with idF5
-	id: I16 birthday: 2010-11-02
-	id: I12 birthday: 2011-07-10
-	I11: Liz /Elisabeth/ is dead on 2015-02-06
-	I4: Sam /Peter/ in family F3 is living right now
-	I9: null in family *F2 is living right now
-	I8: Dean /Alboran/ in family F2 is living right now
-	I13: null in family F4 is living right now
-	I4: Sam /Peter/ in family *F3 is living right now
-	I1: Pablo /Alboran/ in family F1 is living right now
-	I9: null in family F2 is living right now
-	I1: Pablo /Alboran/ in family *F1 is living right now
-	I8: Dean /Alboran/ in family *F2 is living right now
-	I13: null in family *F4 is living right now
-	I3: Single /Test/ is a living single person.
-	F1 has multiple births:  Child1 /Test/and Child2 /Test/
-	F1 has multiple births:  Child2 /Test/and Child3 /Test/
-	F1 has multiple births:  Child1 /Test/and Child3 /Test/
-	F1 has multiple births:  Child3 /Test/and Child1 /Test/
-	F1 has multiple births:  Child2 /Test/and Child1 /Test/
-	F1 has multiple births:  Child3 /Test/and Child2 /Test/
-ERROR: US34: Family: when the family:F2 get married. The husband: I1 was more than twice as old as the wife: I2
+INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:
 	I13: Dick /Peter/ is dead in the last 30 days on 2019-10-30
 	I12: Liz /Elisabeth/ is dead in the last 30 days on 2019-11-02
 	I6: Jake /Peter/ is dead in the last 30 days on 2019-10-30
-	I13: Dick /Peter/ is dead in the last 30 days on 2019-10-30
-	I12: Liz /Elisabeth/ is dead in the last 30 days on 2019-11-02
-	I6: Jake /Peter/ is dead in the last 30 days on 2019-10-30
+FAMILY: US37: List all living spouses and descendants of people in this GEDCOM file who died in the last 30 days:
 Servivors in family F3:
 	No one died in family F3 in last 30 days
 
@@ -159,10 +124,12 @@ Servivors in family F5:
 	Child I13 is survivor
 	Child I23 is survivor
 
+INDIVIDUAL: US38: List all living people in a GEDCOM file whose birthdays occur in the next 30 days:
 	I17: Cora /Elsie/'s birthday is on 2018-11-16 and birthday will occur in the next 30 days
 	I20: Jim /Elsie/'s birthday is on 2016-11-17 and birthday will occur in the next 30 days
 	I41: Mike /Armstrong/'s birthday is on 1965-12-01 and birthday will occur in the next 30 days
 	I37: Eileen /Springhall/'s birthday is on 1964-12-03 and birthday will occur in the next 30 days
 	I9: Berton /Armstrong/'s birthday is on 1959-11-25 and birthday will occur in the next 30 days
 	I13: Yale /Armstrong/'s birthday is on 1988-11-18 and birthday will occur in the next 30 days
+FAMILY: US39: List upcoming anniversaries: List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days:
 	Family: F8 married on 2014-12-01 which its anniversary will occurs in the next 30 days.
