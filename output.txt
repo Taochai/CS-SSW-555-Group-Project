@@ -94,6 +94,7 @@ INDIVIDUAL: US32: List all multiple births in this GEDCOM file:
 	F1 has multiple births:  Child3 /Test/and Child1 /Test/
 	F1 has multiple births:  Child2 /Test/and Child1 /Test/
 	F1 has multiple births:  Child3 /Test/and Child2 /Test/
+INDIVIDUAL: US33: ID: I3 is an orphan!
 OOPS: US34: Family: when the family:F2 get married. The husband: I1 was more than twice as old as the wife: I2
 OOPS: US35: Individual: The Person:I1Pablo /Alboran/ born within last 30 days from today
 INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:
@@ -131,3 +132,4 @@ INDIVIDUAL: US38: List all living people in a GEDCOM file whose birthdays occur 
 	I13: Yale /Armstrong/'s birthday is on 1988-11-18 and birthday will occur in the next 30 days
 FAMILY: US39: List upcoming anniversaries: List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days:
 	Family: F8 married on 2014-12-01 which its anniversary will occurs in the next 30 days.
+US42: This date is illegal:35 Feb 2008

@@ -1032,6 +1032,34 @@ public void TestUS20T() throws Exception {
         assertTrue(errorContain(test.getError(),"F1") );
     }
     @Test
+    public void TestUS33T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us33/US33.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us33 test = new us33();
+        test.US33(_Fams,_indis);
+
+
+        assertTrue(errorContain(test.getError(),"US33") );
+    }
+    @Test
+    public void TestUS33F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us33/US33.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us33 test = new us33();
+        test.US33(_Fams,_indis);
+
+
+        assertTrue(errorContain(test.getError(),"US33") );
+    }
+    @Test
     public void TestUS34T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us34/us34hubansTwoTimesOldWhenMarry.ged";
         readGedcomFile read = new readGedcomFile();
@@ -1041,7 +1069,7 @@ public void TestUS20T() throws Exception {
 
         us34 test = new us34();
         test.US34(_Fams, _indis);
-        assertTrue(errorContain(test.getError(),"US34") );
+        assertFalse(errorContain(test.getError(),"US34") );
     }
 
     @Test
@@ -1230,7 +1258,28 @@ public void TestUS20T() throws Exception {
         }
         assertFalse(errorContain(test.getError(),"F8") );
     }
+    @Test
+    public void TestUS42T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us42/US42.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Set<String> errDateString = read.getErrDate();
+        us42 test = new us42();
+        test.US42(errDateString);
 
+        assertTrue(errorContain(test.getError(),"US42") );
+    }
+    @Test
+    public void TestUS42F() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us42/US42F.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Set<String> errDateString = read.getErrDate();
+        us42 test = new us42();
+        test.US42(errDateString);
+
+        assertFalse(errorContain(test.getError(),"US42") );
+    }
 
 
 

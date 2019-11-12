@@ -9,6 +9,7 @@
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import objects.Family;
 import objects.Individual;
@@ -67,6 +68,8 @@ public class main {
         outputStr = readDemoFileUS31("src/main/resources/US31.ged",outputStr);
         outputStr += "INDIVIDUAL: US32: List all multiple births in this GEDCOM file:\n";
         outputStr = readDemoFileUS32("src/main/resources/US32.ged",outputStr);
+        outputStr = readDemoFileUS33("src/main/resources/US33.ged",outputStr);
+        System.out.println(outputStr);
         outputStr = readDemoFileUS34("src/main/resources/US34.ged",outputStr);
         outputStr = readDemoFileUS35("src/test/resources/us35/us35bornWithin30Day.ged",outputStr);
         outputStr += "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
@@ -80,6 +83,7 @@ public class main {
         outputStr = readDemoFileUS38("src/main/resources/ControlGroup.ged",outputStr);
         outputStr += "FAMILY: US39: List upcoming anniversaries: List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days:\n";
         outputStr = readDemoFileUS39("src/main/resources/ControlGroup.ged",outputStr);
+        outputStr = readDemoFileUS42("src/main/resources/US42.ged",outputStr);
         text.log(outputStr);
         System.out.print(outputStr);
     }
@@ -722,7 +726,21 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
         }
         return Str.toString();
     }
+    public static String readDemoFileUS33(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
 
+        us33 test = new us33();
+        test.US33(_Fams,_indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
     public static String readDemoFileUS34(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -833,6 +851,18 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
 
         StringBuilder Str = new StringBuilder(_errorStr);
         for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    public static String readDemoFileUS42(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Set<String> errDateString = read.getErrDate();
+        us42 test = new us42();
+        test.US42(errDateString);
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a :test.getError()) {
             Str.append(a+"\n");
         }
         return Str.toString();
