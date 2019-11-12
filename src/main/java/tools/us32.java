@@ -18,7 +18,6 @@ public class us32 {
         return this.AllMultipleBirths;
     }
 
-    // US38: List upcoming birthdays: List all living people in a GEDCOM file whose birthdays occur in the next 30 days (Zhe Sun)
     public void US32(Family _Fam, Map<String,Individual> _indis) throws ParseException {
         String messagesStr;
         String child1;

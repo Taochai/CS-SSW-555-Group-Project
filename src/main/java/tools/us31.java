@@ -17,7 +17,6 @@ public class us31 {
         return this.AllLivingSingle;
     }
 
-    // US38: List upcoming birthdays: List all living people in a GEDCOM file whose birthdays occur in the next 30 days (Zhe Sun)
     public void US31(Individual indi) throws ParseException {
         String messagesStr;
         String indiID = indi.getId();
