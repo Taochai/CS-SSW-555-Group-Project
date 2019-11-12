@@ -24,7 +24,7 @@ public class us31 {
         String indiName = indi.getName();
         if(indi.getAlive() == true && indi.getSpouse().isEmpty() == true){
             if(CalculateAge.getAge(indi.getBirthday()) > 30) {
-                messagesStr = "\t" + indiID + ": " + indiName + "is a living single person.";
+                messagesStr = "\t" + indiID + ": " + indiName + " is a living single person.";
                 this.AllLivingSingle.add(messagesStr);
             }
         }
