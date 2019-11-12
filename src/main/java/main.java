@@ -62,6 +62,8 @@ public class main {
         outputStr += readDemoFileUS29("src/main/resources/US28.ged",outputStr);
         outputStr += "FAMILY: US30: List all living married people in this GEDCOM file:\n";
         outputStr += readDemoFileUS30("src/main/resources/us19.ged",outputStr);
+//        outputStr += readDemoFileUS34("src/main/resources/us19.ged",outputStr);
+//        outputStr += readDemoFileUS35("src/main/resources/us19.ged",outputStr);
         outputStr += "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
         outputStr += readDemoFileUS36("src/main/resources/DiedLast30Days.ged",outputStr);
         text.log(outputStr);
@@ -671,7 +673,36 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
         }
         return Str.toString();
     }
+    public static String readDemoFileUS34(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
 
+        us34 test = new us34();
+        test.US34(_Fams, _indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+    public static String readDemoFileUS35(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us35 test = new us35();
+        test.US35(_Fams, _indis);
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
     public static String readDemoFileUS36(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
