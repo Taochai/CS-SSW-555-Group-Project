@@ -1,0 +1,29 @@
+0 @I1@ INDI
+1 NAME Pablo /Alboran/
+2 GIVN Pablo
+2 SURN Alboran
+2 _MARNM Alboran
+1 SEX F
+1 BIRT
+2 DATE 11 NOV 2019
+1 FAMS @F2@
+1 FAMC @F2@
+
+0 @I2@ INDI
+1 NAME Sarah /Peter/
+2 GIVN Sarah
+2 SURN Peter
+2 _MARNM Alboran
+1 SEX M
+1 BIRT
+2 DATE 13 JUL 1988
+1 FAMS @F2@
+1 FAMC @F2@
+
+0 @F2@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 13 JUL 2008
+2 PLAC LA
+1 _CURRENT Y

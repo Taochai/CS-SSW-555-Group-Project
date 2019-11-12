@@ -68,7 +68,7 @@ public class main {
         outputStr += "INDIVIDUAL: US32: List all multiple births in this GEDCOM file:\n";
         outputStr = readDemoFileUS32("src/main/resources/US32.ged",outputStr);
         outputStr = readDemoFileUS34("src/main/resources/US34.ged",outputStr);
-        //        outputStr += readDemoFileUS35("src/main/resources/us19.ged",outputStr);
+        outputStr = readDemoFileUS35("src/test/resources/us35/us35bornWithin30Day.ged",outputStr);
         outputStr += "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
         outputStr = readDemoFileUS36("src/main/resources/DiedLast30Days.ged",outputStr);
         text.log(outputStr);

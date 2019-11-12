@@ -1057,32 +1057,33 @@ public void TestUS20T() throws Exception {
         assertFalse(errorContain(test.getError(),"US34") );
     }
 
-//    @Test
-//    public void TestUS26T() throws Exception {
-//        String trueTestFile =  WhereTest() +"resources/us26/us26notCorresponding.ged";
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(trueTestFile);
-//        Map _indis = read.getIndi();
-//        Map _Fams = read.getFam();
-//
-//        us26 test = new us26();
-//        test.US26(_Fams, _indis);
-//
-//        assertTrue(errorContain(test.getError(),"US26") );
-//    }
-//
-//    @Test
-//    public void TestUS26F() throws Exception {
-//        String falseTestFile =  WhereTest() + "resources/us26/us26normal.ged";//relative path is not working on travis ci!!!(added the whereTEst! Work Now)
-//        readGedcomFile read = new readGedcomFile();
-//        read.readFile(falseTestFile);
-//        Map _indis = read.printIndi();
-//        Map _Fams = read.printFam();
-//
-//        us26 test = new us26();
-//        test.US26(_Fams, _indis);
-//        assertFalse(errorContain(test.getError(),"US26") );
-//    }
+    @Test
+    public void TestUS35T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us35/us35bornWithin30Day.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us35 test = new us35();
+        test.US35(_Fams, _indis);
+
+        assertTrue(errorContain(test.getError(),"US35") );
+    }
+
+    @Test
+    public void TestUS35F() throws Exception {
+        String falseTestFile =  WhereTest() + "resources/us35/us35noOneBornLast30Day.ged";//relative path is not working on travis ci!!!(added the whereTEst! Work Now)
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(falseTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us35 test = new us35();
+        test.US35(_Fams, _indis);
+        assertFalse(errorContain(test.getError(),"US35") );
+    }
+
     @Test
     public void TestUS36T() throws Exception {
         String trueTestFile =  WhereTest() +"resources/us36/DiedLast30Days.ged";

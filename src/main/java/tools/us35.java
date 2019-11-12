@@ -19,19 +19,24 @@ public class us35 {
     public String US35(Map _Fams, Map _indis) {
         String errStr = "";
 
-        //check family member is in individual list
-        //all individual roles (spouse, child) specified in family records should have corresponding entries in the corresponding  individual's records.
-        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
-        while (entries1.hasNext()) {
-            Map.Entry<String, Family> entry = entries1.next();
-            Family curFam = entry.getValue();
-        }
-
-        //check individual role is in family
-        //All family roles (spouse, child) specified in an individual record should have corresponding entries in the corresponding family records
+        //check individual
         for (Map.Entry<String, Individual> entry : (Iterable<Map.Entry<String, Individual>>) _indis.entrySet()) {
             Individual curInd = entry.getValue();
+            if(withinXXDays(curInd.getBirthday(),30)){
+                errStr = "OOPS: US35: Individual: " + "The Person:" + curInd.getId()+curInd.getName() + " born within last 30 days from today";
+                this.ErrorInfo.add(errStr);
+            }
         }
         return errStr;
+    }
+
+    public static boolean withinXXDays(Date time, int days){
+        Date now = new Date();
+        long diff = now.getTime() -  time.getTime();
+        int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
+                    if (diffDays <= days){
+                        return true;
+                    }
+                    else return false;
     }
 }

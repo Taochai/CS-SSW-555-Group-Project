@@ -94,7 +94,8 @@ INDIVIDUAL: US32: List all multiple births in this GEDCOM file:
 	F1 has multiple births:  Child3 /Test/and Child1 /Test/
 	F1 has multiple births:  Child2 /Test/and Child1 /Test/
 	F1 has multiple births:  Child3 /Test/and Child2 /Test/
-ERROR: US34: Family: when the family:F2 get married. The husband: I1 was more than twice as old as the wife: I2
+OOPS: US34: Family: when the family:F2 get married. The husband: I1 was more than twice as old as the wife: I2
+OOPS: US35: Individual: The Person:I1Pablo /Alboran/ born within last 30 days from today
 INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:
 	I13: Dick /Peter/ is dead in the last 30 days on 2019-10-30
 	I12: Liz /Elisabeth/ is dead in the last 30 days on 2019-11-02
