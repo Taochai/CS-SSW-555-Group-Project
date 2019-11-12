@@ -29,16 +29,9 @@ public class main {
         outputStr = readDemoFileUS06("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS07("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr = readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
+
         // put into the string here is to avoid out of memory, and outputStr should be connected with a "+" mark to store all the message
-
-        //NOTICE: should not connect with += here.
-        // cuz we append the message in the function already(we send the outputStr to the function).
-        // you can check from the output.txt which duplicate too much info
-        // And that's why overflow String memory here(maybe not)
-        //If want to change to +=, need change each readDemoFile function first.
-        //(--jiaxian)
-
-        text.log(outputStr);
+        text.logWithoutPre(outputStr);
         System.out.print(outputStr);
         outputStr = "";
         outputStr = readDemoFileUS09("src/main/resources/TestGEDCOM.ged",outputStr);
