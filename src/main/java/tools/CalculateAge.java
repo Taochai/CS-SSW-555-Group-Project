@@ -128,14 +128,15 @@ public class CalculateAge {
         }
         return false;
     }
+
     static int getAgeByDate(Date DOB, Date givenDate)  {
         Calendar cal = Calendar.getInstance();
 
         //get the given date information
         cal.setTime(givenDate);
-        int yearNow = cal.get(Calendar.YEAR);
-        int monthNow = cal.get(Calendar.MONTH);
-        int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH);
+        int yearGivenDate = cal.get(Calendar.YEAR);
+        int monthGivenDate = cal.get(Calendar.MONTH);
+        int dayOfMonthGivenDate = cal.get(Calendar.DAY_OF_MONTH);
 
         //get the birthday date information
         cal.setTime(DOB);
@@ -144,10 +145,10 @@ public class CalculateAge {
         int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
 
         //calculate the age base on the given date.
-        int ageByDate = yearNow - yearBirth;
-        if (monthNow <= monthBirth) {
-            if (monthNow == monthBirth) {
-                if (dayOfMonthNow < dayOfMonthBirth) ageByDate--;
+        int ageByDate = yearGivenDate - yearBirth;
+        if (monthGivenDate <= monthBirth) {
+            if (monthGivenDate == monthBirth) {
+                if (dayOfMonthGivenDate < dayOfMonthBirth) ageByDate--;
             } else {
                 ageByDate--;
             }

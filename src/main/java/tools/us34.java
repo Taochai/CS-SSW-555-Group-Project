@@ -27,14 +27,17 @@ public class us34 {
             Individual curFamHusband = (Individual) _indis.get(curFam.getHusbandID());
             Individual curFamWife = (Individual) _indis.get(curFam.getWifeID());
             Date famMarryDate = curFam.getMarried();
-//            int husbandMarryAge = getAge(curFamHusband.getBirthday(),famMarryDate);
-//            int wifeMarryAge = getAge(curFamWife.getBirthday(),famMarryDate);
-            if()
+            int husbandMarryAge = getAgeByDate(curFamHusband.getBirthday(),famMarryDate);
+            int wifeMarryAge = getAgeByDate(curFamWife.getBirthday(),famMarryDate);
+            if(husbandMarryAge > wifeMarryAge*2){
+                errStr = "ERROR: US34: Family: " + "when the family:" + curFam.getId() + " get married. The husband: " + curFam.getHusbandID() + " was more than twice as old as the wife: "+ curFam.getWifeID();
+                this.ErrorInfo.add(errStr);
+            }
+            if(wifeMarryAge > husbandMarryAge*2){
+                errStr = "ERROR: US34: Family: " + "when the family:" + curFam.getId() + " get married. The wife: " + curFam.getWifeID() + " was more than twice as old as the husband: "+ curFam.getHusbandID();
+                this.ErrorInfo.add(errStr);
+            }
         }
-
-//        for (Map.Entry<String, Individual> entry : (Iterable<Map.Entry<String, Individual>>) _indis.entrySet()) {
-//            Individual curInd = entry.getValue();
-//        }
         return errStr;
     }
 }

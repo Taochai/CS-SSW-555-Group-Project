@@ -30,6 +30,14 @@ public class main {
         outputStr += readDemoFileUS07("src/main/resources/TestGEDCOM.ged",outputStr);
         outputStr += readDemoFileUS08("src/main/resources/TestGEDCOM.ged",outputStr);
         // put into the string here is to avoid out of memory, and outputStr should be connected with a "+" mark to store all the message
+
+        //NOTICE: should not connect with += here.
+        // cuz we append the message in the function already(we send the outputStr to the function).
+        // you can check from the output.txt which duplicate too much info
+        // And that's why overflow String memory here(maybe not)
+        //If want to change to +=, need change each readDemoFile function first.
+        //(--jiaxian)
+
         text.log(outputStr);
         System.out.print(outputStr);
         outputStr = "";
@@ -66,8 +74,8 @@ public class main {
         outputStr += readDemoFileUS31("src/main/resources/US31.ged",outputStr);
         outputStr += "INDIVIDUAL: US32: List all multiple births in this GEDCOM file:\n";
         outputStr += readDemoFileUS32("src/main/resources/US32.ged",outputStr);
-        //        outputStr += readDemoFileUS34("src/main/resources/us19.ged",outputStr);
-//        outputStr += readDemoFileUS35("src/main/resources/us19.ged",outputStr);
+        outputStr = readDemoFileUS34("src/main/resources/US34.ged",outputStr);
+        //        outputStr += readDemoFileUS35("src/main/resources/us19.ged",outputStr);
         outputStr += "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
         outputStr += readDemoFileUS36("src/main/resources/DiedLast30Days.ged",outputStr);
         text.log(outputStr);
