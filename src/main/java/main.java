@@ -62,7 +62,11 @@ public class main {
         outputStr += readDemoFileUS29("src/main/resources/US28.ged",outputStr);
         outputStr += "FAMILY: US30: List all living married people in this GEDCOM file:\n";
         outputStr += readDemoFileUS30("src/main/resources/us19.ged",outputStr);
-//        outputStr += readDemoFileUS34("src/main/resources/us19.ged",outputStr);
+        outputStr += "INDIVIDUAL: US31: List all living single person in this GEDCOM file:\n";
+        outputStr += readDemoFileUS31("src/main/resources/US31.ged",outputStr);
+        outputStr += "INDIVIDUAL: US32: List all multiple births in this GEDCOM file:\n";
+        outputStr += readDemoFileUS32("src/main/resources/US32.ged",outputStr);
+        //        outputStr += readDemoFileUS34("src/main/resources/us19.ged",outputStr);
 //        outputStr += readDemoFileUS35("src/main/resources/us19.ged",outputStr);
         outputStr += "INDIVIDUAL: US36: List all people who died in the last 30 days in this GEDCOM file:\n";
         outputStr += readDemoFileUS36("src/main/resources/DiedLast30Days.ged",outputStr);
@@ -673,6 +677,51 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
         }
         return Str.toString();
     }
+    
+    public static String readDemoFileUS31(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us31 test = new us31();
+
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US31(curIndis);
+        }
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+
+    public static String readDemoFileUS32(String _testFileName, String _errorStr) throws Exception {
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(_testFileName);
+        Map _indis = read.getIndi();
+        Map _Fams = read.getFam();
+
+        us32 test = new us32();
+
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US32(curFam, _indis);
+        }
+
+        StringBuilder Str = new StringBuilder(_errorStr);
+        for (String a : test.getError()) {
+            Str.append(a+"\n");
+        }
+        return Str.toString();
+    }
+
     public static String readDemoFileUS34(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -681,13 +730,14 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
 
         us34 test = new us34();
         test.US34(_Fams, _indis);
-
+        
         StringBuilder Str = new StringBuilder(_errorStr);
         for (String a : test.getError()) {
             Str.append(a+"\n");
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS35(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);
@@ -696,13 +746,14 @@ public static String readDemoFileUS26(String _testFileName, String _errorStr) th
 
         us35 test = new us35();
         test.US35(_Fams, _indis);
-
+        
         StringBuilder Str = new StringBuilder(_errorStr);
         for (String a : test.getError()) {
             Str.append(a+"\n");
         }
         return Str.toString();
     }
+
     public static String readDemoFileUS36(String _testFileName, String _errorStr) throws Exception {
         readGedcomFile read = new readGedcomFile();
         read.readFile(_testFileName);

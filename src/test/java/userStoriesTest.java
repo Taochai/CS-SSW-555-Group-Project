@@ -374,7 +374,6 @@ public class userStoriesTest
 
     @Test
     public void TestUS11T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us11/us11Bigamy.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -401,7 +400,6 @@ public class userStoriesTest
 
     @Test
     public void TestUS12T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us12/us12ParentsTooOld.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -849,7 +847,6 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS25T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us25/NotUnique.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -876,7 +873,6 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS26T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us26/us26notCorresponding.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -938,9 +934,7 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS28T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us28/OrderSiblings.ged";
-        // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
@@ -966,9 +960,7 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS29T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us29/ControlGroup.ged";
-        // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
@@ -988,9 +980,7 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS30T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us30/ControlGroup.ged";
-        // String trueTestFile = "src/test/resources/us29/CannotOrder.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
         Map _indis = read.printIndi();
@@ -1007,8 +997,43 @@ public void TestUS20T() throws Exception {
     }
 
     @Test
+    public void TestUS31T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us31/US31.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us31 test = new us31();
+        Iterator<Map.Entry<String, Individual>> entries1 = _indis.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Individual> entry = entries1.next();
+            Individual curIndis = entry.getValue();
+            test.US31(curIndis);
+        }
+        assertTrue(errorContain(test.getError(),"I3") );
+    }
+
+    @Test
+    public void TestUS32T() throws Exception {
+        String trueTestFile =  WhereTest() +"resources/us32/US32.ged";
+        readGedcomFile read = new readGedcomFile();
+        read.readFile(trueTestFile);
+        Map _indis = read.printIndi();
+        Map _Fams = read.printFam();
+
+        us32 test = new us32();
+        Iterator<Map.Entry<String, Family>> entries1 = _Fams.entrySet().iterator();
+        while (entries1.hasNext()) {
+            Map.Entry<String, Family> entry = entries1.next();
+            Family curFam = entry.getValue();
+            test.US32(curFam, _indis);
+        }
+        assertTrue(errorContain(test.getError(),"F1") );
+    }
+
+    @Test
     public void TestUS36T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us36/DiedLast30Days.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -1027,7 +1052,6 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS36F() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us36/DiedLast30Days.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -1046,7 +1070,6 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS37T() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us37/ListSurvive.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
@@ -1065,7 +1088,6 @@ public void TestUS20T() throws Exception {
 
     @Test
     public void TestUS37F() throws Exception {
-//        System.out.println(url.getPath());
         String trueTestFile =  WhereTest() +"resources/us37/ListSurvive.ged";
         readGedcomFile read = new readGedcomFile();
         read.readFile(trueTestFile);
